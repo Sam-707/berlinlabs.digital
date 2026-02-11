@@ -1,0 +1,48 @@
+# Lionbridge.Digital Git Ignore
+# Ignore all subdirectories (individual projects)
+# Only track the root-level documentation files
+
+# Subdirectories - these are separate projects
+3rbst-Gemini/
+3rbst-new-workflow/
+3rbst-platform/
+3rbst-production/
+analysis/
+bridgelabs/
+documentation/
+menuflows/
+prompt-pack/
+validation-scripts/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.claude/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
