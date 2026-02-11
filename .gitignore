@@ -1,20 +1,50 @@
-# Lionbridge.Digital Git Ignore
-# Ignore all subdirectories (individual projects)
-# Only track the root-level documentation files
+# Lionbridge.Digital - BridgeLabs Product Studio
+# https://github.com/Sam-707/Lionbridge.Digital
 
-# Subdirectories - these are separate projects
-3rbst-Gemini/
-3rbst-new-workflow/
-3rbst-platform/
-3rbst-production/
-analysis/
-bridgelabs/
-documentation/
-menuflows/
-prompt-pack/
-validation-scripts/
+# ============================================
+# ENVIRONMENT & SECRETS
+# ============================================
+.env
+.env.local
+.env.production
+.env.*.local
+*.key
+*.pem
+secrets/
 
-# OS files
+# ============================================
+# DEPENDENCIES
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ============================================
+# BUILD OUTPUT
+# ============================================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.vuepress/dist/
+.server/
+build/
+
+# ============================================
+# CACHE & TEMPORARY FILES
+# ============================================
+.cache/
+.parcel-cache/
+.vite/
+.tsbuildinfo/
+*.tsbuildinfo
+*.log
 .DS_Store
 .DS_Store?
 ._*
@@ -22,27 +52,79 @@ validation-scripts/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Editor files
-.vscode/
-.idea/
 *.swp
 *.swo
 *~
-.claude/
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Environment files
-.env
-.env.local
-.env.*.local
-
-# Temporary files
 *.tmp
 *.temp
-.cache/
+
+# ============================================
+# IDE & EDITOR
+# ============================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.claude/
+.claude-code/
+.kiro/
+
+# ============================================
+# TESTING & COVERAGE
+# ============================================
+coverage/
+.nyc_output/
+*.lcov
+
+# ============================================
+# SUPABASE
+# ============================================
+.supabase/
+supabase/.branches/
+supabase/.temp/
+supabase/functions/.vscode/
+supabase/functions/node_modules/
+
+# ============================================
+# VERCEL
+# ============================================
+.vercel/
+
+# ============================================
+# WHATSAPP/WEBDRIVER
+# ============================================
+.wwebjs_cache/
+.puppeteer_cache/
+*.cache
+
+# ============================================
+# PROJECT-SPECIFIC EXCLUSIONS
+# ============================================
+# Large PDFs that shouldn't be in repo
+*.pdf
+
+# Deployment logs
+.deployment-log
+.vercel-deploy-trigger
+
+# Screenshots and test images
+screencapture-*.png
+*.png
+*.jpg
+*.jpeg
+*.gif
+!public/**/images/**  # But keep images in public folders
+
+# ============================================
+# OS FILES
+# ============================================
+.DS_Store
+.AppleDouble
+.LSOverride
+.Trashes
+
+# ============================================
+# ANALYSIS & PROMPT PACK (keep structure but ignore large files)
+# ============================================
+# Keep the markdown files, but ignore any large binaries in these folders
+# (Individual .gitignore files in project folders handle their own exclusions)
