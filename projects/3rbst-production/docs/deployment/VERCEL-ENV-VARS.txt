@@ -1,0 +1,33 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔐 ENVIRONMENT VARIABLES FOR VERCEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Copy-paste these when creating the new project:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Variable 1:
+Name: GEMINI_API_KEY
+Value: AIzaSyC9H-RMMuUduv4CDcNqjPY9F6gI-iJjwGw
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Variable 2:
+Name: SUPABASE_URL
+Value: https://qhcjngmvclreosmpyoqi.supabase.co
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Variable 3:
+Name: SUPABASE_KEY
+Value: sb_publishable_2MnrQ_A5XNi3eVEwDd6rtA_mX0QmJeU
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For each variable:
+1. Type the Name in the "Key" field
+2. Copy-paste the Value in the "Value" field
+3. Check: ✅ Production ✅ Preview ✅ Development
+4. Click "Add"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

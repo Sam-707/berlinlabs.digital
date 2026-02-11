@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- White gradient for dark backgrounds -->
+    <linearGradient id="whiteGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#f3f4f6;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded square background in white -->
+  <rect x="4" y="4" width="56" height="56" rx="14" ry="14" fill="url(#whiteGradient)"/>
+  
+  <!-- Arabic letter ع in dark color for contrast -->
+  <text x="32" y="44" 
+        font-family="Cairo, Amiri, Noto Sans Arabic, Arial" 
+        font-size="28" 
+        font-weight="700" 
+        text-anchor="middle" 
+        fill="#1f2937">ع</text>
+</svg>

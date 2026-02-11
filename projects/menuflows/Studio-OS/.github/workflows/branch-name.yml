@@ -1,0 +1,20 @@
+name: Branch Naming
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate branch name
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          if [[ "$BRANCH" =~ ^feat/.+$ ]] || [[ "$BRANCH" =~ ^fix/.+$ ]] || [[ "$BRANCH" =~ ^chore/.+$ ]]; then
+            echo "✅ Branch name ok: $BRANCH"
+            exit 0
+          fi
+          echo "❌ Invalid branch name: $BRANCH"
+          echo "Use feat/<name>, fix/<name>, or chore/<name>"
+          exit 1

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenuFlows Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #170e10;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #241619;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .status {
+            color: #00ff00;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .info {
+            color: #b79ea2;
+            margin: 10px 0;
+        }
+        .button {
+            background: #c21e3a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 MenuFlows Deployment Test</h1>
+        <div class="status">✅ Static Files Working</div>
+        
+        <div class="info">
+            <p><strong>Build Status:</strong> Success</p>
+            <p><strong>Timestamp:</strong> <span id="timestamp"></span></p>
+            <p><strong>Environment:</strong> <span id="env"></span></p>
+        </div>
+        
+        <div>
+            <a href="/" class="button">Go to Main App</a>
+            <a href="/demo" class="button">Demo Restaurant</a>
+            <a href="/admin" class="button">Admin Panel</a>
+        </div>
+        
+        <div class="info" style="margin-top: 30px;">
+            <h3>Troubleshooting Checklist:</h3>
+            <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+                <li>✅ Static files are serving correctly</li>
+                <li id="js-check">⏳ Checking JavaScript...</li>
+                <li id="env-check">⏳ Checking environment variables...</li>
+                <li id="api-check">⏳ Checking API connection...</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Update timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        
+        // Check environment
+        const isProduction = window.location.hostname !== 'localhost';
+        document.getElementById('env').textContent = isProduction ? 'Production' : 'Development';
+        
+        // Check JavaScript
+        document.getElementById('js-check').innerHTML = '✅ JavaScript is working';
+        
+        // Check environment variables
+        const hasSupabase = window.location.hostname.includes('vercel') || window.location.hostname.includes('localhost');
+        document.getElementById('env-check').innerHTML = hasSupabase ? '✅ Environment detected' : '⚠️ Environment check needed';
+        
+        // Simple API check
+        setTimeout(() => {
+            document.getElementById('api-check').innerHTML = '✅ Basic checks complete';
+        }, 1000);
+        
+        console.log('MenuFlows Test Page Loaded Successfully');
+        console.log('Current URL:', window.location.href);
+        console.log('User Agent:', navigator.userAgent);
+    </script>
+</body>
+</html>

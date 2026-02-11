@@ -1,0 +1,369 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.status-indicator {
+    position: relative;
+}
+
+.status-indicator.online::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #28a745;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.status-indicator.offline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #dc3545;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+#bot-status-icon.online {
+    color: #28a745;
+}
+
+#bot-status-icon.offline {
+    color: #dc3545;
+}
+
+#bot-status-icon.connecting {
+    color: #ffc107;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.table-responsive {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.badge {
+    font-size: 0.75rem;
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 5px;
+}
+
+.form-switch .form-check-input {
+    width: 2em;
+    height: 1em;
+}
+
+.alert {
+    border: none;
+    border-radius: 10px;
+}
+
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    font-weight: 600;
+}
+
+/* Real-time animations */
+.new-entry {
+    animation: slideIn 0.5s ease-in-out;
+    background-color: #d4edda;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stats-counter {
+    font-weight: bold;
+    color: #495057;
+}
+
+/* Chart containers */
+canvas {
+    max-height: 300px;
+}
+
+/* Arabic RTL improvements */
+body[dir="rtl"] {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* User dashboard specific styles */
+.user-welcome-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.document-history-card {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.package-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+/* Payment method cards */
+.payment-method-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* Real-time updates animation */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.new-document-notification {
+    animation: slideInRight 0.5s ease-out;
+}
+
+/* Highlight animation for real-time updates */
+.highlight-update {
+    animation: highlightPulse 1s ease-in-out;
+    transform: scale(1.05);
+}
+
+@keyframes highlightPulse {
+    0% { 
+        background-color: transparent;
+        transform: scale(1);
+    }
+    50% { 
+        background-color: rgba(40, 167, 69, 0.2);
+        transform: scale(1.05);
+    }
+    100% { 
+        background-color: transparent;
+        transform: scale(1);
+    }
+}
+
+/* Notification container */
+#notification-container {
+    pointer-events: none;
+}
+
+#notification-container .alert {
+    pointer-events: all;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: none;
+    border-radius: 8px;
+}
+
+/* Real-time status indicators */
+.online-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #28a745;
+    border-radius: 50%;
+    animation: blink 2s infinite;
+    margin-left: 0.5rem;
+}
+
+.offline-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #dc3545;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Activity indicator */
+.user-activity-indicator {
+    position: relative;
+    overflow: hidden;
+}
+
+.user-activity-indicator::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: sweep 2s infinite;
+}
+
+@keyframes sweep {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Loading states */
+.loading-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Improved buttons */
+.btn-whatsapp {
+    background-color: #25D366;
+    border-color: #25D366;
+    color: white;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128C7E;
+    border-color: #128C7E;
+    color: white;
+}
+
+/* Document type badges */
+.badge-document-type {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 10px;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    .stats-card h4 {
+        font-size: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .package-selection {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-method-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Mobile navigation improvements */
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .nav-link {
+        padding: 0.75rem 1rem;
+    }
+    
+    /* Table improvements for mobile */
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .btn-group-sm .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .btn-lg {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+    
+    /* Stack document actions vertically on very small screens */
+    .document-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .document-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

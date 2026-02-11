@@ -1,0 +1,16 @@
+node_modules
+temp
+logs
+*.log
+.env*
+gen-lang-client-*.json
+.DS_Store
+README-*.md
+deploy*.sh
+setup*.sh
+ecosystem.config.js
+nginx.conf
+start-with-dashboard.js
+dashboard.js
+index.js
+bot-local.js

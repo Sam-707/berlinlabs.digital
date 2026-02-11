@@ -1,0 +1,97 @@
+# 🤖 Claude Code Configuration for 3rbst.com
+# This file contains project-specific instructions and automation
+
+## PROJECT CONTEXT
+project_name: "3rbst.com WhatsApp Document Analyzer"
+business_model: "Kleinunternehmer Package Pricing SaaS"
+target_market: "Arabic speakers in Germany"
+revenue_limit: "17500 EUR (first year)"
+
+## DEPLOYMENT TARGETS
+primary_domain: "3rbst.com"
+fallback_domain: "whatsapp-bot-3rbst.vercel.app"
+git_repository: "https://github.com/Sam-707/whatsapp-bot-3rbst"
+deployment_branch: "security-upgrade-documentation"
+
+## AUTOMATION INSTRUCTIONS
+# Copy-paste this instruction for Claude Code:
+
+EXECUTE 3RBST PROFESSIONAL WORKFLOW:
+
+CONTEXT: 
+- Kleinunternehmer WhatsApp document analysis service
+- Package pricing: €5 single → €20 (5-pack) → €35 (10-pack)
+- Arabic RTL UI with German document processing
+- GDPR compliant with Supabase EU database
+
+MANDATORY STEPS:
+1. DEVELOP: Implement feature following existing patterns
+2. TEST: Run scripts/test-package-system.js and create new tests
+3. DOCUMENT: Update README.md + CHANGELOG.md + relevant docs
+4. DATABASE: Create migration if schema changes
+5. COMMIT: Use professional format with business impact
+6. DEPLOY: Push to GitHub + verify Vercel auto-deployment
+7. VERIFY: Test live at whatsapp-bot-3rbst.vercel.app
+8. UPDATE: PROJECT_STATUS_LOG.md with status
+
+COMPLIANCE:
+- GDPR: EU data protection with auto-deletion
+- Kleinunternehmer: Revenue tracking within €17,500
+- Arabic: RTL layout compatibility
+- Mobile: WhatsApp-first user experience
+
+QUALITY:
+- Error handling with Arabic user messages
+- Professional commit with emoji + business impact
+- Mobile-responsive design
+- Security-first approach
+
+FILES TO ALWAYS UPDATE:
+- README.md (features section)
+- CHANGELOG.md (version entry)
+- PROJECT_STATUS_LOG.md (deployment record)
+
+REFERENCE: PILOT-CHECKLIST.md for detailed workflow
+
+## AUTOMATED COMMANDS
+# Use these for consistent deployment:
+
+# Professional deployment with checklist:
+./scripts/deploy-checklist.sh "Your change description"
+
+# Test package system:
+node scripts/test-package-system.js
+
+# Manual deployment:
+git add . && git commit -m "🚀 DEPLOY: Your message" && git push origin security-upgrade-documentation
+
+## BUSINESS RULES
+# Always consider these in development:
+
+PRICING PSYCHOLOGY:
+- Free (3 docs) → Single (€5) → 5-pack (€20) → 10-pack (€35)
+- Highlight savings: €5 saved on 5-pack, €15 on 10-pack
+- Position 5-pack as "Most Popular", 10-pack as "Best Value"
+
+REVENUE OPTIMIZATION:
+- Target: €35-70 monthly revenue per user (vs previous €15-30)
+- Upsell triggers: Show packages when credits ≤ 1
+- Purchase history: Track for personalized recommendations
+
+TECHNICAL STANDARDS:
+- Database: All personal data encrypted (AES-256-GCM)
+- Retention: Documents auto-deleted after 24 hours
+- Performance: Page load < 3 seconds mobile/desktop
+- Mobile: Arabic RTL layout on all screen sizes
+
+## EMERGENCY CONTACTS
+- GitHub: https://github.com/Sam-707/whatsapp-bot-3rbst
+- Vercel: https://vercel.com/dashboard
+- Supabase: https://supabase.com/dashboard
+- Domain: Check DNS status for 3rbst.com resolution
+
+## SUCCESS METRICS
+- Deployment: All tests pass + live site accessible
+- Performance: <3sec load time + mobile responsive  
+- Business: Package conversion tracking functional
+- Compliance: GDPR + Kleinunternehmer requirements met

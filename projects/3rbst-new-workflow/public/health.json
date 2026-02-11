@@ -1,0 +1,22 @@
+{
+  "status": "ok",
+  "app": "MenuFlows",
+  "version": "1.0.0",
+  "timestamp": "2026-01-19",
+  "build": {
+    "framework": "vite",
+    "react": "19.2.3",
+    "typescript": "5.8.2"
+  },
+  "deployment": {
+    "platform": "vercel",
+    "static_files": true,
+    "spa_routing": true
+  },
+  "endpoints": {
+    "main": "/",
+    "debug": "/debug.html",
+    "test": "/test.html",
+    "health": "/health.json"
+  }
+}

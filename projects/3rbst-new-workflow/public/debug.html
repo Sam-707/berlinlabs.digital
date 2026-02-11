@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenuFlows Debug</title>
+    <style>
+        body { 
+            font-family: monospace; 
+            background: #000; 
+            color: #0f0; 
+            padding: 20px; 
+            line-height: 1.6;
+        }
+        .status { color: #ff0; }
+        .error { color: #f00; }
+        .success { color: #0f0; }
+    </style>
+</head>
+<body>
+    <h1>🔍 MenuFlows Deployment Debug</h1>
+    
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = type;
+            div.innerHTML = `[${new Date().toLocaleTimeString()}] ${message}`;
+            results.appendChild(div);
+        }
+        
+        // Basic checks
+        log('🚀 Debug script started', 'success');
+        log(`📍 URL: ${window.location.href}`);
+        log(`🌐 Host: ${window.location.hostname}`);
+        log(`📱 User Agent: ${navigator.userAgent}`);
+        
+        // Check if we're on Vercel
+        const isVercel = window.location.hostname.includes('vercel.app');
+        log(`☁️ Vercel deployment: ${isVercel ? 'YES' : 'NO'}`, isVercel ? 'success' : 'status');
+        
+        // Test basic JavaScript
+        try {
+            const testObj = { test: 'working' };
+            log(`✅ JavaScript: ${JSON.stringify(testObj)}`, 'success');
+        } catch (e) {
+            log(`❌ JavaScript error: ${e.message}`, 'error');
+        }
+        
+        // Test fetch API
+        log('🔄 Testing network connectivity...');
+        fetch('https://httpbin.org/json')
+            .then(response => response.json())
+            .then(data => {
+                log('✅ Network: External API accessible', 'success');
+            })
+            .catch(error => {
+                log(`❌ Network: ${error.message}`, 'error');
+            });
+        
+        // Test main app files
+        log('🔄 Testing main app files...');
+        
+        // Check if main app loads
+        fetch('/')
+            .then(response => {
+                log(`📄 Main app (/) status: ${response.status}`, response.ok ? 'success' : 'error');
+                return response.text();
+            })
+            .then(html => {
+                const hasReact = html.includes('react');
+                const hasRoot = html.includes('id="root"');
+                log(`⚛️ React detected: ${hasReact}`, hasReact ? 'success' : 'error');
+                log(`🎯 Root element: ${hasRoot}`, hasRoot ? 'success' : 'error');
+            })
+            .catch(error => {
+                log(`❌ Main app fetch error: ${error.message}`, 'error');
+            });
+        
+        // Check assets
+        const scripts = document.querySelectorAll('script[src]');
+        log(`📦 Script tags found: ${scripts.length}`);
+        
+        // Environment simulation
+        log('🔧 Environment check...');
+        const mockEnv = {
+            VITE_SUPABASE_URL: 'https://example.supabase.co',
+            VITE_SUPABASE_ANON_KEY: 'mock-key'
+        };
+        log(`🔑 Mock env vars: ${JSON.stringify(mockEnv, null, 2)}`);
+        
+        // Final status
+        setTimeout(() => {
+            log('✅ Debug complete - check results above', 'success');
+            log('📋 Next steps:', 'status');
+            log('1. Share this debug output', 'status');
+            log('2. Check browser console (F12)', 'status');
+            log('3. Try main app: <a href="/" style="color: #0ff;">Go to Main App</a>', 'status');
+        }, 2000);
+    </script>
+</body>
+</html>

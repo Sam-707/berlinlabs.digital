@@ -1,0 +1,7 @@
+{
+  "name": "Menuflows - Digital Restaurant Experience Platform Path B",
+  "description": "A high-end, mobile-first digital menu and restaurant management suite featuring hand-crafted UI, smooth transitions, and comprehensive owner dashboard.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

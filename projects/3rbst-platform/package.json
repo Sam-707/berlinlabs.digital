@@ -1,0 +1,37 @@
+{
+  "name": "3rbst-whatsapp-bot",
+  "version": "3.1.0",
+  "description": "WhatsApp bot for German document analysis with AI",
+  "main": "api/webhook.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step needed for serverless functions'",
+    "deploy": "vercel --prod",
+    "test:twilio": "node test/test-webhook.js"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "german",
+    "documents",
+    "ai",
+    "gpt-4",
+    "twilio",
+    "vercel"
+  ],
+  "author": "3rbst Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "twilio": "^5.3.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/3rbst-whatsapp-bot.git"
+  }
+}

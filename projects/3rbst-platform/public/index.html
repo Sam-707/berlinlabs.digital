@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3rbst - افهم وثائقك الألمانية</title>
+    <meta name="description" content="أرسل صورة أي وثيقة ألمانية عبر الواتساب واحصل على شرح كامل بالعربية">
+    <!-- Auto-deployment test - connected to GitHub! -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon-3.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon-3.svg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Noto Sans Arabic', 'Inter', system-ui, sans-serif;
+        }
+        
+        .gradient-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .gradient-btn:hover {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .card-shadow:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .popular-card {
+            border: 2px solid #10b981;
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Simple Green Hover Effects */
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #10b981 !important;
+        }
+        
+        .footer-link {
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #10b981 !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Header -->
+    <header class="bg-green-50/80 backdrop-blur-md border-b border-green-100/50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">3</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">3rbst</span>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#how" class="nav-link text-gray-600">كيف يعمل</a>
+                    <a href="#pricing" class="nav-link text-gray-600">الأسعار</a>
+                    <a href="#trust" class="nav-link text-gray-600">الأمان</a>
+                </nav>
+                
+                <!-- CTA Button -->
+                <button class="gradient-btn text-white px-6 py-2 rounded-full text-sm font-medium">
+                    ابدأ الآن
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-green-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium inline-block mb-6">
+                🚀 أكثر من 1000 وثيقة تم تحليلها
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-black text-gray-900 mb-4">
+                افهم وثائقك الألمانية
+            </h1>
+            <h2 class="text-3xl md:text-5xl font-black text-green-600 mb-6">
+                في دقائق
+            </h2>
+            
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                أرسل صورة أي وثيقة ألمانية عبر الواتساب واحصل على شرح كامل بالعربية
+            </p>
+            
+            <!-- CTA Card -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 max-w-md mx-auto">
+                <div class="mb-6">
+                    <span class="bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-sm font-medium">
+                        🎁 وثيقة واحدة مجانية
+                    </span>
+                </div>
+                
+                <a href="https://wa.me/14155238886?text=مرحبا أريد تحليل وثيقة" 
+                   class="gradient-btn text-white px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 hover:shadow-lg transition-all">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.657 0-3.226-.401-4.603-1.112l-.33-.168-3.426 1.02 1.02-3.426-.168-.33A7.948 7.948 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/>
+                    </svg>
+                    ابدأ عبر الواتساب
+                </a>
+                
+                <div class="flex justify-center gap-8 mt-4 text-sm text-gray-500">
+                    <span>✓ بدون تطبيق</span>
+                    <span>✓ بدون تسجيل</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">بسيط وسريع</h2>
+            <p class="text-gray-600 text-center mb-12">3 خطوات فقط للحصول على التحليل</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        1
+                    </div>
+                    <h3 class="font-semibold mb-2">أرسل الوثيقة</h3>
+                    <p class="text-gray-600 text-sm">صور الوثيقة وأرسلها عبر الواتساب</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        2
+                    </div>
+                    <h3 class="font-semibold mb-2">نحللها بالذكاء الاصطناعي</h3>
+                    <p class="text-gray-600 text-sm">نستخرج النص ونحلل المحتوى</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                        3
+                    </div>
+                    <h3 class="font-semibold mb-2">احصل على الشرح</h3>
+                    <p class="text-gray-600 text-sm">شرح كامل بالعربية مع الخطوات المطلوبة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 bg-green-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">استثمر في فهم وثائقك</h2>
+            <p class="text-gray-600 text-center mb-12">ابدأ مجاناً، ادفع فقط عند الحاجة</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Free -->
+                <div class="bg-white rounded-2xl p-6 text-center card-shadow pricing-card">
+                    <div class="text-3xl mb-4">🆓</div>
+                    <h3 class="font-bold text-lg mb-2">تجربة مجانية</h3>
+                    <div class="text-3xl font-bold mb-2">€0</div>
+                    <p class="text-gray-600 mb-4">وثيقة واحدة</p>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                        <li>✓ تحليل كامل</li>
+                        <li>✓ نتائج فورية</li>
+                        <li>✓ بدون التزام</li>
+                    </ul>
+                    <p class="text-xs text-gray-500">جرب الخدمة</p>
+                </div>
+                
+                <!-- Starter - Popular -->
+                <div class="bg-white rounded-2xl p-6 text-center card-shadow pricing-card popular-card">
+                    <div class="popular-badge">الأكثر طلباً</div>
+                    <div class="text-3xl mb-4">💚</div>
+                    <h3 class="font-bold text-lg mb-2">البداية</h3>
+                    <div class="text-3xl font-bold text-green-600 mb-2">€7</div>
+                    <p class="text-gray-600 mb-4">5 وثائق</p>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                        <li>✓ €1.40 للوثيقة</li>
+                        <li>✓ صلاحية 6 أشهر</li>
+                        <li>✓ دعم أولوية</li>
+                    </ul>
+                    <p class="text-xs font-semibold text-green-600">الأكثر شيوعاً</p>
+                </div>
+                
+                <!-- Value -->
+                <div class="bg-white rounded-2xl p-6 text-center card-shadow pricing-card">
+                    <div class="text-3xl mb-4">💼</div>
+                    <h3 class="font-bold text-lg mb-2">القيمة</h3>
+                    <div class="text-3xl font-bold mb-2">€15</div>
+                    <p class="text-gray-600 mb-4">15 وثيقة</p>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                        <li>✓ €1 للوثيقة</li>
+                        <li>✓ وفر €6</li>
+                        <li>✓ صلاحية 12 شهر</li>
+                    </ul>
+                    <p class="text-xs text-gray-500">للاستخدام المتوسط</p>
+                </div>
+                
+                <!-- Unlimited -->
+                <div class="bg-white rounded-2xl p-6 text-center card-shadow pricing-card border-2 border-orange-200 hover:border-orange-400 transition-all">
+                    <div class="text-3xl mb-4">🏆</div>
+                    <h3 class="font-bold text-lg mb-2">غير محدود</h3>
+                    <div class="text-3xl font-bold text-orange-600 mb-2">€25</div>
+                    <p class="text-gray-600 mb-4">شهري</p>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                        <li>✓ وثائق غير محدودة</li>
+                        <li>✓ صلاحية 30 يوم</li>
+                        <li>✓ دعم VIP</li>
+                    </ul>
+                    <p class="text-xs font-semibold text-orange-600">الأفضل قيمة</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://wa.me/14155238886?text=أريد شراء رصيد" 
+                   class="text-green-600 underline hover:text-green-700">
+                    اشتر رصيد عبر الواتساب ←
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section id="trust" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">⚡</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">سريع</h3>
+                    <p class="text-gray-600 text-sm">تحليل فوري بالذكاء الاصطناعي</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🇪🇺</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">متوافق مع GDPR</h3>
+                    <p class="text-gray-600 text-sm">معالجة في الاتحاد الأوروبي</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🔒</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">آمن 100%</h3>
+                    <p class="text-gray-600 text-sm">حذف تلقائي بعد 24 ساعة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-2xl mx-auto px-4 text-center">
+            <div class="mb-6">
+                <span class="bg-green-600 text-white px-6 py-2 rounded-full text-sm font-semibold">
+                    🚀 جرب مجاناً
+                </span>
+            </div>
+            <h2 class="text-3xl font-bold mb-4">لا تضيع وقتك في الحيرة</h2>
+            <p class="text-lg text-gray-600 mb-8">
+                افهم وثائقك الآن ووفر ساعات من البحث والترجمة
+            </p>
+            <a href="https://wa.me/14155238886?text=مرحبا أريد تحليل وثيقة" 
+               class="gradient-btn text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center gap-3 hover:shadow-lg transition-all">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.657 0-3.226-.401-4.603-1.112l-.33-.168-3.426 1.02 1.02-3.426-.168-.33A7.948 7.948 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/>
+                </svg>
+                ابدأ بوثيقة مجانية
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold">3</span>
+                    </div>
+                    <span class="font-semibold">3rbst</span>
+                </div>
+                
+                <div class="flex gap-8 text-sm">
+                    <a href="https://wa.me/14155238886" class="footer-link text-gray-400">تواصل معنا</a>
+                    <a href="/privacy" class="footer-link text-gray-400">الخصوصية</a>
+                    <a href="/terms" class="footer-link text-gray-400">الشروط</a>
+                    <a href="/impressum" class="footer-link text-gray-400">Impressum</a>
+                </div>
+                
+                <div class="text-sm text-gray-400">
+                    © 2025 3rbst - حلول ذكية للوثائق الألمانية
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

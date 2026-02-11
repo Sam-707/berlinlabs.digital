@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MenuFlows - Digital Restaurant Experience Platform</title>
+    <meta name="description" content="Empower your restaurant with digital ordering that preserves hospitality. QR code ordering, waiter handshake system, and real-time kitchen display." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.gstatic.com/s/materialsymbolsoutlined/v161/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2" as="font" type="font/woff2" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              // Accent color (user-configurable)
+              "primary": "var(--color-accent, #c21e3a)",
+              "accent": "var(--color-accent, #c21e3a)",
+              "accent-hover": "var(--color-accent-hover)",
+              "accent-pressed": "var(--color-accent-pressed)",
+              "accent-soft": "var(--color-accent-soft)",
+              "accent-ring": "var(--color-accent-ring)",
+              "price": "var(--color-price)",
+
+              // Neutral base colors (premium dark theme)
+              "background-dark": "var(--color-bg, #0d0d0d)",
+              "surface-dark": "var(--color-surface, #141414)",
+              "surface-elevated": "var(--color-surface-elevated, #1a1a1a)",
+              "border-subtle": "var(--color-border, #262626)",
+              "wine-dark": "#170e10",
+              "wine-card": "#241619",
+
+              // Light mode (unchanged)
+              "background-light": "#f8f6f6",
+              "surface-light": "#ffffff",
+
+              // Text colors
+              "text-secondary": "var(--color-text-secondary, #a3a3a3)",
+              "text-muted": "var(--color-text-muted, #737373)",
+
+              // Owner dashboard
+              "dashboard-bg": "var(--color-bg, #0d0d0d)",
+              "dashboard-surface": "var(--color-surface, #141414)",
+
+              // Admin dashboard (unchanged)
+              "admin-bg": "#0f172a",
+              "admin-surface": "#1e293b",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"],
+              "sans": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "1rem", 
+              "md": "1.5rem", 
+              "lg": "2rem", 
+              "xl": "3rem", 
+              "full": "9999px"
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.4s ease-out',
+              'slide-up': 'slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+              'pulse-soft': 'pulseSoft 2s infinite',
+              'bounce-subtle': 'bounceSubtle 0.5s ease-in-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'scale(0.98)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              pulseSoft: {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '0.7' },
+              },
+              bounceSubtle: {
+                '0%, 100%': { transform: 'scale(1)' },
+                '50%': { transform: 'scale(1.15)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    
+    <!-- Global Styles -->
+    <style>
+      :root {
+        /* Neutral base tokens (premium dark theme) */
+        --color-bg: #0d0d0d;              /* Main background (warm charcoal) */
+        --color-surface: #141414;         /* Card surface */
+        --color-surface-elevated: #1a1a1a; /* Raised cards */
+        --color-border: #262626;          /* Borders, dividers */
+        --color-text-primary: #fafafa;    /* Primary text */
+        --color-text-secondary: #a3a3a3;  /* Secondary text */
+        --color-text-muted: #737373;      /* Muted/disabled text */
+
+        /* Accent color (user-configurable via config.accentColor) */
+        --color-accent: #c21e3a;          /* Red (default) */
+
+        /* Derived accent shades for polish */
+        --color-price: color-mix(in srgb, var(--color-accent) 75%, white 25%);
+        --color-accent-hover: color-mix(in srgb, var(--color-accent) 85%, black);
+        --color-accent-pressed: color-mix(in srgb, var(--color-accent) 70%, black);
+        --color-accent-soft: color-mix(in srgb, var(--color-accent) 10%, transparent);
+        --color-accent-ring: color-mix(in srgb, var(--color-accent) 50%, transparent);
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background-color: #0d0d0d;
+      }
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+      .view-transition {
+        animation: fadeIn 0.4s ease-out;
+      }
+      
+      /* Emergency fallback styles */
+      .emergency-fallback {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #241619;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        z-index: 9999;
+        display: none;
+      }
+
+      /* Material Symbols Outlined - FOUC prevention */
+      .material-symbols-outlined {
+        font-family: 'Material Symbols Outlined';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: 'liga';
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
+        /* FOUC PREVENTION: Hide until font loads */
+        opacity: 0;
+        transition: opacity 0.15s ease-in;
+      }
+
+      /* Show icons when Material Symbols font is loaded */
+      .fonts-loaded .material-symbols-outlined,
+      .material-symbols-outlined.fonts-loaded {
+        opacity: 1;
+      }
+    </style>
+    
+    <!-- Error Detection -->
+    <script>
+      // Show fallback if React doesn't load within 10 seconds
+      setTimeout(function() {
+        const root = document.getElementById('root');
+        if (!root || root.children.length === 0) {
+          console.error('React app failed to load');
+          document.getElementById('emergency-fallback').style.display = 'block';
+        }
+      }, 10000);
+
+      // Global error handler
+      window.addEventListener('error', function(e) {
+        console.error('Global error:', e.error);
+        document.getElementById('emergency-fallback').style.display = 'block';
+      });
+
+      // Unhandled promise rejection handler
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+      });
+
+      // FOUC Prevention: Show icons only when Material Symbols loads
+      (function() {
+        // Method 1: Use Font Loading API (modern browsers)
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(function() {
+            document.body.classList.add('fonts-loaded');
+          });
+        }
+
+        // Method 2: Fallback - check after 100ms (for older browsers)
+        setTimeout(function() {
+          const testEl = document.createElement('span');
+          testEl.className = 'material-symbols-outlined';
+          testEl.textContent = 'check';
+          testEl.style.visibility = 'hidden';
+          testEl.style.position = 'absolute';
+          testEl.style.fontSize = '100px';
+          document.body.appendChild(testEl);
+
+          // Check if font loaded by comparing width
+          const isLoaded = testEl.offsetWidth !== 16; // 16px is fallback text width
+          document.body.removeChild(testEl);
+
+          if (isLoaded && !document.body.classList.contains('fonts-loaded')) {
+            document.body.classList.add('fonts-loaded');
+          }
+        }, 100);
+
+        // Method 3: Emergency fallback - show after 500ms regardless
+        setTimeout(function() {
+          if (!document.body.classList.contains('fonts-loaded')) {
+            document.body.classList.add('fonts-loaded');
+          }
+        }, 500);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- Emergency Fallback -->
+    <div id="emergency-fallback" class="emergency-fallback">
+      <h2>🚨 MenuFlows Loading Issue</h2>
+      <p>The React app failed to initialize.</p>
+      <p><strong>Debug Info:</strong></p>
+      <p>URL: <span id="debug-url"></span></p>
+      <p>Time: <span id="debug-time"></span></p>
+      <button onclick="window.location.reload()" style="background: #c21e3a; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+        🔄 Reload Page
+      </button>
+      <br><br>
+      <a href="/simple.html" style="color: #c21e3a;">📋 Simple Test</a> |
+      <a href="/debug.html" style="color: #c21e3a;">🔍 Debug Page</a>
+    </div>
+    
+    <script>
+      // Update debug info
+      document.getElementById('debug-url').textContent = window.location.href;
+      document.getElementById('debug-time').textContent = new Date().toLocaleString();
+    </script>
+    
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+-- ============================================================
+-- Migration: Allow owners full control over menu items
+-- Purpose: Remove trigger guard restriction to allow owners to edit all fields
+-- Date: 2025-01-29
+-- ============================================================
+--
+-- PROBLEM:
+-- The trigger guard (guard_menu_items_update_trigger) blocks updates to all
+-- fields except is_available, id, restaurant_id, display_order. This prevents
+-- owners from editing name, price, description, category, image_url, etc.
+--
+-- SOLUTION:
+-- Drop the trigger guard entirely. RLS policies still provide security:
+-- - Public/anon can SELECT menu items
+-- - Public/anon can INSERT/UPDATE menu items (with restaurant_id)
+-- - No DELETE policy blocks deletion
+--
+-- SECURITY:
+-- RLS policies remain in place to control who can access which menu items.
+-- The trigger was overly restrictive and prevented legitimate owner operations.
+-- In production, proper owner authentication (service role) should be used.
+--
+-- ============================================================
+
+-- Drop the restrictive trigger
+DROP TRIGGER IF EXISTS guard_menu_items_update_trigger ON menu_items;
+
+-- Optionally, also drop the trigger function (no longer needed)
+DROP FUNCTION IF EXISTS guard_menu_items_update();
+
+-- ============================================================
+-- VERIFICATION QUERIES
+-- ============================================================
+--
+-- After applying, run these in Supabase SQL Editor to verify:
+--
+-- 1. Verify trigger is dropped:
+--    SELECT tgname
+--    FROM pg_trigger
+--    WHERE tgname = 'guard_menu_items_update_trigger';
+--
+--    Expected: 0 rows (trigger no longer exists)
+--
+-- 2. Test full field update works:
+--    UPDATE menu_items
+--    SET name = 'Test Name', price = 9.99, description = 'Test'
+--    WHERE restaurant_id = 'YOUR_RESTAURANT_ID'
+--    RETURNING id, name, price;
+--
+--    Expected: Success, returns updated row
+--
+-- 3. Test from UI:
+--    - Go to http://localhost:3000/demo/owner
+--    - Click "Inventory"
+--    - Add new item or edit existing item
+--    - Expected: Success, changes persist after refresh
+--
+-- ============================================================

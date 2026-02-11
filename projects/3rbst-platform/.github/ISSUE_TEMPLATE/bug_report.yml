@@ -1,0 +1,69 @@
+name: 🐛 Bug Report
+description: Report a bug or technical issue
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report for 3rbst!
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which part of 3rbst is affected?
+      options:
+        - WhatsApp Bot
+        - Payment System (PayPal)
+        - Document Analysis (AI)
+        - Legal Pages
+        - Database
+        - Frontend/UI
+        - Deployment
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected to happen
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. First, do this...
+        2. Then, do this...
+        3. Finally, this happens...
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How critical is this bug?
+      options:
+        - Low - Minor issue, workaround available
+        - Medium - Affects functionality but not critical
+        - High - Major feature broken
+        - Critical - Service down or data loss
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here
+      placeholder: Screenshots, error messages, logs, etc.

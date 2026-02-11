@@ -1,0 +1,959 @@
+{
+  "restaurantName": "Schnitzery Spandau",
+  "restaurantUrl": "https://www.ubereats.com/de/store/schnitzery-spandau/qxNhZFIxUsWzkMCDZ_DAlQ?diningMode=DELIVERY&sc=SEARCH_SUGGESTION",
+  "rating": "4.5",
+  "categories": [
+    {
+      "categoryTitle": "Empfehlung des Hauses️",
+      "items": [
+        {
+          "category": "Empfehlung des Hauses️",
+          "name": "Schnitzery Bowl",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet und einer Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 13.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/63fd848ee627864a20e47d6c1ab6a4b0/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [
+            "Erdnüsse",
+            "Weizen",
+            "Eier",
+            "Milch Aditivos: Konservierungsstoff"
+          ],
+          "additives": [
+            "Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Empfehlung des Hauses️",
+          "name": "Schnitzel'n'Fries",
+          "description": "Pommes mit paniertem Hähnchenbrustfilet und einer Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 13.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/74fd1722a69e39a901bc4c12a3ab9228/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Empfehlung des Hauses️",
+          "name": "Burgery Garlic Pam",
+          "description": "hausgemachtes Brioche Bun mit paniertem Hähnchenbrustfilet, Eisbergsalat, Parmesankäse und Garlic Sauce",
+          "price": 13.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d81999f95e6cccc3ffde76f27aa52ae1/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Empfehlung des Hauses️",
+          "name": "Schnitzel‘n‘Rice",
+          "description": "Reis mit paniertem Hähnchenbrustfilet und einer Auswahl mit hausgemachten Toppings (Krautsalat oder Rotkohlsalat) und Soßen.",
+          "price": 15.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d3af68415e0682a073ba2bbd829aae90/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Empfehlung des Hauses️",
+          "name": "Schnitzery Bestseller Bowl.",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet, dazu  Krautsalat, Röstzwiebeln und Garlic'n'Spicy - Soße.",
+          "price": 15.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/fa6cc88d7856d49bdd7ea11c831e9d1f/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Empfehlung des Hauses️",
+          "name": "Schnitzery Klassiker Bowl.",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet, dazu  Krautsalat, Rotkohlsalat, Garlic'n'Spicy - und Honey Mustard Soße",
+          "price": 15.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9e5068abcfdf101ef1a9ea6f999a93b4/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        }
+      ]
+    },
+    {
+      "categoryTitle": "Speisen (Halal) ️",
+      "items": [
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schwrap",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet und einer Auswahl mit hausgemachten Toppings und Soßen im Wrap.",
+          "price": 9.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2ee36bc01da6e8afd2eea7df3e0ed0ff/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Maccaroni'n'Cheese",
+          "description": "Käsemacaroni und einer Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 9.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/07e0ae30c1672aa5ce07116e4c280ca4/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [
+            "Erdnüsse",
+            "Weizen",
+            "Eier",
+            "Milch Aditivos: Konservierungsstoff"
+          ],
+          "additives": [
+            "Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzel Bowl",
+          "description": "2 panierte Hähnchenbrustfilets und einer Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 12.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9f2818ab43490049d898a2c3f1df17fc/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [
+            "Erdnüsse",
+            "Weizen",
+            "Eier",
+            "Milch Aditivos: Konservierungsstoff"
+          ],
+          "additives": [
+            "Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzery Bowl",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet und einer Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 13.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/63fd848ee627864a20e47d6c1ab6a4b0/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [
+            "Erdnüsse",
+            "Weizen",
+            "Eier",
+            "Milch Aditivos: Konservierungsstoff"
+          ],
+          "additives": [
+            "Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzel'n'Fries",
+          "description": "Pommes mit paniertem Hähnchenbrustfilet und einer Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 13.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/74fd1722a69e39a901bc4c12a3ab9228/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzel‘n‘Rice",
+          "description": "Reis mit paniertem Hähnchenbrustfilet und einer Auswahl mit hausgemachten Toppings (Krautsalat oder Rotkohlsalat) und Soßen.",
+          "price": 15.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d3af68415e0682a073ba2bbd829aae90/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzery Spicy Bowl",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet, dazu  Krautsalat, Röstzwiebeln, Jalapenos, Garlic'n'Spicy - und Hot'n'Spicy Soße.",
+          "price": 16.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/12757a80d78dc143fd4ab82545782011/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzery Bowl XL",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet und einer Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 18.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/63fd848ee627864a20e47d6c1ab6a4b0/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [
+            "Erdnüsse",
+            "Weizen",
+            "Eier",
+            "Milch Aditivos: Konservierungsstoff"
+          ],
+          "additives": [
+            "Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzel'n'Fries XL",
+          "description": "No description",
+          "price": 18.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/74fd1722a69e39a901bc4c12a3ab9228/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzery Klassiker Bowl XL",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet, dazu  Krautsalat, Rotkohlsalat, Garlic'n'Spicy - und Honey Mustard Soße",
+          "price": 20.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9e5068abcfdf101ef1a9ea6f999a93b4/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzery Bestseller Bowl XL",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet, dazu  Krautsalat, Röstzwiebeln und Garlic'n'Spicy - Soße.",
+          "price": 20.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/fa6cc88d7856d49bdd7ea11c831e9d1f/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzery Bestseller Bowl.",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet, dazu  Krautsalat, Röstzwiebeln und Garlic'n'Spicy - Soße.",
+          "price": 15.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/fa6cc88d7856d49bdd7ea11c831e9d1f/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Speisen (Halal) ️",
+          "name": "Schnitzery Klassiker Bowl.",
+          "description": "Käsemacaroni mit paniertem Hähnchenbrustfilet, dazu  Krautsalat, Rotkohlsalat, Garlic'n'Spicy - und Honey Mustard Soße",
+          "price": 15.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9e5068abcfdf101ef1a9ea6f999a93b4/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        }
+      ]
+    },
+    {
+      "categoryTitle": "Burger",
+      "items": [
+        {
+          "category": "Burger",
+          "name": "Burgery Bestseller",
+          "description": "Hausgemachtes Brioche Bun mit paniertem Hähnchenbrustfilet, Krautsalat, Eisbergsalat, Röstzwiebeln mit Garlic’n’Spicy Sauce",
+          "price": 13.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/293d53fe62449f7dd76fdf3178441645/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Burger",
+          "name": "Burgery Spicy",
+          "description": "hausgemachtes Brioche Bun mit paniertem Hähnchenbrustfilet, Krautsalat, Eisbergsalat, Röstzwiebeln, Jalapeños und mit Garlic & Hot’n’Spicy Sauce",
+          "price": 13.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6748e67041db33190f1477f6f032b878/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Burger",
+          "name": "Burgery Garlic Pam",
+          "description": "hausgemachtes Brioche Bun mit paniertem Hähnchenbrustfilet, Eisbergsalat, Parmesankäse und Garlic Sauce",
+          "price": 13.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d81999f95e6cccc3ffde76f27aa52ae1/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        }
+      ]
+    },
+    {
+      "categoryTitle": "Plant-Based",
+      "items": [
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Schwrap",
+          "description": "Maccaroni'n'Cheese mit paniertem Plant-Based Schnitzel und einer Auswahl mit hausgemachten Toppings und Soßen im Wrap.",
+          "price": 11.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e1f7d00fbd8535ebad41d4e653240556/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch Aditivos: mit Konservierungsstoff"
+          ],
+          "additives": [
+            "mit Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Schnitzel Bowl",
+          "description": "2 Panierte Plant-Based Schnitzel und eine Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 14.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/1125d33c11cad9561edde169aa6c8152/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch Aditivos: mit Konservierungsstoff"
+          ],
+          "additives": [
+            "mit Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Garlic Pam Burgery",
+          "description": "Leckeres hausgemachtes Brioche Bun mit paniertem Plant-Based Schnitzel, Eisbergsalat, Garlic Soße und Parmesan.",
+          "price": 15.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e663d06d8f0fa2fef68e2d2eccae9697/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch",
+            "Sesamsamen Aditivos: mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "additives": [
+            "mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "available": true
+        },
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Spicy Burgery",
+          "description": "Leckeres hausgemachtes Brioche Bun mit paniertem Plant-Based Schnitzel, Eisbergsalat, Krautsalat, Röstzwiebeln, Jalapeños, Garlic und Hot’n’Spicy Soße.",
+          "price": 15.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d45dc708fd6971317f813c3c34320956/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch",
+            "Sesamsamen Aditivos: mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "additives": [
+            "mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "available": true
+        },
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Bestseller Burgery",
+          "description": "Leckeres hausgemachtes Brioche Bun mit paniertem Plant-Based Schnitzel, Eisbergsalat, Krautsalat, Röstzwiebeln und Garlic’n’Spicy Soße.",
+          "price": 15.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e52cccc26ba6626d7e2aece442166cfe/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch",
+            "Sesamsamen Aditivos: mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "additives": [
+            "mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "available": true
+        },
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Schnitzery",
+          "description": "Maccaroni'n'Cheese mit paniertem Plant-Based Schnitzel und einer Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 15.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e124013db23e7804a45bcfabaec1d961/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch Aditivos: mit Konservierungsstoff"
+          ],
+          "additives": [
+            "mit Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Schnitzel'n'Fries",
+          "description": "Pommes mit paniertem Plant-Based Schnitzel, einer Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 15.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/36ad2657f0fa0bcb71217e37d75bb87c/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch Aditivos: mit Konservierungsstoff"
+          ],
+          "additives": [
+            "mit Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Schnitzery Bestseller",
+          "description": "Maccaroni'n'Cheese mit paniertem Plant-Based Schnitzel, dazu Krautsalat, Röstzwiebeln und Garlic'n'Spicy Soße.",
+          "price": 17.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6b12afa4729abb8a96a83f711face93e/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch",
+            "Sesamsamen Aditivos: mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "additives": [
+            "mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "available": true
+        },
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Schnitzery Classic",
+          "description": "Maccaroni'n'Cheese mit paniertem Plant-Based Schnitzel, dazu  Krautsalat, Rotkohlsalat, Garlic'n'Spicy - und Honey Mustard Soße.",
+          "price": 17.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/468171ae75d9507dfede8ff2502e9294/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch",
+            "Sesamsamen",
+            "Senf",
+            "Sellerie Aditivos: mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "additives": [
+            "mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "available": true
+        },
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Schnitzel‘n‘Rice",
+          "description": "Reis und Plant-Based Schnitzel, dazu eine Auswahl mit hausgemachten Toppings und Soßen.",
+          "price": 18.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d3af68415e0682a073ba2bbd829aae90/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch Aditivos: mit Konservierungsstoff"
+          ],
+          "additives": [
+            "mit Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Plant-Based",
+          "name": "Plant-Based Schnitzery Spicy",
+          "description": "Maccaroni'n'Cheese mit paniertem Plant-Based Schnitzel, dazu  Krautsalat, Röstzwiebeln, Jalapenos, Garlic'n'Spicy - und Hot'n'Spicy Soße.",
+          "price": 18.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/7d4ae8fbc64cc27ddc03be542292e30c/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [
+            "Weizen",
+            "Sojabohnen",
+            "Milch",
+            "Sesamsamen Aditivos: mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "additives": [
+            "mit Konservierungsstoff",
+            "mit Antioxidationsmittel",
+            "mit Geschmacksverstärkern",
+            "mit Süßungsmittel(n)"
+          ],
+          "available": true
+        }
+      ]
+    },
+    {
+      "categoryTitle": "Beilagen",
+      "items": [
+        {
+          "category": "Beilagen",
+          "name": "Fries",
+          "description": "No description",
+          "price": 5.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/62ebeaff43921c22156abfd6d0e11c30/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Cheesy Fries",
+          "description": "No description",
+          "price": 6.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/588944d91d76b852ec9214d14c9291dd/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Garlic Parmesan Fries",
+          "description": "Pommes mit Toppings von Garlic und Parmesan",
+          "price": 8.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3d63320c0138bd604f8f8f1e4615675d/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [
+            "Milch"
+          ],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Jalapeños",
+          "description": "No description",
+          "price": 3.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0fc813218d5aa7f43d79ef1b18fb4d39/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Mais",
+          "description": "Frischer Mais als Beilage, perfekt für einen knackigen Genuss.",
+          "price": 3.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/1a9e3640bb5d1627d528fee3509ef977/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Röstzwiebeln",
+          "description": "Knusprige Zwiebeln, perfekt als Beilage zu Ihrem Lieblingsgericht.",
+          "price": 3.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ddf493f16229430a54fd9041f9b2acaa/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Mini Peperoni",
+          "description": "No description",
+          "price": 3.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d92b85181b1ad82636fbacf1c1f98925/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Cornichons",
+          "description": "No description",
+          "price": 3.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4caf10bda125d6d940191598a0f091b2/70aa2a4db7f990373ca9c376323e3dea.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Rotkohlsalat",
+          "description": "No description",
+          "price": 4.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/06ba53841a397608baefdc7fde352f96/0fb376d1da56c05644450062d25c5c84.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Krautsalat",
+          "description": "No description",
+          "price": 4.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/efe627150491b5d9d6c409d35a5c0bda/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Fries XL",
+          "description": "No description",
+          "price": 7.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/62ebeaff43921c22156abfd6d0e11c30/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Cheesy Fries XL",
+          "description": "No description",
+          "price": 8.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/588944d91d76b852ec9214d14c9291dd/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Beilagen",
+          "name": "Garlic Parmesan Fries XL",
+          "description": "Pommes mit Toppings von Garlic und Parmesan",
+          "price": 10.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3d63320c0138bd604f8f8f1e4615675d/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [
+            "Milch"
+          ],
+          "additives": [],
+          "available": true
+        }
+      ]
+    },
+    {
+      "categoryTitle": "Desserts",
+      "items": [
+        {
+          "category": "Desserts",
+          "name": "Nutella Cheesecake",
+          "description": "Hausgemachter Cheesecake mit Schokosoße.",
+          "price": 6.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f07cff335e3ba6a95f9e9217f9f7fa75/0fb376d1da56c05644450062d25c5c84.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Desserts",
+          "name": "Strawberry Cheesecake",
+          "description": "Hausgemachter Cheesecake mit Erdbeersoße.",
+          "price": 6.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d2aca24399e29f8b5addd870cab33760/0fb376d1da56c05644450062d25c5c84.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Desserts",
+          "name": "Lotus Cheesecake",
+          "description": "Hausgemachter Cheesecake mit Spekulatius.",
+          "price": 6.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/567f1dcb24bae182cf96c08b87d40daa/5143f1e218c67c20fe5a4cd33d90b07b.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        }
+      ]
+    },
+    {
+      "categoryTitle": "Saucen️",
+      "items": [
+        {
+          "category": "Saucen️",
+          "name": "Honey Mustard",
+          "description": "No description",
+          "price": 2.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/5083ce1db0319c22587c339d23d4f08b/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Saucen️",
+          "name": "Mango Curry",
+          "description": "No description",
+          "price": 2.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/8a02ded1b2ea5d3d0f9fc1d2d7544e78/0fb376d1da56c05644450062d25c5c84.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Saucen️",
+          "name": "Garlic Sauce",
+          "description": "No description",
+          "price": 2.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/97ec44e563a72c460b79b4f6e41d4865/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [
+            "Sesamsamen Aditivos: Geschmacksverstärker",
+            "Antioxidationsmittel",
+            "Säuerungsmittel",
+            "Konservierungsstoff"
+          ],
+          "additives": [
+            "Geschmacksverstärker",
+            "Antioxidationsmittel",
+            "Säuerungsmittel",
+            "Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Saucen️",
+          "name": "Garlic'n'Spicy",
+          "description": "No description",
+          "price": 2.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/60096b5498873abc20510073cd309256/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [
+            "Sesamsamen Aditivos: Geschmacksverstärker",
+            "Antioxidationsmittel",
+            "Säuerungsmittel",
+            "Konservierungsstoff"
+          ],
+          "additives": [
+            "Geschmacksverstärker",
+            "Antioxidationsmittel",
+            "Säuerungsmittel",
+            "Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Saucen️",
+          "name": "Hot'n'Spicy",
+          "description": "No description",
+          "price": 2.0,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f9c697d833c0441215125fd6a086fa2b/58f691da9eaef86b0b51f9b2c483fe63.jpeg",
+          "allergens": [
+            "Sesamsamen Aditivos: Geschmacksverstärker",
+            "Antioxidationsmittel",
+            "Säuerungsmittel",
+            "Konservierungsstoff"
+          ],
+          "additives": [
+            "Geschmacksverstärker",
+            "Antioxidationsmittel",
+            "Säuerungsmittel",
+            "Konservierungsstoff"
+          ],
+          "available": true
+        },
+        {
+          "category": "Saucen️",
+          "name": "Hausgemachte Käßesoße",
+          "description": "No description",
+          "price": 4.9,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        }
+      ]
+    },
+    {
+      "categoryTitle": "Getränke",
+      "items": [
+        {
+          "category": "Getränke",
+          "name": "Coca-Cola 0,2l",
+          "description": "No description",
+          "price": 2.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/628f279ad8ec57f1999e9ff23b18b3ed/0fb376d1da56c05644450062d25c5c84.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Coca-Cola Zero 0,2l",
+          "description": "No description",
+          "price": 2.9,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/504ee5d5e98767307f0a4c3e9b1c42d2/0fb376d1da56c05644450062d25c5c84.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Peach 0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d101576f3e5eb03328cd751beb650c3e/0fb376d1da56c05644450062d25c5c84.jpeg",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Lemon 0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/fec20f5c92f4dbf12285a5c7552d7b50/c67fc65e9b4e16a553eb7574fba090f1.jpeg",
+          "allergens": [],
+          "additives": [
+            "Farbstoff",
+            "Antioxidationsmittel"
+          ],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Fanta Orange 0,2l",
+          "description": "No description",
+          "price": 2.9,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Mezzo Mix 0,2l",
+          "description": "No description",
+          "price": 2.9,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Sprite 0,2l",
+          "description": "No description",
+          "price": 2.9,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "SpreeQuell Naturell 0,25l",
+          "description": "No description",
+          "price": 2.9,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "SpreeQuell Classic 0,25l",
+          "description": "No description",
+          "price": 2.9,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Mango 0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Pome (Granatapfel) 0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Peach Zero 0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Lime Mint  0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Blueberry  0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Cherry  0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Watermelon  0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Passion Fruit 0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        },
+        {
+          "category": "Getränke",
+          "name": "Elephant Bay Exotic 0,33l",
+          "description": "No description",
+          "price": 3.5,
+          "image_url": "",
+          "allergens": [],
+          "additives": [],
+          "available": true
+        }
+      ]
+    }
+  ]
+}
