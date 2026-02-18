@@ -55,6 +55,25 @@ export const Contact: React.FC = () => {
               {CONTACT_CONTENT.header.body}
             </p>
 
+            {/* Location & Services Info */}
+            <div className="space-y-6 mb-16">
+              <div className="flex items-center gap-4">
+                <span className="material-symbols-outlined text-primary/40 text-xl">location_on</span>
+                <div>
+                  <p className="text-sm text-white font-display font-semibold">Berlin, Germany</p>
+                  <p className="text-xs text-slate-600 font-mono tracking-wider">52.5200° N, 13.4050° E</p>
+                </div>
+              </div>
+              <div className="pt-6 border-t border-white/5">
+                <p className="text-[10px] uppercase tracking-overline text-slate-600 mb-3">Services</p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 text-[9px] font-mono bg-white/5 text-slate-400 rounded-full">Product Development</span>
+                  <span className="px-3 py-1 text-[9px] font-mono bg-white/5 text-slate-400 rounded-full">Multilingual Solutions</span>
+                  <span className="px-3 py-1 text-[9px] font-mono bg-white/5 text-slate-400 rounded-full">AI-Powered Tools</span>
+                </div>
+              </div>
+            </div>
+
             <div className="pt-10 border-t border-white/5">
               <div className="flex gap-4 items-center">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>

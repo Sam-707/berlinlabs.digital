@@ -9,10 +9,10 @@ export const PROJECTS: ProjectItem[] = [
     icon: 'restaurant_menu', 
     state: 'LIVE',
     type: 'product',
-    promise: 'A digital menu system designed to replace printed menus for independent restaurants.',
+    promise: 'Facebook for Restaurants - Complete restaurant profile management platform.',
     detail: {
       fullTitle: 'MenuFlows',
-      tagline: 'Simple digital menu system for independent restaurants in Berlin.',
+      tagline: 'Facebook for Restaurants - Complete restaurant profile management platform.',
       philosophy: {
         label: 'Operational Focus',
         text: 'Fast to update. Clear to read. Designed for independent operators who need to update their restaurant menu instantly.'
@@ -31,11 +31,39 @@ export const PROJECTS: ProjectItem[] = [
       showPilotSection: true
     }
   },
-  { 
-    id: 'twimnc', 
+  {
+    id: '3rbst',
+    slug: '3rbst',
+    title: '3rbst',
+    icon: 'translate',
+    state: 'LIVE',
+    type: 'product',
+    promise: 'WhatsApp Document Translation for Arabic Speakers.',
+    detail: {
+      fullTitle: '3rbst',
+      tagline: 'WhatsApp Document Translation for Arabic Speakers',
+      philosophy: {
+        label: 'Mission',
+        text: 'Breaking language barriers for Arabic-speaking communities in Germany. Instant German document analysis and translation via WhatsApp.'
+      },
+      capabilityLabel: 'Capabilities',
+      focusPoints: [
+        { title: 'WhatsApp Integration', desc: 'Simply send a photo of your document. No apps to download, no accounts to create.' },
+        { title: 'Instant Analysis', desc: 'AI-powered document analysis extracts and translates key information within seconds.' },
+        { title: 'Arabic-German Focus', desc: 'Specialized in documents commonly needed by Arabic speakers: letters from authorities, contracts, certificates.' },
+        { title: 'Privacy-First', desc: 'Documents are processed securely and not stored after translation. Your data remains yours.' }
+      ],
+      highlights: ['translation', 'WhatsApp', 'Arabic', 'German documents'],
+      tags: ['AI', 'translation', 'community', 'WhatsApp'],
+      ctaLabel: 'Try 3rbst →',
+      externalUrl: 'https://3rbst.com'
+    }
+  },
+  {
+    id: 'twimnc',
     slug: 'twimnc',
-    title: 'twimnc', 
-    icon: 'science', 
+    title: 'twimnc',
+    icon: 'science',
     state: 'EXPERIMENT',
     type: 'experiment',
     intent: 'Testing whether text-only publishing deepens reflection.',

@@ -43,6 +43,33 @@ export const Studio: React.FC = () => {
         </div>
       </section>
 
+      {/* The Architect Protocol - New Section */}
+      <section className="mb-32 md:mb-48 p-12 md:p-16 glass-card border-white/10 rounded-[2.5rem]">
+        <span className="overline-label mb-16 text-center">The Architect Protocol</span>
+        <div className="max-w-3xl mx-auto text-center space-y-10">
+          <p className="text-xl md:text-2xl font-display font-light text-slate-300 leading-editorial">
+            An <span className="text-primary font-semibold">Operational Product Studio</span> is not a traditional agency or consultancy. We build, ship, and iterate on products that address real friction points in underserved communities.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
+            <div className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+              <div className="text-4xl mb-4">🏛️</div>
+              <h4 className="text-sm font-display font-bold uppercase tracking-overline text-white mb-2">Berlin-Based</h4>
+              <p className="text-xs text-slate-500 font-light">Rooted in Europe's startup capital</p>
+            </div>
+            <div className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+              <div className="text-4xl mb-4">🌍</div>
+              <h4 className="text-sm font-display font-bold uppercase tracking-overline text-white mb-2">Multilingual</h4>
+              <p className="text-xs text-slate-500 font-light">German, English, Arabic</p>
+            </div>
+            <div className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+              <div className="text-4xl mb-4">🎯</div>
+              <h4 className="text-sm font-display font-bold uppercase tracking-overline text-white mb-2">Community-First</h4>
+              <p className="text-xs text-slate-500 font-light">Focus on underserved communities</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="mb-32 md:mb-48">
         <span className="overline-label mb-12">{STUDIO_CONTENT.log.label}</span>
         <div className="space-y-2">

@@ -14,9 +14,9 @@ export const NAV_CONTENT = {
 export const HOME_CONTENT = {
   hero: {
     overline: 'Operational Product Studio',
-    titleMain: 'Currently building',
-    titleSecondary: 'MenuFlows',
-    body: 'A digital menu system for independent restaurants in Berlin. Simple to update, guest-first design, and designed to replace printed menus permanently.',
+    titleMain: 'Building digital products',
+    titleSecondary: 'That bridge communities',
+    body: 'Berlin-based product studio building multilingual solutions (German/English/Arabic) that solve real problems for underserved communities.',
   },
   featured: {
     label: 'Operational Map',
