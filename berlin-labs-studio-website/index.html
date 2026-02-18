@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BERLINLABS | Operational Product Studio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#C5A059",
+                        brand: {
+                            gold: '#C5A059',
+                            'gold-dim': '#8C7345',
+                        },
+                        surface: {
+                            bg: '#080808',
+                            card: '#121212',
+                            border: 'rgba(255, 255, 255, 0.05)',
+                        }
+                    },
+                    fontFamily: {
+                        display: ["Montserrat", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        'studio': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2.5rem',
+                    },
+                    letterSpacing: {
+                        'overline': '0.4em',
+                        'tightest': '-0.05em',
+                    },
+                    lineHeight: {
+                        'editorial': '1.8',
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 25px -5px rgba(197, 160, 89, 0.15)',
+                    }
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .gold-gradient-text {
+                background: linear-gradient(135deg, #EAD098 0%, #C5A059 50%, #8E6E34 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .glass-card {
+                @apply bg-white/[0.02] border border-white/5 backdrop-blur-3xl transition-all duration-500;
+            }
+            .glass-card-hover {
+                @apply hover:border-primary/20 hover:shadow-gold-glow hover:-translate-y-1;
+            }
+            .orbital-glow {
+                background: radial-gradient(circle at center, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
+                pointer-events: none;
+            }
+            .noise-overlay {
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+                opacity: 0.012;
+                pointer-events: none;
+            }
+            .btn-primary {
+                @apply bg-primary text-black font-bold rounded-full py-5 px-10 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 hover:shadow-primary/20 text-[11px] uppercase tracking-overline;
+            }
+            .btn-secondary {
+                @apply bg-white/[0.03] text-white border border-white/5 font-bold rounded-full py-5 px-10 transition-all hover:bg-white/[0.08] hover:border-white/10 active:scale-[0.98] text-[11px] uppercase tracking-overline;
+            }
+            .h1-hero {
+                @apply text-5xl md:text-8xl font-display font-extrabold leading-[0.95] tracking-tightest;
+            }
+            .h2-section {
+                @apply text-3xl md:text-5xl font-display font-bold leading-tight tracking-tightest;
+            }
+            .overline-label {
+                @apply text-[10px] font-display font-bold tracking-overline uppercase text-primary mb-6 block;
+            }
+        }
+        body {
+            @apply bg-surface-bg text-slate-100 antialiased min-h-screen relative font-sans overflow-x-hidden;
+        }
+        p { @apply leading-editorial font-light text-slate-400; }
+        ::selection { @apply bg-primary text-black; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div class="noise-overlay fixed inset-0 z-[100]"></div>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
