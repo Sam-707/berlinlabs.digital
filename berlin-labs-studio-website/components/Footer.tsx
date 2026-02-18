@@ -11,8 +11,8 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="px-6 py-32 md:py-48 mt-32 border-t border-white/5">
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-20">
+    <footer className="px-6 py-16 lg:py-20 mt-20 border-t border-white/5">
+      <div className="max-w-7xl mx-auto flex flex-col items-center gap-12 lg:gap-16">
         {/* Footer Brand Logo Section - Synced with Navigation.tsx hover behavior */}
         <div 
           onClick={() => onNavigate('home')}

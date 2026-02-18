@@ -16,7 +16,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <main className="relative z-10">
       {/* Hero Section with Dynamic Glows */}
-      <section className="relative px-6 py-32 lg:py-56 overflow-hidden">
+      <section className="relative px-6 py-20 lg:py-32 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:left-3/4 opacity-[0.015] pointer-events-none transition-all duration-1000">
           <Logo className="w-[85vh] h-[85vh] text-primary" />
         </div>
@@ -28,17 +28,17 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="relative z-10 max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center text-center lg:text-left">
             <div className="flex flex-col items-center lg:items-start">
-              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-overline uppercase mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-overline uppercase mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
                 {HOME_CONTENT.hero.overline}
               </div>
 
-              <h1 className="h1-hero mb-10 animate-in fade-in slide-in-from-bottom-6 duration-1000">
+              <h1 className="h1-hero mb-6 animate-in fade-in slide-in-from-bottom-6 duration-1000">
                 {HOME_CONTENT.hero.titleMain} <br className="hidden lg:block" />
                 <span className="gold-gradient-text">{HOME_CONTENT.hero.titleSecondary}.</span>
               </h1>
 
-              <p className="text-lg md:text-xl mb-14 max-w-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 font-light">
+              <p className="text-base md:text-lg mb-8 max-w-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 font-light">
                 {HOME_CONTENT.hero.body}
               </p>
 
@@ -71,7 +71,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       {/* Dynamic Feature Showcase: Current Build Deep Dive */}
       {currentFeatures.length > 0 && (
-        <section className="px-6 py-24 lg:py-32 relative">
+        <section className="px-6 py-16 lg:py-24 relative">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-20">
               <div className="text-center lg:text-left">
@@ -106,7 +106,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       )}
 
       {/* Featured Projects Section */}
-      <section className="px-6 py-32 border-y border-white/10 bg-black/40 relative">
+      <section className="px-6 py-20 lg:py-24 border-y border-white/10 bg-black/40 relative">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center lg:text-left flex flex-col items-center lg:items-start">
             <span className="overline-label mb-4">{HOME_CONTENT.featured.label}</span>
@@ -154,7 +154,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* Principles Rhythm Section */}
-      <section className="px-6 py-32 md:py-48">
+      <section className="px-6 py-20 lg:py-24">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-20">
             <header className="text-center lg:text-left flex flex-col items-center lg:items-start">
@@ -186,7 +186,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* CTA Rhythm Section */}
-      <section className="px-6 pb-48">
+      <section className="px-6 py-20 lg:py-32">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mx-auto p-12 md:p-24 rounded-[3rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 text-center relative overflow-hidden group shadow-2xl transition-all hover:border-primary/20 hover:shadow-gold-glow">
             <div className="absolute -top-20 -right-20 w-80 h-80 orbital-glow opacity-40 group-hover:opacity-60 transition-opacity rounded-full"></div>
