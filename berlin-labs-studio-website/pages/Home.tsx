@@ -16,47 +16,47 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <main className="relative z-10">
       {/* Hero Section with Dynamic Glows */}
-      <section className="relative px-6 py-20 lg:py-32 overflow-hidden">
+      <section className="relative px-6 pt-8 md:pt-12 lg:pt-20 pb-12 md:pb-16 lg:pb-20 max-h-[85vh] lg:max-h-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:left-3/4 opacity-[0.015] pointer-events-none transition-all duration-1000">
           <Logo className="w-[85vh] h-[85vh] text-primary" />
         </div>
 
         {/* Dynamic Glows */}
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] orbital-glow rounded-full"></div>
-        <div className="absolute top-1/4 -left-40 w-[500px] h-[500px] orbital-glow opacity-60 rounded-full"></div>
+        <div className="absolute -top-20 -right-20 w-[80vw] max-w-[400px] h-[80vw] max-h-[400px] md:w-[500px] md:h-[500px] orbital-glow rounded-full"></div>
+        <div className="absolute top-1/4 -left-20 w-[70vw] max-w-[350px] h-[70vw] max-h-[350px] md:w-[400px] md:h-[400px] orbital-glow opacity-60 rounded-full"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center text-center lg:text-left">
             <div className="flex flex-col items-center lg:items-start">
-              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-overline uppercase mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-overline uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
                 {HOME_CONTENT.hero.overline}
               </div>
 
-              <h1 className="h1-hero mb-6 animate-in fade-in slide-in-from-bottom-6 duration-1000">
+              <h1 className="h1-hero mb-4 animate-in fade-in slide-in-from-bottom-6 duration-1000">
                 {HOME_CONTENT.hero.titleMain} <br className="hidden lg:block" />
                 <span className="gold-gradient-text">{HOME_CONTENT.hero.titleSecondary}.</span>
               </h1>
 
-              <p className="text-base md:text-lg mb-8 max-w-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 font-light">
+              <p className="text-sm md:text-base mb-6 max-w-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 font-light">
                 {HOME_CONTENT.hero.body}
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-5 w-full max-w-md animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:max-w-md animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
                 <button
                   onClick={() => onNavigate(currentBuild?.id || 'products')}
                   className="btn-primary"
                   aria-label={`View ${HOME_CONTENT.hero.titleSecondary} Demo`}
                 >
-                  See the demo
+                  View Products
                   <span className="material-symbols-outlined text-lg ml-2 align-middle">arrow_forward</span>
                 </button>
                 <button
                   onClick={() => onNavigate('products')}
                   className="btn-secondary"
-                  aria-label="View System Index"
+                  aria-label="Explore All Products"
                 >
-                  System Index
+                  Explore All
                 </button>
               </div>
             </div>

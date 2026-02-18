@@ -72,12 +72,12 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-primary selection:text-black">
-      <Navigation onNavigate={setCurrentPage} currentPage={currentPage} />
-      <div className="flex-grow">
+    <div className="min-h-screen flex flex-col selection:bg-primary selection:text-black" role="application">
+      <Navigation onNavigate={setCurrentPage} currentPage={currentPage} role="navigation" />
+      <main id="main-content" role="main" className="flex-grow">
         {renderContent()}
-      </div>
-      <Footer onNavigate={setCurrentPage} />
+      </main>
+      <Footer onNavigate={setCurrentPage} role="contentinfo" />
     </div>
   );
 };

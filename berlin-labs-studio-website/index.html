@@ -74,7 +74,7 @@
                 -webkit-text-fill-color: transparent;
             }
             .glass-card {
-                @apply bg-white/[0.02] border border-white/5 backdrop-blur-3xl transition-all duration-500;
+                @apply bg-white/[0.02] border border-white/5 backdrop-blur-xl md:backdrop-blur-2xl lg:backdrop-blur-3xl transition-all duration-500;
             }
             .glass-card-hover {
                 @apply hover:border-primary/20 hover:shadow-gold-glow hover:-translate-y-1;
@@ -89,13 +89,26 @@
                 pointer-events: none;
             }
             .btn-primary {
-                @apply bg-primary text-black font-bold rounded-full py-5 px-10 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 hover:shadow-primary/20 text-[11px] uppercase tracking-overline;
+                @apply bg-primary text-black font-bold rounded-full py-5 px-10 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 hover:shadow-primary/20 text-[11px] uppercase tracking-overline min-h-[44px] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4;
             }
             .btn-secondary {
-                @apply bg-white/[0.03] text-white border border-white/5 font-bold rounded-full py-5 px-10 transition-all hover:bg-white/[0.08] hover:border-white/10 active:scale-[0.98] text-[11px] uppercase tracking-overline;
+                @apply bg-white/[0.03] text-white border border-white/5 font-bold rounded-full py-5 px-10 transition-all hover:bg-white/[0.08] hover:border-white/10 active:scale-[0.98] text-[11px] uppercase tracking-overline min-h-[44px] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4;
+            }
+            /* Focus states for all interactive elements */
+            button:focus-visible,
+            a:focus-visible,
+            input:focus-visible,
+            textarea:focus-visible,
+            select:focus-visible {
+                @apply outline-2 outline-primary outline-offset-2;
+            }
+            /* Remove outline on mouse, keep on keyboard */
+            button:focus:not(:focus-visible),
+            a:focus:not(:focus-visible) {
+                @apply outline-none;
             }
             .h1-hero {
-                @apply text-4xl md:text-7xl lg:text-8xl font-display font-extrabold leading-[0.95] tracking-tightest;
+                @apply text-3xl md:text-5xl lg:text-7xl font-display font-extrabold leading-[0.95] tracking-tightest;
             }
             .h2-section {
                 @apply text-3xl md:text-5xl font-display font-bold leading-tight tracking-tightest;

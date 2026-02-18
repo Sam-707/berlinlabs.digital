@@ -20,8 +20,8 @@ export const Navigation: React.FC<NavigationProps> = ({ onNavigate, currentPage 
 
   return (
     <>
-      <nav className="sticky top-0 z-[60] glass-card border-b border-white/10 backdrop-blur-3xl transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+      <nav className="sticky top-0 z-[60] glass-card border-b border-white/10 backdrop-blur-xl md:backdrop-blur-2xl lg:backdrop-blur-3xl transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4 lg:px-6 lg:py-6 flex justify-between items-center">
           {/* Logo Section */}
           <div 
             className="flex items-center gap-3.5 cursor-pointer group" 
@@ -51,9 +51,9 @@ export const Navigation: React.FC<NavigationProps> = ({ onNavigate, currentPage 
 
           {/* Mobile Menu Toggle */}
           <div className="flex lg:hidden items-center gap-4">
-            <button 
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-3 rounded-full transition-all duration-300 border ${isMenuOpen ? 'bg-primary text-black border-primary' : 'bg-white/5 hover:bg-white/10 text-slate-200 border-white/10'}`}
+              className={`p-4 md:p-3 rounded-full transition-all duration-300 border min-h-[44px] min-w-[44px] ${isMenuOpen ? 'bg-primary text-black border-primary' : 'bg-white/5 hover:bg-white/10 text-slate-200 border-white/10'}`}
               aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
               aria-expanded={isMenuOpen}
             >
@@ -66,8 +66,8 @@ export const Navigation: React.FC<NavigationProps> = ({ onNavigate, currentPage 
       </nav>
 
       {/* Mobile Navigation Overlay */}
-      <div 
-        className={`fixed inset-0 z-[55] bg-surface-bg/95 backdrop-blur-2xl transition-all duration-500 flex flex-col items-center justify-center p-6 lg:hidden ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}
+      <div
+        className={`fixed inset-0 z-[55] bg-surface-bg/98 backdrop-blur-md md:backdrop-blur-2xl transition-all duration-500 flex flex-col items-center justify-center p-6 lg:hidden ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}
       >
         <div className="flex flex-col items-center gap-10">
           <span className="overline-label mb-2 opacity-50">Operational Map</span>

@@ -5,7 +5,7 @@ export const NAV_CONTENT = {
   brand: { first: 'BERLIN', second: 'LABS' },
   items: [
     { id: 'home', label: 'Home' },
-    { id: 'products', label: 'Index' },
+    { id: 'products', label: 'Products' },
     { id: 'studio', label: 'Studio' },
     { id: 'contact', label: 'Contact', isCta: true }
   ] as NavItem[]
