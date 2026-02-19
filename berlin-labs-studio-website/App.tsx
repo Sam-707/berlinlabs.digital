@@ -4,17 +4,17 @@ import { Page } from './types';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
-import { Products } from './pages/Products';
+import { Systems } from './pages/Systems';
 import { Studio } from './pages/Studio';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { Contact } from './pages/Contact';
 import { Onboarding } from './pages/Onboarding';
-import { PROJECTS } from './data/projects';
+import { SYSTEMS } from './data/systems';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
 
-  const activeProject = PROJECTS.find(p => p.id === currentPage);
+  const activeProject = SYSTEMS.find(p => p.id === currentPage);
 
   // Dynamic Metadata Handler for SEO
   useEffect(() => {
@@ -23,11 +23,11 @@ const App: React.FC = () => {
     let title = 'BERLINLABS | Operational Product Studio';
     let description = 'A Berlin-based studio building durable digital foundations for independent businesses.';
 
-    if (currentPage === 'products') {
-      title = 'System Index | BERLINLABS';
-      description = 'Directory of active digital products, experiments, and architectural frameworks.';
+    if (currentPage === 'systems') {
+      title = 'Systems | BERLINLABS';
+      description = 'Operational systems at different stages of maturity.';
     } else if (currentPage === 'studio') {
-      title = 'Studio Principles | BERLINLABS';
+      title = 'Method | BERLINLABS';
     } else if (currentPage === 'contact') {
       title = 'Contact | BERLINLABS';
     } else if (currentPage === 'onboarding') {
@@ -36,9 +36,10 @@ const App: React.FC = () => {
     } else if (activeProject) {
       if (activeProject.id === 'menuflows') {
         title = 'MenuFlows – Digital Menu System for Independent Restaurants in Berlin';
-        description = activeProject.detail?.tagline || '';
+        description = activeProject.oneLiner || '';
       } else {
-        title = `${activeProject.title} | BERLINLABS`;
+        title = `${activeProject.name} | BERLINLABS`;
+        description = activeProject.oneLiner || description;
       }
     }
 
@@ -53,16 +54,16 @@ const App: React.FC = () => {
 
   const renderContent = () => {
     if (currentPage === 'home') return <Home onNavigate={setCurrentPage} />;
-    if (currentPage === 'products') return <Products onNavigate={setCurrentPage} />;
+    if (currentPage === 'systems') return <Systems onNavigate={setCurrentPage} />;
     if (currentPage === 'studio') return <Studio />;
-    if (currentPage === 'contact') return <Contact />;
+    if (currentPage === 'contact') return <Contact onNavigate={setCurrentPage} />;
     if (currentPage === 'onboarding') return <Onboarding />;
-    
+
     if (activeProject) {
       return (
-        <ProjectDetail 
-          project={activeProject} 
-          onBack={() => setCurrentPage('products')} 
+        <ProjectDetail
+          project={activeProject}
+          onBack={() => setCurrentPage('systems')}
           onNavigate={setCurrentPage}
         />
       );

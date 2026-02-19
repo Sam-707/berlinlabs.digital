@@ -1,21 +1,59 @@
 
 import React from 'react';
-import { ProjectItem, Page } from '../types';
+import { System, Page } from '../types';
 import { StateBadge } from '../components/StateBadge';
 
 interface ProjectDetailProps {
-  project: ProjectItem;
+  project: System & {
+    fullTitle?: string;
+    philosophy?: { label: string; text: string };
+    capabilityLabel?: string;
+    focusPoints?: Array<{ title: string; desc: string }>;
+    highlights?: string[];
+    tags?: string[];
+    showPilotSection?: boolean;
+    externalUrl?: string;
+  };
   onBack: () => void;
   onNavigate: (page: Page) => void;
 }
 
+/**
+ * Project detail page with state-specific templates:
+ * - LIVE: Shows friction → outcome → proof → pilot CTA
+ * - EXPERIMENT: Shows hypothesis → signals → follow CTA
+ * - ADVISORY: Shows scope → boundary → engagement CTA
+ */
 export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, onNavigate }) => {
-  const { detail } = project;
-
-  if (!detail) return null;
-
-  const isExperiment = project.type === 'experiment';
+  const isLive = project.state === 'LIVE';
+  const isExperiment = project.state === 'EXPERIMENT';
+  const isAdvisory = project.state === 'ADVISORY';
+  const isPilot = project.state === 'PILOT';
   const isMenuFlows = project.id === 'menuflows';
+
+  // State-specific section labels
+  const philosophyLabel = isExperiment ? 'Hypothesis' : project.philosophy?.label || 'Operational Focus';
+  const secondaryLabel = isExperiment ? 'Signals' : project.capabilityLabel || 'Capabilities';
+
+  // Handle CTA click - prioritize externalUrl
+  const handleCtaClick = () => {
+    if (project.externalUrl) {
+      window.open(project.externalUrl, '_blank');
+    } else if (project.href.startsWith('http')) {
+      window.open(project.href, '_blank');
+    } else if (project.href === 'contact' || project.href === 'onboarding') {
+      onNavigate(project.href);
+    }
+  };
+
+  // Handle back button
+  const handleBack = () => {
+    if (project.href.startsWith('http')) {
+      onBack();
+    } else {
+      onBack();
+    }
+  };
 
   return (
     <main className="max-w-4xl mx-auto px-6 lg:px-12 py-32 animate-in fade-in slide-in-from-bottom-4 duration-1000">
@@ -23,85 +61,145 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
         <header className="mb-24">
           <div className="flex items-center gap-4 mb-8">
             <StateBadge state={project.state} />
+            {project.domain && (
+              <span className="text-[9px] font-mono text-primary/40 font-bold tracking-overline uppercase">
+                {project.domain}
+              </span>
+            )}
           </div>
-          {/* Title reverted from gradient back to white */}
+
+          {/* Title */}
           <h1 className="h1-hero text-white mb-10 uppercase tracking-tightest">
-            {detail.fullTitle}
+            {project.fullTitle || project.name}
           </h1>
-          
-          {/* Definitive Summary Paragraph for SEO & AI Search */}
+
+          {/* SEO Summary Paragraph */}
           <div className="mb-10 p-6 border-l-2 border-primary/20 bg-white/[0.01]">
             <p className="text-lg text-slate-300 font-normal leading-editorial">
-              {isMenuFlows 
+              {isMenuFlows
                 ? "MenuFlows is a digital menu system designed specifically for independent restaurants in Berlin. It enables operators to replace printed menus with a simple, instantly updatable QR code system, reducing service friction and operational costs."
-                : detail.tagline}
+                : project.oneLiner}
             </p>
           </div>
 
-          <div className="text-sm italic text-slate-500 border-l border-primary/30 pl-6 py-2 font-mono flex items-start gap-4 bg-white/[0.01]">
+          {/* Friction / Hypothesis Block */}
+          <div className="text-sm italic text-slate-500 border-l border-primary/20 pl-6 py-2 font-mono flex items-start gap-4 bg-white/[0.01]">
             <span className="text-[9px] uppercase tracking-overline font-bold text-primary/40 pt-1">
-              {isExperiment ? 'Hypothesis' : 'Outcome'}
+              {isExperiment ? 'Hypothesis' : 'Friction'}
             </span>
-            <span className="font-light">{isExperiment ? project.intent : project.promise}</span>
+            <span className="font-light">{project.friction}</span>
           </div>
+
+          {/* Outcome Block (not for experiments) */}
+          {!isExperiment && (
+            <div className="mt-4 text-sm italic text-slate-500 border-l border-primary/20 pl-6 py-2 font-mono flex items-start gap-4 bg-white/[0.01]">
+              <span className="text-[9px] uppercase tracking-overline font-bold text-primary/40 pt-1">
+                Outcome
+              </span>
+              <span className="font-light">{project.outcome}</span>
+            </div>
+          )}
+
+          {/* Proof (LIVE only) */}
+          {isLive && project.proof && (
+            <div className="mt-4 text-sm italic text-primary/80 border-l border-primary/40 pl-6 py-2 font-mono flex items-start gap-4 bg-primary/[0.02]">
+              <span className="text-[9px] uppercase tracking-overline font-bold text-primary/60 pt-1">
+                Proof
+              </span>
+              <span className="font-light">{project.proof}</span>
+            </div>
+          )}
+
+          {/* Constraints (PILOT/ADVISORY only) */}
+          {(isPilot || isAdvisory) && project.constraints && (
+            <div className="mt-4 text-sm italic text-slate-500 border-l border-slate-700 pl-6 py-2 font-mono flex items-start gap-4 bg-white/[0.01]">
+              <span className="text-[9px] uppercase tracking-overline font-bold text-slate-600 pt-1">
+                Scope
+              </span>
+              <span className="font-light">{project.constraints}</span>
+            </div>
+          )}
         </header>
 
-        <section className="mb-32">
-          <span className="overline-label">{detail.philosophy.label}</span>
-          <p className="text-2xl md:text-3xl font-display font-light leading-editorial text-slate-200">
-            {detail.philosophy.text}
-          </p>
-        </section>
-
-        <section className="mb-32">
-          <span className="overline-label">{detail.capabilityLabel}</span>
-          <div className="grid grid-cols-1 gap-14">
-            {detail.focusPoints.map((point, idx) => (
-              <div key={idx} className="group p-8 glass-card rounded-2xl border-white/10 hover:border-primary/20 transition-all">
-                <h3 className="text-sm font-display font-bold uppercase tracking-overline mb-4 text-white group-hover:text-primary transition-colors">
-                  {point.title}
-                </h3>
-                <p className="text-slate-400 font-light leading-editorial">{point.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {detail.showPilotSection && (
-          <section className="mb-32 p-12 md:p-16 rounded-3xl glass-card border-white/10 hover:border-primary/20 shadow-gold-glow relative overflow-hidden group">
-            <div className="absolute -top-10 -right-10 w-40 h-40 orbital-glow opacity-40 group-hover:opacity-60 transition-opacity rounded-full"></div>
-            <span className="overline-label">Berlin Pilot Onboarding</span>
-            <p className="text-slate-400 mb-12 font-light">
-              MenuFlows is currently onboarding a limited number of independent restaurants in Berlin for our Beta v2 program. We prioritize local venues seeking to improve operational stability through digital infrastructure.
+        {/* Philosophy / Hypothesis Section */}
+        {project.philosophy && (
+          <section className="mb-32">
+            <span className="overline-label">{philosophyLabel}</span>
+            <p className="text-2xl md:text-3xl font-display font-light leading-editorial text-slate-200">
+              {project.philosophy.text}
             </p>
-            <button 
+          </section>
+        )}
+
+        {/* Capabilities / Signals Section */}
+        {project.focusPoints && project.focusPoints.length > 0 && (
+          <section className="mb-32">
+            <span className="overline-label">{secondaryLabel}</span>
+            <div className="grid grid-cols-1 gap-14">
+              {project.focusPoints.map((point, idx) => (
+                <div key={idx} className="group p-8 rounded-2xl glass-card glass-card-hover">
+                  <h3 className="text-sm font-display font-bold uppercase tracking-overline mb-4 text-white group-hover:text-primary transition-colors">
+                    {point.title}
+                  </h3>
+                  <p className="text-slate-400 font-light leading-editorial">{point.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Pilot Section (PILOT state or when showPilotSection is true) */}
+        {(isPilot || project.showPilotSection) && (
+          <section className="mb-32 p-8 rounded-2xl glass-card glass-card-hover border-white/10 relative overflow-hidden group">
+            <span className="overline-label">Pilot Program</span>
+            <p className="text-slate-400 mb-12 font-light">
+              {isMenuFlows
+                ? 'MenuFlows is currently in pilot phase with a limited number of independent restaurants in Berlin. We\'re validating the core system before wider availability.'
+                : `${project.name} is currently onboarding a limited number of partners for the pilot program. We prioritize local venues seeking to improve operational stability through digital infrastructure.`}
+            </p>
+            <button
               onClick={() => onNavigate('onboarding')}
-              className="btn-primary w-full md:w-auto px-20"
-              aria-label="Apply for MenuFlows Berlin Pilot"
+              className="btn-primary w-full md:w-auto"
+              aria-label={`Apply for ${project.name} Pilot`}
             >
               Apply for Pilot Program
             </button>
           </section>
         )}
 
+        {/* Experiment Follow Section (EXPERIMENT state) */}
+        {isExperiment && (
+          <section className="mb-32 p-8 rounded-2xl glass-card glass-card-hover border-white/10 relative overflow-hidden">
+            <span className="overline-label">Follow Progress</span>
+            <p className="text-slate-400 mb-12 font-light">
+              This is an active experiment. We're validating the hypothesis and gathering signals. No promises. No timeline. Just exploration.
+            </p>
+            <button
+              onClick={handleCtaClick}
+              className="btn-secondary w-full md:w-auto"
+              aria-label={project.ctaLabel}
+            >
+              {project.ctaLabel}
+            </button>
+          </section>
+        )}
+
+        {/* CTA Buttons */}
         <div className="flex flex-col md:flex-row gap-8 items-center pt-20 border-t border-white/10">
-          <button 
-            onClick={() => {
-              if (detail.externalUrl === 'contact') onNavigate('contact');
-              else if (detail.externalUrl === 'onboarding') onNavigate('onboarding');
-              else if (detail.externalUrl) window.open(detail.externalUrl, '_blank');
-            }}
-            className="btn-secondary w-full md:w-auto px-12"
-            aria-label={detail.ctaLabel}
+          <button
+            onClick={handleCtaClick}
+            className="btn-secondary w-full md:w-auto"
+            aria-label={project.ctaLabel}
           >
-            {detail.ctaLabel}
+            {project.ctaLabel}
           </button>
-          <button 
-            onClick={onBack}
+
+          <button
+            onClick={handleBack}
             className="text-[11px] font-display font-bold uppercase tracking-overline text-slate-500 hover:text-white transition-colors"
-            aria-label="Back to System Index"
+            aria-label="Back to Systems"
           >
-            Back to System Index
+            Back to Systems
           </button>
         </div>
       </div>

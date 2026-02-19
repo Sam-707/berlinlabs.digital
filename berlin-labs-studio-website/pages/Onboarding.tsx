@@ -34,8 +34,8 @@ export const Onboarding: React.FC = () => {
 
   if (submitted) {
     return (
-      <main className="max-w-4xl mx-auto px-6 py-40 text-center animate-in fade-in">
-        <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-10 shadow-gold-glow border border-primary/20">
+      <main className="max-w-4xl mx-auto px-6 py-24 md:py-32 lg:py-40 text-center animate-in fade-in">
+        <div className="w-20 h-20 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-10 border border-primary/30 shadow-gold-glow">
           <span className="material-symbols-outlined text-primary text-4xl">done_all</span>
         </div>
         <h1 className="h2-section text-white mb-6 uppercase tracking-tightest">Application Received.</h1>
@@ -136,7 +136,7 @@ export const Onboarding: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="btn-primary w-full md:w-auto px-20 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn-primary w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? 'Processing...' : 'Submit Application'}
           </button>

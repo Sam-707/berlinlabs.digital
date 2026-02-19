@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BERLINLABS | Branding Assets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #C5A059;
+      --gold-light: #E8D5B0;
+      --slate-900: #0F172A;
+      --slate-800: #1E293B;
+      --slate-500: #64748B;
+      --slate-400: #94A3B8;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--slate-900);
+      color: var(--white);
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: var(--slate-400);
+    }
+
+    .asset-section {
+      margin-bottom: 60px;
+    }
+
+    .asset-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--slate-500);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .asset-label .dimensions {
+      font-family: 'Inter', monospace;
+      font-size: 10px;
+      background: var(--slate-800);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .asset-canvas {
+      background: var(--slate-800);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    /* BERLINLABS Logo SVG - The Aperture */
+    .logo-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* LinkedIn Banner - 1584 x 396 */
+    .linkedin-banner {
+      width: 1584px;
+      height: 396px;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 80px 100px;
+      overflow: hidden;
+    }
+
+    .linkedin-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(197, 160, 89, 0.06) 0%, transparent 50%);
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .banner-logo {
+      width: 80px;
+      height: 80px;
+    }
+
+    .banner-text {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .banner-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.2em;
+      color: var(--white);
+    }
+
+    .banner-brand .gold {
+      font-weight: 400;
+      color: var(--gold);
+      margin-left: 4px;
+    }
+
+    .banner-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      color: var(--slate-500);
+      text-transform: uppercase;
+    }
+
+    .banner-decoration {
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 8px;
+    }
+
+    .banner-bar {
+      width: 3px;
+      height: 60px;
+      background: var(--gold);
+      border-radius: 1.5px;
+    }
+
+    .banner-bar:nth-child(2) { height: 40px; opacity: 0.6; }
+    .banner-bar:nth-child(3) { height: 80px; opacity: 0.3; }
+
+    /* LinkedIn Post - 1200 x 627 */
+    .linkedin-post {
+      width: 1200px;
+      height: 627px;
+      background: linear-gradient(145deg, #0F172A 0%, #1E293B 100%);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      overflow: hidden;
+    }
+
+    .linkedin-post::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 50% 50%, rgba(197, 160, 89, 0.04) 0%, transparent 40%);
+    }
+
+    .post-logo {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 56px;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-title .gold {
+      font-weight: 400;
+      color: var(--gold);
+    }
+
+    .post-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      letter-spacing: 0.2em;
+      color: var(--slate-500);
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--slate-600);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Square Logo - 1080 x 1080 */
+    .square-logo {
+      width: 1080px;
+      height: 1080px;
+      background: linear-gradient(145deg, #0F172A 0%, #1E293B 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .square-logo::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border: 1px solid rgba(197, 160, 89, 0.06);
+      border-radius: 50%;
+    }
+
+    .square-logo::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border: 1px solid rgba(197, 160, 89, 0.04);
+      border-radius: 50%;
+    }
+
+    .square-logo-icon {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .square-logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+    }
+
+    .square-logo-text .gold {
+      font-weight: 400;
+      color: var(--gold);
+      margin-left: 8px;
+    }
+
+    .square-logo-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      letter-spacing: 0.3em;
+      color: var(--slate-600);
+      text-transform: uppercase;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Vertical Story Format - 1080 x 1920 */
+    .story-format {
+      width: 1080px;
+      height: 1920px;
+      background: linear-gradient(180deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-format::before {
+      content: '';
+      position: absolute;
+      width: 900px;
+      height: 900px;
+      border: 1px solid rgba(197, 160, 89, 0.05);
+      border-radius: 50%;
+    }
+
+    .story-format::after {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border: 1px solid rgba(197, 160, 89, 0.03);
+      border-radius: 50%;
+    }
+
+    .story-logo-icon {
+      width: 220px;
+      height: 220px;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .story-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 80px;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+    }
+
+    .story-text .gold {
+      font-weight: 400;
+      color: var(--gold);
+      margin-left: 10px;
+    }
+
+    .story-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 24px;
+      letter-spacing: 0.3em;
+      color: var(--slate-600);
+      text-transform: uppercase;
+      margin-top: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .story-divider {
+      width: 120px;
+      height: 3px;
+      background: var(--gold);
+      margin-top: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Scale for preview */
+    .scale-container {
+      transform-origin: top left;
+    }
+
+    .scale-25 { transform: scale(0.25); }
+    .scale-30 { transform: scale(0.30); }
+    .scale-40 { transform: scale(0.40); }
+
+    /* Instructions */
+    .instructions {
+      background: var(--slate-800);
+      border: 1px solid var(--slate-500);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+
+    .instructions h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .instructions p {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--slate-400);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .instructions code {
+      background: var(--slate-900);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Monaco', monospace;
+      font-size: 11px;
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BERLINLABS</h1>
+    <h2>Branding Assets for Social Media</h2>
+
+    <div class="instructions">
+      <h3>How to Export</h3>
+      <p>1. Open this file in your browser (Chrome/Safari recommended)</p>
+      <p>2. Right-click each asset and select <code>"Capture Screenshot"</code> or use screenshot tool</p>
+      <p>3. Crop to the asset dimensions for perfect export</p>
+      <p>4. For LinkedIn Banner: 1584 x 396px | For Posts: 1200 x 627px | For Logo: 1080 x 1080px</p>
+    </div>
+
+    <!-- LinkedIn Banner -->
+    <div class="asset-section">
+      <div class="asset-label">
+        LinkedIn Banner <span class="dimensions">1584 × 396 px</span>
+      </div>
+      <div class="asset-canvas">
+        <div class="scale-container scale-25">
+          <div class="linkedin-banner">
+            <div class="banner-content">
+              <svg class="banner-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 14V4H4V20H14" stroke="#C5A059" stroke-width="1.5" stroke-linecap="square"/>
+                <rect x="10" y="10" width="4" height="4" fill="#C5A059" opacity="0.3"/>
+              </svg>
+              <div class="banner-text">
+                <span class="banner-brand">BERLIN<span class="gold">LABS</span></span>
+                <span class="banner-tagline">Operational Product Studio</span>
+              </div>
+            </div>
+            <div class="banner-decoration">
+              <div class="banner-bar"></div>
+              <div class="banner-bar"></div>
+              <div class="banner-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LinkedIn Post Template -->
+    <div class="asset-section">
+      <div class="asset-label">
+        LinkedIn Post Template <span class="dimensions">1200 × 627 px</span>
+      </div>
+      <div class="asset-canvas">
+        <div class="scale-container scale-30">
+          <div class="linkedin-post">
+            <svg class="post-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 14V4H4V20H14" stroke="#C5A059" stroke-width="1.5" stroke-linecap="square"/>
+              <rect x="10" y="10" width="4" height="4" fill="#C5A059" opacity="0.3"/>
+            </svg>
+            <h1 class="post-title">BERLIN<span class="gold">LABS</span></h1>
+            <p class="post-subtitle">Berlin-Based · Multilingual Systems</p>
+            <div class="post-divider"></div>
+            <p class="post-tagline">Operational Product Studio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Square Logo -->
+    <div class="asset-section">
+      <div class="asset-label">
+        Square Profile Logo <span class="dimensions">1080 × 1080 px</span>
+      </div>
+      <div class="asset-canvas">
+        <div class="scale-container scale-40">
+          <div class="square-logo">
+            <svg class="square-logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 14V4H4V20H14" stroke="#C5A059" stroke-width="1.5" stroke-linecap="square"/>
+              <rect x="10" y="10" width="4" height="4" fill="#C5A059" opacity="0.3"/>
+            </svg>
+            <span class="square-logo-text">BERLIN<span class="gold">LABS</span></span>
+            <p class="square-logo-tagline">Operational Product Studio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vertical Story Format -->
+    <div class="asset-section">
+      <div class="asset-label">
+        Story Format <span class="dimensions">1080 × 1920 px</span>
+      </div>
+      <div class="asset-canvas" style="height: 700px;">
+        <div class="scale-container" style="transform: scale(0.18);">
+          <div class="story-format">
+            <svg class="story-logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 14V4H4V20H14" stroke="#C5A059" stroke-width="1.5" stroke-linecap="square"/>
+              <rect x="10" y="10" width="4" height="4" fill="#C5A059" opacity="0.3"/>
+            </svg>
+            <span class="story-text">BERLIN<span class="gold">LABS</span></span>
+            <p class="story-tagline">Operational Product Studio</p>
+            <div class="story-divider"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo Only - For Various Uses -->
+    <div class="asset-section">
+      <div class="asset-label">
+        Logo Mark Only <span class="dimensions">512 × 512 px</span>
+      </div>
+      <div class="asset-canvas" style="padding: 40px;">
+        <div style="width: 512px; height: 512px; background: linear-gradient(145deg, #0F172A 0%, #1E293B 100%); display: flex; justify-content: center; align-items: center; border-radius: 8px;">
+          <svg style="width: 256px; height: 256px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 14V4H4V20H14" stroke="#C5A059" stroke-width="1.5" stroke-linecap="square"/>
+            <rect x="10" y="10" width="4" height="4" fill="#C5A059" opacity="0.3"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

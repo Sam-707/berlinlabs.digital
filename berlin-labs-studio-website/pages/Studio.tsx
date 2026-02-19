@@ -6,7 +6,7 @@ export const Studio: React.FC = () => {
     <main className="max-w-4xl mx-auto px-6 lg:px-12 py-32 animate-in fade-in duration-1000">
       <header className="mb-32">
         <span className="overline-label">{STUDIO_CONTENT.header.overline}</span>
-        <h1 className="h1-hero text-white uppercase tracking-tightest">{STUDIO_CONTENT.header.title}</h1>
+        <h1 className="h1-hero text-white uppercase tracking-tightest"><span className="gold-gradient-text">{STUDIO_CONTENT.header.title}</span></h1>
       </header>
 
       <section className="mb-32 md:mb-48">
@@ -26,7 +26,7 @@ export const Studio: React.FC = () => {
         </div>
       </section>
 
-      <section className="mb-32 md:mb-48 p-12 md:p-16 glass-card border-white/10 rounded-3xl">
+      <section className="mb-32 md:mb-48 p-8 rounded-2xl glass-card glass-card-hover border-white/10">
         <span className="overline-label mb-16 text-center">{STUDIO_CONTENT.model.label}</span>
         <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-4 max-w-2xl mx-auto">
           {STUDIO_CONTENT.model.steps.map((step, idx) => (
@@ -44,17 +44,16 @@ export const Studio: React.FC = () => {
       </section>
 
       {/* The Architect Protocol - New Section */}
-      <section className="mb-32 md:mb-48 p-12 md:p-16 glass-card border-white/10 rounded-[2.5rem]">
+      <section className="mb-32 md:mb-48 p-8 rounded-2xl glass-card glass-card-hover border-white/10">
         <span className="overline-label mb-16 text-center">The Architect Protocol</span>
         <div className="max-w-3xl mx-auto text-center space-y-10">
           <p className="text-xl md:text-2xl font-display font-light text-slate-300 leading-editorial">
-            An <span className="text-primary font-semibold">Operational Product Studio</span> is not a traditional agency or consultancy. We build, ship, and iterate on products that address real friction points in underserved communities.
+            An <span className="text-primary font-semibold">Operational Product Studio</span> is not an agency. We build and ship systems that address friction.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
             <div className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <div className="text-4xl mb-4">🏛️</div>
               <h4 className="text-sm font-display font-bold uppercase tracking-overline text-white mb-2">Berlin-Based</h4>
-              <p className="text-xs text-slate-500 font-light">Rooted in Europe's startup capital</p>
             </div>
             <div className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <div className="text-4xl mb-4">🌍</div>
@@ -64,7 +63,6 @@ export const Studio: React.FC = () => {
             <div className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5">
               <div className="text-4xl mb-4">🎯</div>
               <h4 className="text-sm font-display font-bold uppercase tracking-overline text-white mb-2">Community-First</h4>
-              <p className="text-xs text-slate-500 font-light">Focus on underserved communities</p>
             </div>
           </div>
         </div>
@@ -83,7 +81,7 @@ export const Studio: React.FC = () => {
       </section>
 
       <footer className="pt-20 border-t border-white/10 text-center">
-        <p className="text-[10px] uppercase tracking-overline text-primary font-display font-bold opacity-30">{STUDIO_CONTENT.footer}</p>
+        <p className="text-[10px] uppercase tracking-overline text-primary font-display font-bold opacity-30">BerlinLabs — Operational Product Studio</p>
       </footer>
     </main>
   );

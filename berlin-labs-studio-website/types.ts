@@ -1,21 +1,114 @@
 
 /**
  * Valid page routes for the application.
- * @example 'home' | 'products' | 'studio' | 'contact' | 'onboarding'
+ * @example 'home' | 'systems' | 'studio' | 'contact' | 'onboarding'
  */
-export type Page = 'home' | 'products' | 'studio' | 'contact' | 'onboarding' | string;
+export type Page = 'home' | 'systems' | 'studio' | 'contact' | 'onboarding' | string;
 
 /**
- * Project lifecycle state.
+ * System lifecycle state.
  * - LIVE: Fully launched and operational
  * - PILOT: Testing with real customers
  * - EXPERIMENT: Validating a hypothesis
  * - ADVISORY: Service offering, not a product
  */
-export type ProjectState = 'LIVE' | 'PILOT' | 'EXPERIMENT' | 'ADVISORY';
+export type SystemState = 'LIVE' | 'PILOT' | 'EXPERIMENT' | 'ADVISORY';
 
 /**
- * A single focus point or feature for a project detail page.
+ * Unified system entity schema.
+ * Used across all system cards and detail pages.
+ *
+ * @example
+ * const system: System = {
+ *   id: 'menuflows',
+ *   name: 'MenuFlows',
+ *   state: 'LIVE',
+ *   domain: 'Hospitality',
+ *   oneLiner: 'Digital menus built for speed, clarity, and calm service.',
+ *   friction: 'Menu updates that break service rhythm and cost staff time.',
+ *   outcome: 'Menus stay current without printing, delays, or confusion.',
+ *   proof: 'Berlin pilot partners onboarding.',
+ *   href: 'menuflows',
+ *   ctaLabel: 'Request Pilot Setup'
+ * };
+ */
+export interface System {
+  /**
+   * Unique identifier for the system.
+   * Must be lowercase and hyphenated. Used for routing and data references.
+   * @example 'menuflows' | 'twimnc' | 'advisory'
+   */
+  id: string;
+
+  /** Display name shown on system cards and headings */
+  name: string;
+
+  /** System lifecycle state: 'LIVE' | 'PILOT' | 'EXPERIMENT' | 'ADVISORY' */
+  state: SystemState;
+
+  /** Domain category: e.g., "Hospitality" | "Language" | "Publishing" | "Advisory" */
+  domain: string;
+
+  /**
+   * 8–14 words. What it is.
+   * Clear, factual description without sales language.
+   * @example "Digital menus built for speed, clarity, and calm service."
+   */
+  oneLiner: string;
+
+  /**
+   * 8–14 words. What it removes.
+   * The operational friction this system addresses.
+   * @example "Menu updates that break service rhythm and cost staff time."
+   */
+  friction: string;
+
+  /**
+   * 8–14 words. What changes operationally.
+   * The resulting state after using the system.
+   * @example "Menus stay current without printing, delays, or confusion."
+   */
+  outcome: string;
+
+  /**
+   * Optional proof of viability (LIVE systems only).
+   * Evidence that the system works.
+   * @example "Berlin pilot partners onboarding." | "Processing documents daily."
+   */
+  proof?: string;
+
+  /**
+   * Optional constraint line (PILOT/ADVISORY states).
+   * Clear boundaries on availability or scope.
+   * @example "Berlin only" | "Invite-only" | "Not a dev agency. Fixed scope."
+   */
+  constraints?: string;
+
+  /**
+   * Page route or external URL.
+   * Internal pages use slug (e.g., 'menuflows'), external URLs use full https://.
+   * Special routes: 'contact', 'onboarding'.
+   */
+  href: string;
+
+  /**
+   * State-dependent CTA button label.
+   * Must follow badge rules for each state.
+   * @example "Request Pilot Setup" | "View Concept" | "Request Engagement"
+   */
+  ctaLabel: string;
+
+  /**
+   * Material Symbols icon name.
+   * Must be a valid Google Material Symbols icon name.
+   * @example 'restaurant_menu' | 'science' | 'architecture' | 'translate'
+   * @see https://fonts.google.com/icons
+   */
+  icon: string;
+}
+
+/**
+ * A single focus point or feature for a system detail page.
  * Renders as a card with title and description.
  */
 export interface FocusPoint {
@@ -26,129 +119,45 @@ export interface FocusPoint {
 }
 
 /**
- * Philosophy or approach section for a project.
- * Explains the guiding principles or hypothesis behind the work.
+ * Extended system data for detail pages.
+ * Optional properties that provide additional content for full system pages.
  */
-export interface ProjectPhilosophy {
-  /** Section heading label (e.g., "Hypothesis", "Process", "Operational Focus") */
-  label: string;
-  /** Full paragraph explaining the philosophy or approach */
-  text: string;
-}
+export interface SystemDetail {
+  /** Full system name (can be longer than card title) */
+  fullTitle?: string;
 
-/**
- * Log entry for tracking events or updates.
- * Currently unused but available for future changelog features.
- */
-export interface LogEntry {
-  /** Date of the event (ISO string or formatted date) */
-  date: string;
-  /** Description of the event or update */
-  event: string;
-}
-
-/**
- * Complete detail page content for a project.
- * Include this object when you want a dedicated project detail page.
- */
-export interface ProjectDetailData {
-  /** Full project name (can be longer than card title) */
-  fullTitle: string;
-  /** One-line tagline displayed below the title */
-  tagline: string;
   /** Philosophy/hypothesis section explaining the approach */
-  philosophy: ProjectPhilosophy;
+  philosophy?: {
+    /** Section heading label (e.g., "Hypothesis", "Process", "Operational Focus") */
+    label: string;
+    /** Full paragraph explaining the philosophy or approach */
+    text: string;
+  };
+
   /** Section label for capabilities/features (e.g., "Capabilities", "Parameters") */
-  capabilityLabel: string;
+  capabilityLabel?: string;
+
   /** Array of key features or focus points (2-6 items recommended) */
-  focusPoints: FocusPoint[];
+  focusPoints?: FocusPoint[];
+
   /** SEO keywords for searchability */
-  highlights: string[];
+  highlights?: string[];
+
   /** Category tags for filtering and organization */
-  tags: string[];
-  /** Call-to-action button label (include arrow if desired: "→") */
-  ctaLabel: string;
-  /** External link or page reference: URL, 'contact', 'onboarding', or omit for no CTA */
-  externalUrl?: string;
+  tags?: string[];
+
   /** Show pilot recruitment section (only for state: 'PILOT') */
   showPilotSection?: boolean;
+
+  /** Optional external URL for secondary outbound link */
+  externalUrl?: string;
 }
 
 /**
- * Project category type.
- * - product: Commercial product or service
- * - experiment: R&D project testing a hypothesis
- * - advisory: Consulting or service offering
+ * System with optional detail page content.
+ * Union type for cards-only and full detail systems.
  */
-export type ProjectType = 'product' | 'experiment' | 'advisory';
-
-/**
- * Complete project data structure.
- * All fields are required except intent/promise (choose one) and detail.
- *
- * @example
- * const project: ProjectItem = {
- *   id: 'menuflows',
- *   slug: 'menuflows',
- *   title: 'MenuFlows',
- *   icon: 'restaurant_menu',
- *   state: 'LIVE',
- *   type: 'product',
- *   promise: 'A digital menu system for restaurants.',
- *   detail: { ... }
- * };
- */
-export interface ProjectItem {
-  /**
-   * Unique identifier for the project.
-   * Must be lowercase and hyphenated. Used for routing and data references.
-   * @example 'menuflows' | 'twimnc' | 'my-new-project'
-   */
-  id: string;
-
-  /**
-   * URL slug for navigation.
-   * Usually matches the id exactly. Used in the URL path.
-   * @example If id is 'menuflows', slug should also be 'menuflows'
-   */
-  slug: string;
-
-  /** Display name shown on project cards and headings */
-  title: string;
-
-  /**
-   * Material Symbols icon name.
-   * Must be a valid Google Material Symbols icon name.
-   * @example 'restaurant_menu' | 'science' | 'architecture' | 'shopping_cart'
-   * @see https://fonts.google.com/icons
-   */
-  icon: string;
-
-  /** Project lifecycle state: 'LIVE' | 'PILOT' | 'EXPERIMENT' | 'ADVISORY' */
-  state: ProjectState;
-
-  /** Project category type: 'product' | 'experiment' | 'advisory' */
-  type: ProjectType;
-
-  /**
-   * Hypothesis being tested (for experiments only).
-   * Omit if using 'promise'. Choose exactly one: intent OR promise.
-   */
-  intent?: string;
-
-  /**
-   * Value proposition (for products and advisory).
-   * Omit if using 'intent'. Choose exactly one: promise OR intent.
-   */
-  promise?: string;
-
-  /**
-   * Optional detail page content.
-   * Omit for card-only projects (simple experiments).
-   * Include for full project detail pages.
-   */
-  detail?: ProjectDetailData;
-}
+export type SystemWithDetail = System & (SystemDetail | { detail?: never });
 
 /**
  * Navigation item structure for the main menu.

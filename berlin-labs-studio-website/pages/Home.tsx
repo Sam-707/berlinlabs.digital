@@ -1,69 +1,73 @@
+
 import React from 'react';
-import { PROJECTS } from '../data/projects';
+import { SYSTEMS } from '../data/systems';
 import { HOME_CONTENT, STUDIO_CONTENT } from '../data/content';
 import { Page } from '../types';
 import { Logo } from '../components/Logo';
-import { StateBadge } from '../components/StateBadge';
+import { SystemCard } from '../components/SystemCard';
 
 interface HomeProps {
   onNavigate: (page: Page) => void;
 }
 
 export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
-  const currentBuild = PROJECTS.find(p => p.title === HOME_CONTENT.hero.titleSecondary);
-  const currentFeatures = currentBuild?.detail?.focusPoints || [];
+  // Find the featured system (MenuFlows) for the capability showcase
+  const featuredSystem = SYSTEMS.find(s => s.id === 'menuflows');
+  const currentFeatures = featuredSystem?.focusPoints || [];
+
+  // Handle navigation - check if href is external or internal
+  const handleSystemClick = (system: (typeof SYSTEMS)[number]) => {
+    if (system.href.startsWith('http')) {
+      window.open(system.href, '_blank');
+    } else if (system.href === 'contact' || system.href === 'onboarding') {
+      onNavigate(system.href);
+    } else {
+      onNavigate(system.id);
+    }
+  };
 
   return (
     <main className="relative z-10">
-      {/* Hero Section with Dynamic Glows */}
-      <section className="relative px-6 pt-8 md:pt-12 lg:pt-20 pb-12 md:pb-16 lg:pb-20 max-h-[85vh] lg:max-h-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:left-3/4 opacity-[0.015] pointer-events-none transition-all duration-1000">
-          <Logo className="w-[85vh] h-[85vh] text-primary" />
-        </div>
+      {/* Hero Section - 7/5 Grid Layout */}
+      <section className="w-full relative py-16 sm:py-20 lg:py-24">
+        {/* Glow positioned right - hidden on mobile for fold compliance */}
+        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[500px] h-[500px] lg:w-[600px] lg:h-[600px] orbital-glow rounded-full opacity-60 hidden lg:block"></div>
 
-        {/* Dynamic Glows */}
-        <div className="absolute -top-20 -right-20 w-[80vw] max-w-[400px] h-[80vw] max-h-[400px] md:w-[500px] md:h-[500px] orbital-glow rounded-full"></div>
-        <div className="absolute top-1/4 -left-20 w-[70vw] max-w-[350px] h-[70vw] max-h-[350px] md:w-[400px] md:h-[400px] orbital-glow opacity-60 rounded-full"></div>
-
-        <div className="relative z-10 max-w-7xl mx-auto w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center text-center lg:text-left">
-            <div className="flex flex-col items-center lg:items-start">
-              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-overline uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                {HOME_CONTENT.hero.overline}
-              </div>
-
-              <h1 className="h1-hero mb-4 animate-in fade-in slide-in-from-bottom-6 duration-1000">
-                {HOME_CONTENT.hero.titleMain} <br className="hidden lg:block" />
-                <span className="gold-gradient-text">{HOME_CONTENT.hero.titleSecondary}.</span>
-              </h1>
-
-              <p className="text-sm md:text-base mb-6 max-w-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 font-light">
-                {HOME_CONTENT.hero.body}
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 w-full sm:max-w-md animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
-                <button
-                  onClick={() => onNavigate(currentBuild?.id || 'products')}
-                  className="btn-primary"
-                  aria-label={`View ${HOME_CONTENT.hero.titleSecondary} Demo`}
-                >
-                  View Products
-                  <span className="material-symbols-outlined text-lg ml-2 align-middle">arrow_forward</span>
-                </button>
-                <button
-                  onClick={() => onNavigate('products')}
-                  className="btn-secondary"
-                  aria-label="Explore All Products"
-                >
-                  Explore All
-                </button>
-              </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Left: Copy Column - 7 cols */}
+            <div className="lg:col-span-7 flex flex-col items-start">
+            {/* Overline badge */}
+            <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-overline uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              {HOME_CONTENT.hero.overline}
             </div>
 
-            {/* Desktop-only spatial block */}
-            <div className="hidden lg:block relative h-full">
-              {/* This space is intentionally kept open for spatial balance */}
+            {/* Hero heading */}
+            <h1 className="h1-hero mb-4 max-w-3xl animate-in fade-in slide-in-from-bottom-6 duration-1000">
+              {HOME_CONTENT.hero.titleMain} <br className="hidden sm:block" />
+              <span className="gold-gradient-text">{HOME_CONTENT.hero.titleSecondary}.</span>
+            </h1>
+
+            {/* Body text */}
+            <p className="text-sm md:text-base mb-6 max-w-xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 font-light">
+              {HOME_CONTENT.hero.body}
+            </p>
+
+            {/* Single CTA - View Systems (primary/gold) */}
+            <button
+              onClick={() => onNavigate('systems')}
+              className="btn-primary animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300"
+              aria-label="View Systems"
+            >
+              View Systems
+              <span className="material-symbols-outlined text-lg ml-2 align-middle">arrow_forward</span>
+            </button>
+            </div>
+
+            {/* Right: Structural Block - 5 cols, desktop only */}
+            <div className="hidden lg:block lg:col-span-5">
+              <div className="sticky top-32 w-full h-[400px] rounded-2xl bg-gradient-to-br from-white/[0.02] to-transparent border border-white/5"></div>
             </div>
           </div>
         </div>
@@ -71,22 +75,22 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       {/* Dynamic Feature Showcase: Current Build Deep Dive */}
       {currentFeatures.length > 0 && (
-        <section className="px-6 py-16 lg:py-24 relative">
+        <section className="section-standard px-6 relative">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-20">
               <div className="text-center lg:text-left">
-                <span className="overline-label">Core Capabilities</span>
+                <span className="overline-label">Capabilities</span>
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
-                  {currentBuild?.title} <span className="text-primary/40 font-light">v2.0</span>
+                  {featuredSystem?.name} <span className="text-primary/40 font-light">v2.0</span>
                 </h2>
                 <p className="max-w-xs mx-auto lg:mx-0 text-slate-500">
-                  A high-level overview of the architectural focus within the current sprint cycle.
+                  Current operational focus.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                 {currentFeatures.slice(0, 4).map((feature, idx) => (
-                  <div key={idx} className="group p-8 glass-card glass-card-hover rounded-2xl">
+                  <div key={idx} className="group p-8 rounded-2xl glass-card glass-card-hover">
                     <div className="flex items-center gap-4 mb-6">
                        <span className="text-[10px] font-mono text-primary/40 font-bold tracking-widest group-hover:text-primary transition-colors">PART 0{idx + 1}</span>
                        <div className="flex-grow h-px bg-white/5 group-hover:bg-primary/10 transition-colors"></div>
@@ -105,71 +109,46 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </section>
       )}
 
-      {/* Featured Projects Section */}
-      <section className="px-6 py-20 lg:py-24 border-y border-white/10 bg-black/40 relative">
+      {/* Systems Section - Unified Directory */}
+      <section className="section-standard px-6 border-y border-white/10 bg-black/40 relative">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-center lg:text-left flex flex-col items-center lg:items-start">
-            <span className="overline-label mb-4">{HOME_CONTENT.featured.label}</span>
+          <div className="mb-12 flex flex-col items-start">
+            <span className="overline-label mb-4">Systems</span>
             <div className="w-12 h-1 bg-primary/30 rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROJECTS.map((project) => (
-              <div
-                key={project.id}
-                onClick={() => onNavigate(project.id)}
-                className="group flex flex-col p-8 rounded-2xl glass-card glass-card-hover cursor-pointer h-full"
-              >
-                {/* Header: Icon & StateBadge */}
-                <div className="flex justify-between items-start mb-10">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 group-hover:bg-primary/10 transition-all border border-white/10 group-hover:border-primary/20">
-                    <span className="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">
-                      {project.icon}
-                    </span>
-                  </div>
-                  <StateBadge state={project.state} />
-                </div>
-
-                {/* Content Body */}
-                <div className="flex flex-col flex-grow">
-                  <h3 className="text-xl font-display font-bold text-slate-200 group-hover:text-primary transition-colors tracking-tight mb-4">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-slate-400 font-light line-clamp-2 group-hover:text-slate-300 transition-colors">
-                    {project.promise || project.intent}
-                  </p>
-                </div>
-
-                {/* Footer Link */}
-                <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between opacity-40 group-hover:opacity-100 group-hover:border-primary/20 transition-all">
-                  <span className="text-[9px] uppercase tracking-overline font-bold group-hover:text-primary transition-colors">Details</span>
-                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-all">
-                    arrow_forward
-                  </span>
-                </div>
-              </div>
+          {/* Unified systems grid - all states in one layout using SystemCard */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {SYSTEMS.map((system) => (
+              <SystemCard
+                key={system.id}
+                system={system}
+                variant="compact"
+                onClick={() => handleSystemClick(system)}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* Principles Rhythm Section */}
-      <section className="px-6 py-20 lg:py-24">
+      <section className="section-standard px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-20">
             <header className="text-center lg:text-left flex flex-col items-center lg:items-start">
               <h2 className="h2-section mb-6 text-white">{HOME_CONTENT.studioWork.label}</h2>
               <div className="w-12 h-1.5 bg-primary rounded-full mb-8"></div>
               <p className="text-slate-500 max-w-xs font-light">
-                Our methodology is rooted in operational discipline and structural clarity.
+                Discipline. Structure.
               </p>
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-8">
               {STUDIO_CONTENT.constitution.items.map((item, idx) => (
-                <div key={idx} className="relative p-10 rounded-3xl glass-card glass-card-hover group overflow-hidden">
-                  <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity">
-                     <span className="text-7xl font-display font-black text-white">0{idx + 1}</span>
+                <div key={idx} className="relative p-8 rounded-2xl glass-card glass-card-hover group overflow-hidden">
+                  {/* Decorative phase number - restored for visual hierarchy */}
+                  <div className="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.04] transition-opacity pointer-events-none">
+                     <span className="text-7xl font-display font-bold text-primary">0{idx + 1}</span>
                   </div>
                   <span className="overline-label mb-6">PHASE 0{idx + 1}</span>
                   <h3 className="text-2xl font-display font-bold mb-6 text-white group-hover:text-primary transition-colors">
@@ -186,20 +165,19 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* CTA Rhythm Section */}
-      <section className="px-6 py-20 lg:py-32">
+      <section className="section-spacious px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mx-auto p-12 md:p-24 rounded-[3rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 text-center relative overflow-hidden group shadow-2xl transition-all hover:border-primary/20 hover:shadow-gold-glow">
-            <div className="absolute -top-20 -right-20 w-80 h-80 orbital-glow opacity-40 group-hover:opacity-60 transition-opacity rounded-full"></div>
+          <div className="max-w-3xl mx-auto p-12 md:p-24 rounded-[3rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 text-center relative overflow-hidden shadow-2xl transition-all hover:border-primary/20">
 
             <h2 className="text-4xl md:text-6xl font-display font-bold mb-10 text-white leading-tight tracking-tightest">
-              Ready for <br className="hidden md:block" /> <span className="gold-gradient-text">Operational Stability?</span>
+              Operational <br className="hidden md:block" /> <span className="text-white">Stability.</span>
             </h2>
             <p className="mb-14 max-w-md mx-auto text-lg font-light text-slate-400 group-hover:text-slate-300 transition-colors">
-              Each request is reviewed for operational fit. We prioritize venues looking to eliminate friction.
+              We review for fit. Venues seeking friction reduction only.
             </p>
             <button
               onClick={() => onNavigate('contact')}
-              className="w-full md:w-auto btn-primary px-20"
+              className="w-full md:w-auto btn-secondary"
               aria-label="Initiate Inquiry"
             >
               Initiate Connection

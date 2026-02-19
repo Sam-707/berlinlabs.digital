@@ -20,7 +20,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onNavigate, currentPage 
 
   return (
     <>
-      <nav className="sticky top-0 z-[60] glass-card border-b border-white/10 backdrop-blur-xl md:backdrop-blur-2xl lg:backdrop-blur-3xl transition-all duration-300">
+      <nav className="sticky top-0 z-[60] glass-card border-b border-white/10 backdrop-blur-xl transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4 lg:px-6 lg:py-6 flex justify-between items-center">
           {/* Logo Section */}
           <div 
@@ -29,7 +29,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onNavigate, currentPage 
           >
             <Logo className="w-6 h-6 text-primary transition-transform duration-1000 group-hover:rotate-180" />
             <span className="font-display font-bold text-lg tracking-tightest text-white transition-colors group-hover:text-primary">
-              {NAV_CONTENT.brand.first}<span className="font-light text-primary/60">{NAV_CONTENT.brand.second}</span>
+              {NAV_CONTENT.brand.first}<span className="font-light text-primary/40">{NAV_CONTENT.brand.second}</span>
             </span>
           </div>
 
@@ -67,10 +67,10 @@ export const Navigation: React.FC<NavigationProps> = ({ onNavigate, currentPage 
 
       {/* Mobile Navigation Overlay */}
       <div
-        className={`fixed inset-0 z-[55] bg-surface-bg/98 backdrop-blur-md md:backdrop-blur-2xl transition-all duration-500 flex flex-col items-center justify-center p-6 lg:hidden ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}
+        className={`fixed inset-0 z-[55] bg-surface-bg/98 backdrop-blur-xl transition-all duration-500 flex flex-col items-center justify-center p-6 lg:hidden ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}
       >
         <div className="flex flex-col items-center gap-10">
-          <span className="overline-label mb-2 opacity-50">Operational Map</span>
+          <span className="overline-label mb-2 opacity-50">Navigation</span>
           {NAV_CONTENT.items.map((item) => (
             <button
               key={item.id}
