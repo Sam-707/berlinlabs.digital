@@ -22,11 +22,11 @@ export const Systems: React.FC<SystemsProps> = ({ onNavigate }) => {
   };
 
   return (
-    <main className="max-w-7xl mx-auto px-6 lg:px-12 py-32 animate-in fade-in duration-1000">
-      <header className="mb-16 md:mb-32 text-center lg:text-left flex flex-col items-center lg:items-start">
+    <main className="layout-shell stack-section animate-in fade-in duration-1000">
+      <header className="hero-shell stack-hero mb-12 text-center lg:text-left flex flex-col justify-center items-center lg:items-start">
         <span className="overline-label">{SYSTEMS_CONTENT.header.overline}</span>
         <h1 className="h1-hero text-white uppercase tracking-tightest">{SYSTEMS_CONTENT.header.title}</h1>
-        <p className="text-slate-500 max-w-md font-light">Operational systems at different stages of maturity.</p>
+        <p className="text-lead text-measure">Operational systems at different stages of maturity.</p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-standard">

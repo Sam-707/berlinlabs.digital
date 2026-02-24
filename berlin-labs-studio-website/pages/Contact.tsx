@@ -47,13 +47,13 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
   }
 
   return (
-    <main className="relative min-h-[90vh] overflow-hidden">
+    <main className="relative hero-shell stack-hero overflow-hidden">
       {/* Ambient glow - positioned for depth */}
       <div className="absolute top-0 right-0 -translate-y-1/3 translate-x-1/4 w-[500px] h-[500px] lg:w-[700px] lg:h-[700px] orbital-glow rounded-full opacity-40"></div>
       <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl opacity-30"></div>
 
-      <div className="max-w-7xl mx-auto section-hero-sm relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+      <div className="layout-shell relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-center">
 
           {/* Left Column: Context & Metadata - 5 cols */}
           <header className="lg:col-span-5 animate-in fade-in slide-in-from-left-8 duration-1000">
@@ -61,7 +61,7 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
             <h1 className="h1-hero text-white mb-8 uppercase tracking-tightest">
               {CONTACT_CONTENT.header.title}
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 font-light leading-editorial mb-16 max-w-md">
+            <p className="text-lead text-measure mb-12">
               {CONTACT_CONTENT.header.body}
             </p>
 

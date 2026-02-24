@@ -56,9 +56,9 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
   };
 
   return (
-    <main className="max-w-4xl mx-auto px-6 lg:px-12 py-32 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+    <main className="layout-shell-narrow stack-section animate-in fade-in slide-in-from-bottom-4 duration-1000">
       <div className="max-w-3xl mx-auto">
-        <header className="mb-24">
+        <header className="hero-shell stack-hero mb-16">
           <div className="flex items-center gap-4 mb-8">
             <StateBadge state={project.state} />
             {project.domain && (
@@ -69,13 +69,13 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
           </div>
 
           {/* Title */}
-          <h1 className="h1-hero text-white mb-10 uppercase tracking-tightest">
+          <h1 className="h1-hero text-white mb-8 uppercase tracking-tightest">
             {project.fullTitle || project.name}
           </h1>
 
           {/* SEO Summary Paragraph */}
-          <div className="mb-10 p-6 border-l-2 border-primary/20 bg-white/[0.01]">
-            <p className="text-lg text-slate-300 font-normal leading-editorial">
+          <div className="mb-8 p-6 border-l-2 border-primary/20 bg-white/[0.01]">
+            <p className="text-lead text-measure text-slate-300 font-normal">
               {isMenuFlows
                 ? "MenuFlows is a digital menu system designed specifically for independent restaurants in Berlin. It enables operators to replace printed menus with a simple, instantly updatable QR code system, reducing service friction and operational costs."
                 : project.oneLiner}

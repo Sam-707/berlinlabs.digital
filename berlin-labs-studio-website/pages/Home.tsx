@@ -3,7 +3,6 @@ import React from 'react';
 import { SYSTEMS } from '../data/systems';
 import { HOME_CONTENT, STUDIO_CONTENT } from '../data/content';
 import { Page } from '../types';
-import { Logo } from '../components/Logo';
 import { SystemCard } from '../components/SystemCard';
 
 interface HomeProps {
@@ -29,38 +28,40 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <main className="relative z-10">
       {/* Hero Section - 7/5 Grid Layout */}
-      <section className="w-full relative min-h-[85vh] lg:min-h-[90vh] flex items-center py-20 lg:py-0">
+      <section className="w-full relative hero-shell stack-hero">
         {/* Glow positioned right - hidden on mobile for fold compliance */}
         <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[500px] h-[500px] lg:w-[600px] lg:h-[600px] orbital-glow rounded-full opacity-60 hidden lg:block"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-col items-start max-w-4xl">
-            {/* Overline badge */}
-            <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-overline uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-              {HOME_CONTENT.hero.overline}
+        <div className="relative z-10 layout-shell">
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+            <div className="flex flex-col items-start max-w-4xl lg:col-span-8">
+              {/* Overline badge */}
+              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-overline uppercase mb-5 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                {HOME_CONTENT.hero.overline}
+              </div>
+
+              {/* Hero heading */}
+              <h1 className="h1-hero mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000">
+                {HOME_CONTENT.hero.titleMain} <br className="hidden sm:block" />
+                <span className="gold-gradient-text">{HOME_CONTENT.hero.titleSecondary}.</span>
+              </h1>
+
+              {/* Body text */}
+              <p className="text-lead mb-10 max-w-xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
+                {HOME_CONTENT.hero.body}
+              </p>
+
+              {/* Single CTA - View Systems (primary/gold) */}
+              <button
+                onClick={() => onNavigate('systems')}
+                className="btn-primary animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300"
+                aria-label="View Systems"
+              >
+                View Systems
+                <span className="material-symbols-outlined text-lg ml-2 align-middle">arrow_forward</span>
+              </button>
             </div>
-
-            {/* Hero heading */}
-            <h1 className="h1-hero mb-6 animate-in fade-in slide-in-from-bottom-6 duration-1000">
-              {HOME_CONTENT.hero.titleMain} <br className="hidden sm:block" />
-              <span className="gold-gradient-text">{HOME_CONTENT.hero.titleSecondary}.</span>
-            </h1>
-
-            {/* Body text */}
-            <p className="text-base md:text-lg mb-8 max-w-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 font-light leading-editorial">
-              {HOME_CONTENT.hero.body}
-            </p>
-
-            {/* Single CTA - View Systems (primary/gold) */}
-            <button
-              onClick={() => onNavigate('systems')}
-              className="btn-primary animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300"
-              aria-label="View Systems"
-            >
-              View Systems
-              <span className="material-symbols-outlined text-lg ml-2 align-middle">arrow_forward</span>
-            </button>
           </div>
         </div>
       </section>
@@ -69,7 +70,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {currentFeatures.length > 0 && (
         <section className="section-standard px-6 relative">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-20">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16">
               <div className="text-center lg:text-left">
                 <span className="overline-label">Capabilities</span>
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
@@ -126,7 +127,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* Principles Rhythm Section */}
       <section className="section-standard px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16">
             <header className="text-center lg:text-left flex flex-col items-center lg:items-start">
               <h2 className="h2-section mb-6 text-white">{HOME_CONTENT.studioWork.label}</h2>
               <div className="w-12 h-1.5 bg-primary rounded-full mb-8"></div>
@@ -161,10 +162,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mx-auto p-12 md:p-24 rounded-[3rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 text-center relative overflow-hidden shadow-2xl transition-all hover:border-primary/20">
 
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-10 text-white leading-tight tracking-tightest">
+            <h2 className="h2-section mb-8 text-white">
               Operational <br className="hidden md:block" /> <span className="text-white">Stability.</span>
             </h2>
-            <p className="mb-14 max-w-md mx-auto text-lg font-light text-slate-400 group-hover:text-slate-300 transition-colors">
+            <p className="text-lead mb-12 max-w-md mx-auto group-hover:text-slate-300 transition-colors">
               We review for fit. Venues seeking friction reduction only.
             </p>
             <button

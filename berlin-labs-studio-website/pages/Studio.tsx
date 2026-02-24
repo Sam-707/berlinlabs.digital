@@ -3,8 +3,8 @@ import { STUDIO_CONTENT } from '../data/content';
 
 export const Studio: React.FC = () => {
   return (
-    <main className="max-w-4xl mx-auto px-6 lg:px-12 py-32 animate-in fade-in duration-1000">
-      <header className="mb-32">
+    <main className="layout-shell-narrow stack-section animate-in fade-in duration-1000">
+      <header className="hero-shell stack-hero mb-16 flex flex-col justify-center">
         <span className="overline-label">{STUDIO_CONTENT.header.overline}</span>
         <h1 className="h1-hero text-white uppercase tracking-tightest"><span className="gold-gradient-text">{STUDIO_CONTENT.header.title}</span></h1>
       </header>
