@@ -9,9 +9,9 @@ export const Studio: React.FC = () => {
         <h1 className="h1-hero text-white uppercase tracking-tightest"><span className="gold-gradient-text">{STUDIO_CONTENT.header.title}</span></h1>
       </header>
 
-      <section className="mb-32 md:mb-48">
+      <section className="mb-24 lg:mb-32">
         <span className="overline-label mb-12">{STUDIO_CONTENT.constitution.label}</span>
-        <div className="space-y-16">
+        <div className="space-y-14 lg:space-y-16">
           {STUDIO_CONTENT.constitution.items.map((item, idx) => (
             <div key={idx} className="group">
               <h3 className="text-sm uppercase tracking-overline text-white font-display font-bold mb-6 flex items-center gap-4">
@@ -26,9 +26,9 @@ export const Studio: React.FC = () => {
         </div>
       </section>
 
-      <section className="mb-32 md:mb-48 p-8 rounded-2xl glass-card glass-card-hover border-white/10">
-        <span className="overline-label mb-16 text-center">{STUDIO_CONTENT.model.label}</span>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-4 max-w-2xl mx-auto">
+      <section className="mb-24 lg:mb-32 p-8 rounded-2xl glass-card glass-card-hover border-white/10">
+        <span className="overline-label mb-14 text-center">{STUDIO_CONTENT.model.label}</span>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6 max-w-2xl mx-auto">
           {STUDIO_CONTENT.model.steps.map((step, idx) => (
             <React.Fragment key={idx}>
               <div className="text-center group">
@@ -44,9 +44,9 @@ export const Studio: React.FC = () => {
       </section>
 
       {/* The Architect Protocol - New Section */}
-      <section className="mb-32 md:mb-48 p-8 rounded-2xl glass-card glass-card-hover border-white/10">
-        <span className="overline-label mb-16 text-center">The Architect Protocol</span>
-        <div className="max-w-3xl mx-auto text-center space-y-10">
+      <section className="mb-24 lg:mb-32 p-8 rounded-2xl glass-card glass-card-hover border-white/10">
+        <span className="overline-label mb-14 text-center">The Architect Protocol</span>
+        <div className="max-w-3xl mx-auto text-center space-y-9">
           <p className="text-xl md:text-2xl font-display font-light text-slate-300 leading-editorial">
             An <span className="text-primary font-semibold">Operational Product Studio</span> is not an agency. We build and ship systems that address friction.
           </p>
@@ -68,7 +68,7 @@ export const Studio: React.FC = () => {
         </div>
       </section>
 
-      <section className="mb-32 md:mb-48">
+      <section className="mb-24 lg:mb-32">
         <span className="overline-label mb-12">{STUDIO_CONTENT.log.label}</span>
         <div className="space-y-2">
           {STUDIO_CONTENT.log.items.map((log, i) => (

@@ -68,9 +68,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       {/* Dynamic Feature Showcase: Current Build Deep Dive */}
       {currentFeatures.length > 0 && (
-        <section className="section-standard px-6 relative">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16">
+        <section className="stack-section relative">
+          <div className="layout-shell">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-14 lg:gap-20">
               <div className="text-center lg:text-left">
                 <span className="overline-label">Capabilities</span>
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
@@ -81,7 +81,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                 {currentFeatures.slice(0, 4).map((feature, idx) => (
                   <div key={idx} className="group p-8 rounded-2xl glass-card glass-card-hover">
                     <div className="flex items-center gap-4 mb-6">
@@ -103,15 +103,15 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       )}
 
       {/* Systems Section - Unified Directory */}
-      <section className="section-standard px-6 border-y border-white/10 bg-black/40 relative">
-        <div className="max-w-7xl mx-auto">
+      <section className="stack-section border-y border-white/10 bg-black/40 relative">
+        <div className="layout-shell">
           <div className="mb-12 flex flex-col items-start">
             <span className="overline-label mb-4">Systems</span>
             <div className="w-12 h-1 bg-primary/30 rounded-full"></div>
           </div>
 
           {/* Unified systems grid - all states in one layout using SystemCard */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
             {SYSTEMS.map((system) => (
               <SystemCard
                 key={system.id}
@@ -125,9 +125,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* Principles Rhythm Section */}
-      <section className="section-standard px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16">
+      <section className="stack-section">
+        <div className="layout-shell">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-14 lg:gap-20">
             <header className="text-center lg:text-left flex flex-col items-center lg:items-start">
               <h2 className="h2-section mb-6 text-white">{HOME_CONTENT.studioWork.label}</h2>
               <div className="w-12 h-1.5 bg-primary rounded-full mb-8"></div>
@@ -136,7 +136,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               </p>
             </header>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-10">
               {STUDIO_CONTENT.constitution.items.map((item, idx) => (
                 <div key={idx} className="relative p-8 rounded-2xl glass-card glass-card-hover group overflow-hidden">
                   {/* Decorative phase number - restored for visual hierarchy */}
@@ -158,8 +158,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* CTA Rhythm Section */}
-      <section className="section-spacious px-6">
-        <div className="max-w-7xl mx-auto">
+      <section className="stack-section">
+        <div className="layout-shell">
           <div className="max-w-3xl mx-auto p-12 md:p-24 rounded-[3rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 text-center relative overflow-hidden shadow-2xl transition-all hover:border-primary/20">
 
             <h2 className="h2-section mb-8 text-white">

@@ -66,7 +66,7 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
             </p>
 
             {/* Location Card */}
-            <div className="glass-card p-6 rounded-2xl mb-6">
+            <div className="glass-card p-6 rounded-2xl mb-5">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <span className="material-symbols-outlined text-primary text-xl">location_on</span>
@@ -79,7 +79,7 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
             </div>
 
             {/* Services */}
-            <div className="glass-card p-6 rounded-2xl mb-6">
+            <div className="glass-card p-6 rounded-2xl mb-5">
               <p className="text-[10px] uppercase tracking-overline text-slate-600 mb-4 font-display font-bold">
                 Services
               </p>
@@ -110,7 +110,7 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
               {/* Subtle top accent */}
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
 
-              <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+              <form onSubmit={handleSubmit} className="space-y-7 relative z-10">
                 {/* Identity Field */}
                 <div className="space-y-3 group">
                   <label htmlFor="identity" className="text-[10px] uppercase tracking-overline text-slate-500 group-focus-within:text-primary transition-colors font-display font-bold block">
@@ -199,7 +199,7 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
               </form>
 
               {/* Meta Footer */}
-              <div className="mt-10 pt-6 border-t border-white/5 flex justify-between items-center">
+              <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
                 <span className="text-[9px] font-mono tracking-widest uppercase text-slate-700">
                   {CONTACT_CONTENT.meta.version}
                 </span>

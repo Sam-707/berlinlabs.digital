@@ -29,7 +29,7 @@ export const Systems: React.FC<SystemsProps> = ({ onNavigate }) => {
         <p className="text-lead text-measure">Operational systems at different stages of maturity.</p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-standard">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
         {SYSTEMS.map(system => (
           <SystemCard
             key={system.id}
@@ -39,7 +39,7 @@ export const Systems: React.FC<SystemsProps> = ({ onNavigate }) => {
         ))}
       </div>
 
-      <div className="mt-32 pt-16 border-t border-white/10 flex flex-col md:flex-row justify-between items-start gap-8 opacity-40">
+      <div className="mt-24 pt-14 border-t border-white/10 flex flex-col md:flex-row justify-between items-start gap-8 opacity-40">
         <div className="max-w-xs">
           <p className="text-[10px] uppercase tracking-overline font-bold mb-2">Systems Directory</p>
           <p className="text-xs leading-relaxed font-light">Tracks current operational status across the BerlinLabs ecosystem.</p>

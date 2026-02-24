@@ -123,7 +123,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
 
         {/* Philosophy / Hypothesis Section */}
         {project.philosophy && (
-          <section className="mb-32">
+          <section className="mb-24 lg:mb-28">
             <span className="overline-label">{philosophyLabel}</span>
             <p className="text-2xl md:text-3xl font-display font-light leading-editorial text-slate-200">
               {project.philosophy.text}
@@ -133,9 +133,9 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
 
         {/* Capabilities / Signals Section */}
         {project.focusPoints && project.focusPoints.length > 0 && (
-          <section className="mb-32">
+          <section className="mb-24 lg:mb-28">
             <span className="overline-label">{secondaryLabel}</span>
-            <div className="grid grid-cols-1 gap-14">
+            <div className="grid grid-cols-1 gap-8 lg:gap-10">
               {project.focusPoints.map((point, idx) => (
                 <div key={idx} className="group p-8 rounded-2xl glass-card glass-card-hover">
                   <h3 className="text-sm font-display font-bold uppercase tracking-overline mb-4 text-white group-hover:text-primary transition-colors">
@@ -150,7 +150,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
 
         {/* Pilot Section (PILOT state or when showPilotSection is true) */}
         {(isPilot || project.showPilotSection) && (
-          <section className="mb-32 p-8 rounded-2xl glass-card glass-card-hover border-white/10 relative overflow-hidden group">
+          <section className="mb-24 lg:mb-28 p-8 rounded-2xl glass-card glass-card-hover border-white/10 relative overflow-hidden group">
             <span className="overline-label">Pilot Program</span>
             <p className="text-slate-400 mb-12 font-light">
               {isMenuFlows
@@ -169,7 +169,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
 
         {/* Experiment Follow Section (EXPERIMENT state) */}
         {isExperiment && (
-          <section className="mb-32 p-8 rounded-2xl glass-card glass-card-hover border-white/10 relative overflow-hidden">
+          <section className="mb-24 lg:mb-28 p-8 rounded-2xl glass-card glass-card-hover border-white/10 relative overflow-hidden">
             <span className="overline-label">Follow Progress</span>
             <p className="text-slate-400 mb-12 font-light">
               This is an active experiment. We're validating the hypothesis and gathering signals. No promises. No timeline. Just exploration.
@@ -185,7 +185,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
         )}
 
         {/* CTA Buttons */}
-        <div className="flex flex-col md:flex-row gap-8 items-center pt-20 border-t border-white/10">
+        <div className="flex flex-col md:flex-row gap-8 items-center pt-14 lg:pt-16 border-t border-white/10">
           <button
             onClick={handleCtaClick}
             className="btn-secondary w-full md:w-auto"

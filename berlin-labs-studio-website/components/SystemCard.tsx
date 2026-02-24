@@ -35,7 +35,7 @@ export const SystemCard: React.FC<SystemCardProps> = ({ system, onClick, variant
     <div
       onClick={onClick}
       className={`group cursor-pointer rounded-2xl glass-card glass-card-hover border-white/10 flex flex-col justify-between transition-all duration-500 ${
-        isCompact ? 'p-6' : 'p-8'
+        isCompact ? 'p-5' : 'p-7'
       }`}
     >
       <div>
@@ -149,9 +149,9 @@ export const SystemCard: React.FC<SystemCardProps> = ({ system, onClick, variant
       </div>
 
       {/* Footer: CTA Label + Arrow */}
-      <div
-        className={`flex items-center justify-between border-t border-white/10 group-hover:border-primary/20 transition-all duration-300 ${
-          isCompact ? 'pt-4 mt-2' : 'pt-8 mt-4'
+        <div
+          className={`flex items-center justify-between border-t border-white/10 group-hover:border-primary/20 transition-all duration-300 ${
+          isCompact ? 'pt-4 mt-3' : 'pt-7 mt-4'
         }`}
       >
         <span
