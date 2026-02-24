@@ -53,14 +53,18 @@
                         '3xl': '2.5rem',
                     },
                     letterSpacing: {
-                        'overline': '0.4em',
+                        'overline': '0.32em',
                         'tightest': '-0.05em',
                     },
                     lineHeight: {
-                        'editorial': '1.8',
+                        'editorial': '1.7',
                     },
                     boxShadow: {
                         'gold-glow': '0 0 25px -5px rgba(197, 160, 89, 0.15)',
+                    },
+                    maxWidth: {
+                        'layout': '80rem',
+                        'layout-narrow': '72rem',
                     }
                 },
             },
@@ -100,10 +104,10 @@
 
             /* ==================== BUTTON SYSTEM ==================== */
             .btn-primary {
-                @apply bg-primary text-black font-bold rounded-full py-5 px-10 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 hover:shadow-primary/20 text-[11px] uppercase tracking-overline min-h-[44px] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4;
+                @apply inline-flex items-center justify-center bg-primary text-black font-bold rounded-full py-4 px-8 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 hover:shadow-primary/20 text-[12px] uppercase tracking-[0.28em] min-h-[44px] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4;
             }
             .btn-secondary {
-                @apply bg-white/[0.03] text-white border border-white/5 font-bold rounded-full py-5 px-10 transition-all hover:bg-white/[0.08] hover:border-white/10 active:scale-[0.98] text-[11px] uppercase tracking-overline min-h-[44px] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4;
+                @apply inline-flex items-center justify-center bg-white/[0.03] text-white border border-white/5 font-bold rounded-full py-4 px-8 transition-all hover:bg-white/[0.08] hover:border-white/10 active:scale-[0.98] text-[12px] uppercase tracking-[0.28em] min-h-[44px] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4;
             }
 
             /* ==================== FOCUS STATES ==================== */
@@ -122,7 +126,7 @@
             /* ==================== TYPOGRAPHY SCALE ==================== */
             /* Hero Headings - Main page titles */
             .h1-hero {
-                @apply text-4xl md:text-6xl lg:text-8xl font-display font-extrabold leading-[0.88] tracking-tightest;
+                @apply text-5xl md:text-7xl lg:text-[6.25rem] font-display font-extrabold leading-[0.9] tracking-tightest;
             }
             /* Section Headings - Page titles */
             .h1-section {
@@ -130,11 +134,19 @@
             }
             /* Section Headings - Section titles */
             .h2-section {
-                @apply text-2xl md:text-3xl lg:text-4xl font-display font-bold leading-tight tracking-tightest;
+                @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-[1.05] tracking-tightest;
             }
             /* Card Headings */
             .h3-card {
-                @apply text-xl md:text-2xl font-display font-bold leading-tight tracking-tight;
+                @apply text-2xl md:text-[1.75rem] font-display font-bold leading-tight tracking-tight;
+            }
+
+            .text-lead {
+                @apply text-base md:text-lg text-slate-300 font-light leading-editorial;
+            }
+
+            .text-measure {
+                @apply max-w-[65ch];
             }
 
             /* ==================== OVERLINE LABELS ==================== */
@@ -148,10 +160,10 @@
                 @apply py-12 lg:py-16;
             }
             .section-standard {
-                @apply py-20 lg:py-32;
+                @apply py-16 lg:py-24;
             }
             .section-spacious {
-                @apply py-28 lg:py-40;
+                @apply py-20 lg:py-32;
             }
             /* Hero section padding - mobile-first responsive */
             .section-hero {
@@ -159,6 +171,26 @@
             }
             .section-hero-sm {
                 @apply px-6 pt-12 md:pt-16 lg:pt-24 pb-16 md:pb-20 lg:pb-24;
+            }
+
+            /* Layout primitives */
+            .layout-shell {
+                @apply w-full max-w-layout mx-auto px-6 lg:px-12;
+            }
+            .layout-shell-narrow {
+                @apply w-full max-w-layout-narrow mx-auto px-6 lg:px-12;
+            }
+            .hero-shell {
+                @apply min-h-[90vh] lg:min-h-[100vh] flex items-center;
+            }
+            .stack-hero {
+                @apply pt-20 pb-14 lg:pt-28 lg:pb-20;
+            }
+            .stack-section {
+                @apply py-16 lg:py-24;
+            }
+            .stack-tight {
+                @apply py-10 lg:py-14;
             }
 
             /* Card padding variants */
@@ -226,7 +258,7 @@
         body {
             @apply bg-surface-bg text-slate-100 antialiased min-h-screen relative font-sans overflow-x-hidden;
         }
-        p { @apply leading-editorial font-light text-slate-400; }
+        p { @apply leading-editorial font-light text-slate-400 max-w-[65ch]; }
         ::selection { @apply bg-primary text-black; }
     </style>
 <link rel="stylesheet" href="/index.css">
