@@ -10,10 +10,10 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="glass-card border-t border-white/10 backdrop-blur-xl px-6 py-16 lg:py-20 mt-20">
-      <div className="max-w-7xl mx-auto">
+    <footer className="glass-card border-t border-white/10 backdrop-blur-xl py-10 lg:py-12 mt-14">
+      <div className="layout-shell">
         {/* Main Footer Content */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 mb-16">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 mb-10">
 
           {/* Brand Section */}
           <div
@@ -27,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           {/* Navigation Section */}
-          <nav className="flex flex-wrap justify-center lg:justify-end items-center gap-8 md:gap-12">
+          <nav className="flex flex-wrap justify-center lg:justify-end items-center gap-6 md:gap-8">
             {FOOTER_CONTENT.navigation.map((page) => (
               <button
                 key={page}
@@ -68,7 +68,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         {/* Meta Section - Bottom Row */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 pt-6 border-t border-white/5">
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-center">
             <p className="text-[10px] text-slate-600 uppercase tracking-overline font-mono font-bold">
               {FOOTER_CONTENT.copyright}
