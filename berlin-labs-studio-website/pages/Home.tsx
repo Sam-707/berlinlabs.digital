@@ -29,14 +29,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <main className="relative z-10">
       {/* Hero Section - 7/5 Grid Layout */}
-      <section className="w-full relative py-16 sm:py-20 lg:py-24">
+      <section className="w-full relative min-h-[85vh] lg:min-h-[90vh] flex items-center py-20 lg:py-0">
         {/* Glow positioned right - hidden on mobile for fold compliance */}
         <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[500px] h-[500px] lg:w-[600px] lg:h-[600px] orbital-glow rounded-full opacity-60 hidden lg:block"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Left: Copy Column - 7 cols */}
-            <div className="lg:col-span-7 flex flex-col items-start">
+          <div className="flex flex-col items-start max-w-4xl">
             {/* Overline badge */}
             <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-overline uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
@@ -44,13 +42,13 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </div>
 
             {/* Hero heading */}
-            <h1 className="h1-hero mb-4 max-w-3xl animate-in fade-in slide-in-from-bottom-6 duration-1000">
+            <h1 className="h1-hero mb-6 animate-in fade-in slide-in-from-bottom-6 duration-1000">
               {HOME_CONTENT.hero.titleMain} <br className="hidden sm:block" />
               <span className="gold-gradient-text">{HOME_CONTENT.hero.titleSecondary}.</span>
             </h1>
 
             {/* Body text */}
-            <p className="text-sm md:text-base mb-6 max-w-xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 font-light">
+            <p className="text-base md:text-lg mb-8 max-w-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 font-light leading-editorial">
               {HOME_CONTENT.hero.body}
             </p>
 
@@ -63,12 +61,6 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               View Systems
               <span className="material-symbols-outlined text-lg ml-2 align-middle">arrow_forward</span>
             </button>
-            </div>
-
-            {/* Right: Structural Block - 5 cols, desktop only */}
-            <div className="hidden lg:block lg:col-span-5">
-              <div className="sticky top-32 w-full h-[400px] rounded-2xl bg-gradient-to-br from-white/[0.02] to-transparent border border-white/5"></div>
-            </div>
           </div>
         </div>
       </section>

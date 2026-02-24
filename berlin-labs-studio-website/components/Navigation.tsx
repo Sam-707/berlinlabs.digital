@@ -20,8 +20,8 @@ export const Navigation: React.FC<NavigationProps> = ({ onNavigate, currentPage 
 
   return (
     <>
-      <nav className="sticky top-0 z-[60] glass-card border-b border-white/10 backdrop-blur-xl transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4 lg:px-6 lg:py-6 flex justify-between items-center">
+      <nav className="sticky top-0 z-[60] glass-card border-b border-white/[0.06] backdrop-blur-xl transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4 lg:px-6 lg:py-4 flex justify-between items-center">
           {/* Logo Section */}
           <div 
             className="flex items-center gap-3.5 cursor-pointer group" 
