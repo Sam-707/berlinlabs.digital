@@ -4,7 +4,7 @@ import { AppView, MenuItem, CartItem, RestaurantConfig, TableOrder, OwnerNotific
 import { multiTenantApi as api } from './api.multitenant';
 import { adminApi } from './api.admin';
 import { getRestaurantSlug } from './lib/supabase';
-import { ToastProvider, useToast } from './contexts';
+import { ToastProvider, useToast, BrandingProvider } from './contexts';
 import ToastContainer from './components/ToastContainer';
 import { saveActiveOrder, getActiveOrder, clearActiveOrder } from './utils/orderPersistence';
 
@@ -30,6 +30,7 @@ import TableQRGeneratorView from './views/owner/TableQRGeneratorView';
 import WaiterReadyOrdersView from './views/WaiterReadyOrdersView';
 import AdminLoginView from './views/admin/AdminLoginView';
 import AdminDashboardView from './views/admin/AdminDashboardView';
+import AdminBrandingView from './views/admin/AdminBrandingView';
 
 // Inner app component that uses the toast context
 const AppContent: React.FC = () => {
@@ -633,7 +634,10 @@ const AppContent: React.FC = () => {
         return <AdminLoginView onLogin={handleAdminLogin} onBack={() => window.location.href = '/'} />;
 
       case 'admin-dashboard':
-        return <AdminDashboardView onLogout={handleAdminLogout} />;
+        return <AdminDashboardView onLogout={handleAdminLogout} onBranding={() => setView('admin-branding')} />;
+
+      case 'admin-branding':
+        return <AdminBrandingView onBack={() => setView('admin-dashboard')} />;
 
       default:
         return <LandingView onDemo={navigateToDemo} />;
@@ -664,9 +668,11 @@ const AppContent: React.FC = () => {
 // Main App component that provides the toast context
 const App: React.FC = () => {
   return (
-    <ToastProvider>
-      <AppContent />
-    </ToastProvider>
+    <BrandingProvider>
+      <ToastProvider>
+        <AppContent />
+      </ToastProvider>
+    </BrandingProvider>
   );
 };
 

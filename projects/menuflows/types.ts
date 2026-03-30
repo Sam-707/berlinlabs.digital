@@ -20,7 +20,8 @@ export type AppView =
   | 'owner-table-qr-generator'
   | 'waiter-ready-orders'
   | 'admin-login'
-  | 'admin-dashboard';
+  | 'admin-dashboard'
+  | 'admin-branding';
 
 // Toast system types
 export type ToastVariant = 'success' | 'error' | 'info';

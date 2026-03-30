@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { adminApi, PlatformStats, RestaurantWithStats } from '../../api.admin';
+import { useBranding } from '../../contexts';
 import CreateRestaurantModal from './CreateRestaurantModal';
 import AdminMenuModal from './AdminMenuModal';
 
 interface AdminDashboardViewProps {
   onLogout: () => void;
+  onBranding?: () => void;
 }
 
-const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onLogout }) => {
+const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onLogout, onBranding }) => {
+  const { branding } = useBranding();
   const [stats, setStats] = useState<PlatformStats | null>(null);
   const [restaurants, setRestaurants] = useState<RestaurantWithStats[]>([]);
   const [loading, setLoading] = useState(true);
@@ -60,9 +63,18 @@ const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onLogout }) => 
       <header className="sticky top-0 z-40 bg-wine-dark/80 backdrop-blur-xl px-6 py-4 pt-12 flex items-center justify-between border-b border-white/5">
         <div className="flex flex-col">
           <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Platform Admin</span>
-          <h1 className="text-xl font-extrabold tracking-tight">MenuFlows</h1>
+          <h1 className="text-xl font-extrabold tracking-tight">{branding.company.name}</h1>
         </div>
         <div className="flex items-center gap-3">
+          {onBranding && (
+            <button
+              onClick={onBranding}
+              className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white active:scale-95 transition-all"
+              title="White-Label Branding"
+            >
+              <span className="material-symbols-outlined text-[20px]">palette</span>
+            </button>
+          )}
           <button
             onClick={onLogout}
             className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white active:scale-95 transition-all"
