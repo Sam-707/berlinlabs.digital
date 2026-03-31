@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import defaultBranding from '../config/branding.json';
 
 export interface BrandingColors {
   primary: string;
@@ -27,25 +26,28 @@ export interface Branding {
   colors: BrandingColors;
 }
 
-interface BrandingContextValue {
-  branding: Branding;
-  updateBranding: (patch: Partial<Branding>) => void;
-  resetBranding: () => void;
-}
-
-const STORAGE_KEY = 'menuflows_branding_override';
-
-function loadBranding(): Branding {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      return JSON.parse(stored) as Branding;
-    }
-  } catch {
-    // ignore
-  }
-  return defaultBranding as Branding;
-}
+// Fallback used while /branding.json loads (one render frame)
+const DEFAULT_BRANDING: Branding = {
+  company: {
+    name: 'MenuFlows',
+    tagline: 'Digital Restaurant Ordering',
+    supportEmail: 'hello@menuflows.app',
+    domain: 'menuflows.app',
+    logoText: 'menuflows',
+    logoUrl: '',
+  },
+  colors: {
+    primary: '#c21e3a',
+    background: '#0d0d0d',
+    surface: '#141414',
+    surfaceElevated: '#1a1a1a',
+    border: '#262626',
+    textSecondary: '#a3a3a3',
+    textMuted: '#737373',
+    darkBg: '#170e10',
+    cardBg: '#241619',
+  },
+};
 
 function applyCssVars(colors: BrandingColors) {
   const root = document.documentElement;
@@ -58,37 +60,26 @@ function applyCssVars(colors: BrandingColors) {
   root.style.setProperty('--color-text-muted', colors.textMuted);
 }
 
-const BrandingContext = createContext<BrandingContextValue>({
-  branding: defaultBranding as Branding,
-  updateBranding: () => {},
-  resetBranding: () => {},
-});
+const BrandingContext = createContext<Branding>(DEFAULT_BRANDING);
 
 export const BrandingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [branding, setBranding] = useState<Branding>(loadBranding);
+  const [branding, setBranding] = useState<Branding>(DEFAULT_BRANDING);
 
   useEffect(() => {
-    applyCssVars(branding.colors);
-  }, [branding.colors]);
-
-  const updateBranding = (patch: Partial<Branding>) => {
-    setBranding(prev => {
-      const next: Branding = {
-        company: { ...prev.company, ...(patch.company || {}) },
-        colors: { ...prev.colors, ...(patch.colors || {}) },
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-      return next;
-    });
-  };
-
-  const resetBranding = () => {
-    localStorage.removeItem(STORAGE_KEY);
-    setBranding(defaultBranding as Branding);
-  };
+    fetch('/branding.json')
+      .then(res => res.json())
+      .then((data: Branding) => {
+        setBranding(data);
+        applyCssVars(data.colors);
+      })
+      .catch(() => {
+        // branding.json missing or malformed — use defaults
+        applyCssVars(DEFAULT_BRANDING.colors);
+      });
+  }, []);
 
   return (
-    <BrandingContext.Provider value={{ branding, updateBranding, resetBranding }}>
+    <BrandingContext.Provider value={branding}>
       {children}
     </BrandingContext.Provider>
   );

@@ -7,17 +7,16 @@ import {
   ShoppingBag,
   Users,
   CheckCircle2,
-  Star,
   ChevronRight,
   Plus,
-  Search,
-  ShoppingCart,
 } from 'lucide-react';
 import { useBranding } from '../contexts';
 
 interface LandingViewProps {
   onDemo?: () => void;
   activeOrderCode?: string | null;
+  onPrivacy?: () => void;
+  onTerms?: () => void;
 }
 
 // ─── Reusable accent-aware primitives ────────────────────────────────────────
@@ -47,141 +46,125 @@ const GhostButton: React.FC<{ children: React.ReactNode; onClick?: () => void; c
 // ─── Phone Mockup ─────────────────────────────────────────────────────────────
 
 const PhoneMockup: React.FC = () => {
-  const { branding } = useBranding();
   const accent = 'var(--color-accent)';
+  const bg = '#0d0d0d';
+  const card = '#181818';
+
+  const items = [
+    { name: 'Double Trouble', price: '€14.50', desc: 'Two smash patties, caramelized onions, house sauce', emoji: '🍔' },
+    { name: 'Spicy Chicken', price: '€12.00', desc: 'Crispy breast, spicy slaw, chipotle mayo', emoji: '🌶️' },
+    { name: 'Mushroom Swiss', price: '€15.50', desc: 'Sautéed wild mushrooms, truffle aioli', emoji: '🍄' },
+    { name: 'Smoke & Cheese', price: '€13.90', desc: 'Smoked brisket, aged cheddar, pickles', emoji: '🧀' },
+  ];
 
   return (
     <div className="relative mx-auto w-[260px] sm:w-[280px]">
       {/* Glow */}
-      <div
-        className="absolute inset-0 blur-3xl opacity-20 rounded-[40px] scale-110"
-        style={{ background: accent }}
-      />
+      <div className="absolute inset-0 blur-3xl opacity-15 rounded-[40px] scale-110" style={{ background: accent }} />
 
       {/* Phone shell */}
-      <div className="relative bg-slate-900 rounded-[36px] p-[10px] shadow-2xl ring-1 ring-white/10">
+      <div className="relative rounded-[36px] p-[10px] shadow-2xl" style={{ background: '#111', boxShadow: '0 30px 80px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.08)' }}>
         {/* Notch */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-5 bg-slate-800 rounded-full z-10" />
+        <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-16 h-[18px] rounded-full z-20" style={{ background: '#0a0a0a' }} />
 
         {/* Screen */}
-        <div className="bg-[#f8f6f6] rounded-[28px] overflow-hidden h-[560px] flex flex-col">
+        <div className="rounded-[28px] overflow-hidden flex flex-col relative" style={{ background: bg, height: 570 }}>
 
           {/* Status bar */}
-          <div className="flex items-center justify-between px-5 pt-8 pb-2 bg-white">
-            <span className="text-[10px] font-bold text-slate-700">9:41</span>
+          <div className="flex items-center justify-between px-5 pt-9 pb-2 relative z-10 shrink-0">
+            <span className="text-[9px] font-bold" style={{ color: 'rgba(255,255,255,0.5)' }}>9:41</span>
             <div className="flex items-center gap-1">
-              <div className="w-3 h-2 bg-slate-700 rounded-[2px]" />
-              <div className="w-1 h-1 rounded-full bg-slate-700" />
+              <div className="flex items-end gap-px">
+                {[3, 4, 5, 6].map(h => (
+                  <div key={h} className="w-[3px] rounded-sm" style={{ height: h, background: 'rgba(255,255,255,0.5)' }} />
+                ))}
+              </div>
+              <div className="w-4 h-[10px] rounded-[2px] ml-0.5" style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.15)' }} />
             </div>
           </div>
 
-          {/* Restaurant Header */}
-          <div className="bg-white px-4 pb-3 border-b border-slate-100">
-            <div className="flex items-center gap-3 mb-3">
-              <div
-                className="size-9 rounded-xl flex items-center justify-center text-white font-black text-sm"
-                style={{ background: accent }}
-              >
-                B
-              </div>
-              <div>
-                <div className="text-xs font-black text-slate-900">Bella Roma</div>
-                <div className="flex items-center gap-1">
-                  <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
-                  <span className="text-[9px] text-slate-500">4.8 · Table 7</span>
-                </div>
-              </div>
-              <div
-                className="ml-auto text-[9px] font-black px-2 py-0.5 rounded-full text-white"
-                style={{ background: accent }}
-              >
-                OPEN
-              </div>
-            </div>
-            {/* Search */}
-            <div className="flex items-center gap-2 bg-slate-100 rounded-full px-3 py-1.5">
-              <Search className="w-3 h-3 text-slate-400" />
-              <span className="text-[10px] text-slate-400">Search menu…</span>
+          {/* Restaurant title */}
+          <div className="px-4 pb-3 shrink-0">
+            <div className="text-base font-black text-white leading-tight">The Burger Lab</div>
+            <div className="flex items-center gap-1.5 mt-1">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.35)' }}>Open · Berlin Mitte</span>
             </div>
           </div>
 
-          {/* Category pills */}
-          <div className="bg-white px-4 py-2.5 flex gap-2 overflow-x-auto no-scrollbar border-b border-slate-100">
-            {['All', 'Starters', 'Mains', 'Desserts', 'Drinks'].map((cat, i) => (
+          {/* Menu grid — 2 columns */}
+          <div className="flex-1 overflow-hidden px-3 grid grid-cols-2 gap-2 content-start pb-2">
+            {items.map((item) => (
               <div
-                key={cat}
-                className="shrink-0 px-3 py-1 rounded-full text-[9px] font-black whitespace-nowrap"
-                style={
-                  i === 0
-                    ? { background: accent, color: '#fff' }
-                    : { background: '#f1f5f9', color: '#64748b' }
-                }
+                key={item.name}
+                className="rounded-3xl overflow-hidden flex flex-col"
+                style={{ background: card, border: '1px solid rgba(255,255,255,0.04)' }}
               >
-                {cat}
-              </div>
-            ))}
-          </div>
-
-          {/* Menu items */}
-          <div className="flex-1 overflow-hidden px-3 pt-3 space-y-2.5">
-            {[
-              { name: 'Margherita Pizza', price: '€12.90', desc: 'Tomato, mozzarella, basil' },
-              { name: 'Beef Tagliatelle', price: '€15.50', desc: 'Slow-cooked ragù, parmesan' },
-            ].map((item) => (
-              <div key={item.name} className="bg-white rounded-2xl p-3 flex gap-3 shadow-sm ring-1 ring-slate-100">
-                {/* Image placeholder */}
+                {/* Image area */}
                 <div
-                  className="w-[60px] h-[60px] rounded-xl flex-shrink-0 flex items-center justify-center"
-                  style={{ background: `${branding.colors.primary}15` }}
+                  className="relative flex items-center justify-center text-4xl"
+                  style={{ height: 90, background: 'rgba(255,255,255,0.03)' }}
                 >
-                  <span className="text-xl">🍕</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-[11px] font-black text-slate-900 leading-tight mb-0.5">{item.name}</div>
-                  <div className="text-[9px] text-slate-400 leading-tight mb-2 truncate">{item.desc}</div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-black" style={{ color: accent }}>{item.price}</span>
-                    <button
-                      className="size-5 rounded-full flex items-center justify-center text-white"
-                      style={{ background: accent }}
-                    >
-                      <Plus className="w-3 h-3" />
-                    </button>
+                  <span>{item.emoji}</span>
+                  {/* + button top-right */}
+                  <div
+                    className="absolute top-2 right-2 size-7 rounded-full flex items-center justify-center text-white shadow-lg"
+                    style={{ background: accent }}
+                  >
+                    <Plus className="w-3.5 h-3.5" />
                   </div>
                 </div>
+                {/* Info */}
+                <div className="px-2.5 pt-2 pb-2.5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="text-[10px] font-black text-white leading-tight mb-0.5">{item.name}</div>
+                    <div className="text-[8px] leading-tight line-clamp-2" style={{ color: 'rgba(255,255,255,0.3)' }}>{item.desc}</div>
+                  </div>
+                  <div className="text-[11px] font-black mt-1.5" style={{ color: accent }}>{item.price}</div>
+                </div>
               </div>
             ))}
           </div>
 
-          {/* Floating cart pill */}
-          <div className="px-3 pb-4 pt-2">
+          {/* Bottom nav pill — MENU + TABLE */}
+          <div className="px-6 pb-5 pt-2 shrink-0">
             <div
-              className="w-full rounded-2xl py-3 px-4 flex items-center justify-between text-white shadow-lg"
-              style={{ background: accent }}
+              className="flex items-center rounded-full overflow-hidden"
+              style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.07)' }}
             >
-              <div className="flex items-center gap-2">
-                <ShoppingCart className="w-4 h-4" />
-                <span className="text-[11px] font-black">2 items</span>
+              {/* MENU — active */}
+              <div className="flex-1 flex flex-col items-center py-2.5 gap-0.5">
+                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: accent }}>
+                  <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2" /><path d="M7 2v20" /><path d="M21 15V2" /><path d="M18 15a3 3 0 100 6 3 3 0 000-6z" />
+                </svg>
+                <span className="text-[8px] font-black uppercase tracking-widest" style={{ color: accent }}>Menu</span>
               </div>
-              <span className="text-[11px] font-black">View Cart →</span>
-              <span className="text-[11px] font-bold opacity-80">€28.40</span>
+              {/* Divider */}
+              <div className="w-px h-8 self-center" style={{ background: 'rgba(255,255,255,0.07)' }} />
+              {/* TABLE — inactive */}
+              <div className="flex-1 flex flex-col items-center py-2.5 gap-0.5">
+                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                  <rect x="3" y="3" width="18" height="3" rx="1" /><path d="M9 6v13" /><path d="M15 6v13" /><path d="M6 19h12" />
+                </svg>
+                <span className="text-[8px] font-black uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.3)' }}>Table</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Side button */}
-      <div className="absolute right-[-8px] top-24 w-[4px] h-12 bg-slate-700 rounded-full" />
-      <div className="absolute left-[-8px] top-20 w-[4px] h-8 bg-slate-700 rounded-full" />
-      <div className="absolute left-[-8px] top-32 w-[4px] h-8 bg-slate-700 rounded-full" />
+      {/* Physical side buttons */}
+      <div className="absolute right-[-5px] top-24 w-[4px] h-10 rounded-full" style={{ background: '#222' }} />
+      <div className="absolute left-[-5px] top-20 w-[4px] h-7 rounded-full" style={{ background: '#222' }} />
+      <div className="absolute left-[-5px] top-32 w-[4px] h-7 rounded-full" style={{ background: '#222' }} />
     </div>
   );
 };
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-const LandingView: React.FC<LandingViewProps> = ({ onDemo }) => {
-  const { branding } = useBranding();
+const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms }) => {
+  const branding = useBranding();
   const logoText = branding.company.logoText || branding.company.name.toLowerCase();
   const splitIdx = Math.ceil(logoText.length / 2);
   const logoFirst = logoText.slice(0, splitIdx);
@@ -643,11 +626,19 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo }) => {
             <span className="text-sm font-bold text-white/60">{branding.company.name}</span>
           </div>
           <p className="text-xs text-slate-500">
-            © {new Date().getFullYear()} {branding.company.name}. Built in Berlin.
+            © {new Date().getFullYear()} {branding.company.name}. Built by{' '}
+            <a
+              href="https://berlinlabs.digital"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-white transition-colors"
+            >
+              Berlin Labs Digital
+            </a>
           </p>
           <div className="flex items-center gap-6 text-xs text-slate-500">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
+            <button onClick={onPrivacy} className="hover:text-white transition-colors">Privacy</button>
+            <button onClick={onTerms} className="hover:text-white transition-colors">Terms</button>
             <a href={`mailto:${branding.company.supportEmail}`} className="hover:text-white transition-colors">Contact</a>
           </div>
         </div>

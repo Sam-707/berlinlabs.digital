@@ -21,7 +21,8 @@ export type AppView =
   | 'waiter-ready-orders'
   | 'admin-login'
   | 'admin-dashboard'
-  | 'admin-branding';
+  | 'privacy'
+  | 'terms';
 
 // Toast system types
 export type ToastVariant = 'success' | 'error' | 'info';

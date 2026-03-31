@@ -7,7 +7,7 @@ interface AdminLoginViewProps {
 }
 
 const AdminLoginView: React.FC<AdminLoginViewProps> = ({ onLogin, onBack }) => {
-  const { branding } = useBranding();
+  const branding = useBranding();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');

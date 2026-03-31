@@ -30,7 +30,8 @@ import TableQRGeneratorView from './views/owner/TableQRGeneratorView';
 import WaiterReadyOrdersView from './views/WaiterReadyOrdersView';
 import AdminLoginView from './views/admin/AdminLoginView';
 import AdminDashboardView from './views/admin/AdminDashboardView';
-import AdminBrandingView from './views/admin/AdminBrandingView';
+import PrivacyView from './views/PrivacyView';
+import TermsView from './views/TermsView';
 
 // Inner app component that uses the toast context
 const AppContent: React.FC = () => {
@@ -88,6 +89,18 @@ const AppContent: React.FC = () => {
           } else {
             setView('admin-login');
           }
+          setRestaurantLoaded(true);
+          return;
+        }
+
+        // Static legal pages
+        if (path === '/privacy' || path.startsWith('/privacy/')) {
+          setView('privacy');
+          setRestaurantLoaded(true);
+          return;
+        }
+        if (path === '/terms' || path.startsWith('/terms/')) {
+          setView('terms');
           setRestaurantLoaded(true);
           return;
         }
@@ -459,7 +472,7 @@ const AppContent: React.FC = () => {
   const renderView = () => {
     switch (view) {
       case 'marketing':
-        return <LandingView onDemo={navigateToDemo} activeOrderCode={currentOrderCode} />;
+        return <LandingView onDemo={navigateToDemo} activeOrderCode={currentOrderCode} onPrivacy={() => setView('privacy')} onTerms={() => setView('terms')} />;
       case 'splash':
         // config is guaranteed non-null here by early return guard
         return <SplashView config={config!} onContinue={() => setView('menu')} onEnterOwner={() => navigateWithOwnerGuard('owner-dashboard')} />;
@@ -532,7 +545,7 @@ const AppContent: React.FC = () => {
 
       case 'owner-dashboard': {
         const readyOrders = allOrders.filter(o => o.status === 'ready');
-        return <DashboardView onNavigate={(v) => navigateWithOwnerGuard(v as AppView)} onBack={handleLogout} pendingCount={pendingOrders.length} readyCount={readyOrders.length} />;
+        return <DashboardView onNavigate={(v) => navigateWithOwnerGuard(v as AppView)} onBack={handleLogout} pendingCount={pendingOrders.length} readyCount={readyOrders.length} restaurantName={config?.name} />;
       }
 
       case 'owner-pending-orders':
@@ -634,18 +647,21 @@ const AppContent: React.FC = () => {
         return <AdminLoginView onLogin={handleAdminLogin} onBack={() => window.location.href = '/'} />;
 
       case 'admin-dashboard':
-        return <AdminDashboardView onLogout={handleAdminLogout} onBranding={() => setView('admin-branding')} />;
+        return <AdminDashboardView onLogout={handleAdminLogout} />;
 
-      case 'admin-branding':
-        return <AdminBrandingView onBack={() => setView('admin-dashboard')} />;
+      case 'privacy':
+        return <PrivacyView onBack={() => setView('marketing')} />;
+
+      case 'terms':
+        return <TermsView onBack={() => setView('marketing')} />;
 
       default:
-        return <LandingView onDemo={navigateToDemo} />;
+        return <LandingView onDemo={navigateToDemo} onPrivacy={() => setView('privacy')} onTerms={() => setView('terms')} />;
     }
   };
 
-  // LandingView has its own responsive layout, render it without the phone container
-  if (view === 'marketing') {
+  // Full-page views (landing, privacy, terms) render without the phone container
+  if (view === 'marketing' || view === 'privacy' || view === 'terms') {
     return (
       <div className="min-h-screen w-full bg-background-dark font-sans">
         {renderView()}

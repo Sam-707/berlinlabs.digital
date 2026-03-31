@@ -2,7 +2,6 @@ import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabaseServiceRoleKey = import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY;
 
 const PLACEHOLDER_URL = 'https://placeholder.supabase.co';
 const PLACEHOLDER_KEY = 'placeholder-anon-key';
@@ -11,18 +10,10 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.warn('Supabase credentials not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env.local');
 }
 
-// Client for general app operations (customer-facing, respects RLS)
+// Single client — all operations use the anon key with RLS policies.
+// Owner write operations go through Postgres RPC functions (SECURITY DEFINER).
+// The service role key is NEVER exposed to the browser.
 export const supabase = createClient(supabaseUrl || PLACEHOLDER_URL, supabaseAnonKey || PLACEHOLDER_KEY);
-
-// Client for owner operations (bypasses RLS for trusted owner operations)
-// WARNING: Only use for authenticated owner operations (menu updates, config changes)
-export const ownerSupabase = supabaseServiceRoleKey
-  ? createClient(supabaseUrl, supabaseServiceRoleKey)
-  : null;
-
-if (!ownerSupabase) {
-  console.warn('Owner Supabase client not configured. Please set VITE_SUPABASE_SERVICE_ROLE_KEY in .env.local for owner operations to work properly.');
-}
 
 // Owner session helpers
 const OWNER_SESSION_KEY = 'menuflows_owner_session';
@@ -55,7 +46,7 @@ export function getRestaurantSlug(): string | null {
   const segments = path.split('/').filter(Boolean);
 
   // First segment is the restaurant slug (if not a system route)
-  const systemRoutes = ['admin', 'login', 'signup', 'dashboard', 'api'];
+  const systemRoutes = ['admin', 'login', 'signup', 'dashboard', 'api', 'privacy', 'terms'];
   if (segments.length > 0 && !systemRoutes.includes(segments[0])) {
     return segments[0];
   }

@@ -1,7 +1,6 @@
 import { MenuItem, TableOrder, RestaurantConfig, CartItem } from './types';
 import {
   supabase,
-  ownerSupabase,
   hashPin,
   setOwnerSession,
   isOwnerAuthenticated,
