@@ -28,8 +28,9 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
   if (submitted) {
     return (
       <main className="max-w-4xl mx-auto px-6 py-24 md:py-32 lg:py-40 text-center animate-in fade-in zoom-in-95 duration-1000">
-        <div className="w-24 h-24 bg-primary/20 rounded-3xl flex items-center justify-center mx-auto mb-12 border border-primary/30 shadow-gold-glow">
-          <span className="material-symbols-outlined text-primary text-5xl">check_circle</span>
+        <div className="flex flex-col items-center mb-12">
+          <span className="material-symbols-outlined text-primary text-6xl mb-6">check_circle</span>
+          <div className="w-16 h-px bg-primary/30"></div>
         </div>
         <h1 className="h1-hero text-white mb-8 uppercase tracking-tightest">{CONTACT_CONTENT.success.title}</h1>
         <p className="max-w-sm mx-auto text-lg md:text-xl font-light text-slate-400 leading-editorial">
@@ -65,43 +66,41 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
               {CONTACT_CONTENT.header.body}
             </p>
 
-            {/* Location Card */}
-            <div className="glass-card p-6 rounded-2xl mb-5">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <span className="material-symbols-outlined text-primary text-xl">location_on</span>
-                </div>
-                <div>
-                  <p className="text-sm text-white font-display font-semibold mb-1">{CONTACT_CONTENT.header.location}</p>
-                  <p className="text-xs text-slate-600 font-mono tracking-wider">{CONTACT_CONTENT.header.coordinates}</p>
-                </div>
+            {/* Operational manifest */}
+            <dl className="mt-10 space-y-0 border-t border-white/[0.06]">
+              {/* Location */}
+              <div className="flex items-baseline justify-between py-5 border-b border-white/[0.06]">
+                <dt className="text-[9px] font-mono uppercase tracking-overline text-slate-600">Location</dt>
+                <dd className="text-sm font-display font-semibold text-white">{CONTACT_CONTENT.header.location}</dd>
               </div>
-            </div>
-
-            {/* Services */}
-            <div className="glass-card p-6 rounded-2xl mb-5">
-              <p className="text-[10px] uppercase tracking-overline text-slate-600 mb-4 font-display font-bold">
-                Services
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {CONTACT_CONTENT.services.map((service, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1.5 text-[9px] font-mono bg-white/5 text-slate-400 rounded-full border border-white/5"
-                  >
-                    {service}
+              {/* Coordinates */}
+              <div className="flex items-baseline justify-between py-5 border-b border-white/[0.06]">
+                <dt className="text-[9px] font-mono uppercase tracking-overline text-slate-600">Coordinates</dt>
+                <dd className="text-[11px] font-mono text-slate-500">{CONTACT_CONTENT.header.coordinates}</dd>
+              </div>
+              {/* Status */}
+              <div className="flex items-center justify-between py-5 border-b border-white/[0.06]">
+                <dt className="text-[9px] font-mono uppercase tracking-overline text-slate-600">Status</dt>
+                <dd className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-primary/80">
+                    {CONTACT_CONTENT.header.availability}
                   </span>
-                ))}
+                </dd>
               </div>
-            </div>
-
-            {/* Availability Indicator */}
-            <div className="flex items-center gap-3 px-4 py-3 rounded-full bg-primary/5 border border-primary/10 w-fit">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-              <span className="text-[10px] uppercase tracking-widest text-primary/60 font-mono font-semibold">
-                {CONTACT_CONTENT.header.availability}
-              </span>
-            </div>
+              {/* Services */}
+              <div className="py-5">
+                <dt className="text-[9px] font-mono uppercase tracking-overline text-slate-600 mb-4">Services</dt>
+                <dd className="flex flex-col gap-2">
+                  {CONTACT_CONTENT.services.map((service, idx) => (
+                    <span key={idx} className="text-sm font-light text-slate-400 flex items-center gap-2">
+                      <span className="w-3 h-px bg-primary/30"></span>
+                      {service}
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            </dl>
           </header>
 
           {/* Right Column: Intake Terminal - 7 cols */}
@@ -111,38 +110,41 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
 
               <form onSubmit={handleSubmit} className="space-y-7 relative z-10">
-                {/* Identity Field */}
-                <div className="space-y-3 group">
-                  <label htmlFor="identity" className="text-[10px] uppercase tracking-overline text-slate-500 group-focus-within:text-primary transition-colors font-display font-bold block">
-                    {CONTACT_CONTENT.form.labels.identity}
-                  </label>
-                  <input
-                    id="identity"
-                    required
-                    type="text"
-                    value={formData.identity}
-                    onChange={(e) => handleInputChange('identity', e.target.value)}
-                    placeholder={CONTACT_CONTENT.form.placeholders.identity}
-                    className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-white text-lg font-light placeholder:text-white/5 rounded-none"
-                    aria-label={CONTACT_CONTENT.form.labels.identity}
-                  />
-                </div>
+                {/* Identity + Email — side-by-side on md+ */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                  {/* Identity Field */}
+                  <div className="space-y-3 group">
+                    <label htmlFor="identity" className="text-[10px] uppercase tracking-overline text-slate-500 group-focus-within:text-primary transition-colors font-display font-bold block">
+                      {CONTACT_CONTENT.form.labels.identity}
+                    </label>
+                    <input
+                      id="identity"
+                      required
+                      type="text"
+                      value={formData.identity}
+                      onChange={(e) => handleInputChange('identity', e.target.value)}
+                      placeholder={CONTACT_CONTENT.form.placeholders.identity}
+                      className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-white text-lg font-light placeholder:text-white/20 rounded-none"
+                      aria-label={CONTACT_CONTENT.form.labels.identity}
+                    />
+                  </div>
 
-                {/* Email Field */}
-                <div className="space-y-3 group">
-                  <label htmlFor="email" className="text-[10px] uppercase tracking-overline text-slate-500 group-focus-within:text-primary transition-colors font-display font-bold block">
-                    {CONTACT_CONTENT.form.labels.email}
-                  </label>
-                  <input
-                    id="email"
-                    required
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    placeholder={CONTACT_CONTENT.form.placeholders.email}
-                    className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-white text-lg font-light placeholder:text-white/5 rounded-none"
-                    aria-label={CONTACT_CONTENT.form.labels.email}
-                  />
+                  {/* Email Field */}
+                  <div className="space-y-3 group">
+                    <label htmlFor="email" className="text-[10px] uppercase tracking-overline text-slate-500 group-focus-within:text-primary transition-colors font-display font-bold block">
+                      {CONTACT_CONTENT.form.labels.email}
+                    </label>
+                    <input
+                      id="email"
+                      required
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      placeholder={CONTACT_CONTENT.form.placeholders.email}
+                      className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-white text-lg font-light placeholder:text-white/20 rounded-none"
+                      aria-label={CONTACT_CONTENT.form.labels.email}
+                    />
+                  </div>
                 </div>
 
                 {/* Inquiry Type Select */}
@@ -180,7 +182,7 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
                     value={formData.specification}
                     onChange={(e) => handleInputChange('specification', e.target.value)}
                     placeholder={CONTACT_CONTENT.form.placeholders.specification}
-                    className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-white text-lg font-light placeholder:text-white/5 rounded-none resize-none"
+                    className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-white text-lg font-light placeholder:text-white/20 rounded-none resize-none"
                     aria-label={CONTACT_CONTENT.form.labels.specification}
                   />
                 </div>
@@ -200,21 +202,18 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
 
               {/* Meta Footer */}
               <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
-                <span className="text-[9px] font-mono tracking-widest uppercase text-slate-700">
+                <span className="text-[9px] font-mono tracking-widest uppercase text-slate-500">
                   {CONTACT_CONTENT.meta.version}
                 </span>
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/60"></span>
-                  <span className="text-[9px] font-mono tracking-widest uppercase text-slate-700">
+                  <span className="text-[9px] font-mono tracking-widest uppercase text-slate-500">
                     {CONTACT_CONTENT.meta.security}
                   </span>
                 </div>
               </div>
             </div>
 
-            <p className="mt-8 text-[10px] uppercase tracking-overline text-slate-700 font-mono font-bold italic text-center lg:text-left">
-              BerlinLabs — Operational Product Studio
-            </p>
           </div>
         </div>
       </div>

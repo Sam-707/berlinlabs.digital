@@ -13,7 +13,7 @@ export const NAV_CONTENT = {
 
 export const HOME_CONTENT = {
   hero: {
-    overline: 'Operational Product Studio',
+    overline: 'Est. 2024 // Berlin',
     titleMain: 'Building digital',
     titleSecondary: 'Infrastructure',
     body: 'Berlin-based. Multilingual systems for underserved communities.',
