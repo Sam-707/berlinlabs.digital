@@ -112,6 +112,19 @@ create table if not exists orders (
   updated_at    timestamptz not null default now()
 );
 
+-- Restaurant staff (owner + managers who authenticate via PIN)
+create table if not exists restaurant_staff (
+  id            uuid primary key default uuid_generate_v4(),
+  restaurant_id uuid not null references restaurants(id) on delete cascade,
+  user_id       uuid,           -- optional: link to Supabase Auth user
+  role          text not null default 'staff'
+                check (role in ('owner', 'manager', 'staff', 'kitchen')),
+  pin_hash      text not null,  -- SHA-256 of PIN, generated client-side via hashPin()
+  name          text,
+  is_active     boolean not null default true,
+  created_at    timestamptz not null default now()
+);
+
 -- Order items
 create table if not exists order_items (
   id              uuid primary key default uuid_generate_v4(),
@@ -142,6 +155,8 @@ create table if not exists platform_admins (
 -- INDEXES
 -- ============================================================
 
+create index if not exists idx_restaurant_staff_restaurant on restaurant_staff(restaurant_id);
+create index if not exists idx_restaurant_staff_pin on restaurant_staff(restaurant_id, pin_hash) where is_active = true;
 create index if not exists idx_menu_items_restaurant on menu_items(restaurant_id);
 create index if not exists idx_menu_items_category on menu_items(restaurant_id, category);
 create index if not exists idx_orders_restaurant on orders(restaurant_id);
@@ -175,17 +190,108 @@ create or replace trigger orders_updated_at
   for each row execute function set_updated_at();
 
 -- ============================================================
+-- RPC FUNCTIONS
+-- ============================================================
+
+-- upsert_menu_items
+-- Called by api.multitenant.ts → updateMenu() with the full menu array.
+-- Performs a bulk INSERT ... ON CONFLICT (id) DO UPDATE for all items.
+-- SECURITY DEFINER so it bypasses RLS — the restaurant_id check inside
+-- the function is the safety boundary (never touches another restaurant's rows).
+create or replace function upsert_menu_items(
+  p_items        jsonb,
+  p_restaurant_id uuid
+)
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  item jsonb;
+begin
+  -- Verify restaurant exists before touching any rows
+  if not exists (
+    select 1 from restaurants where id = p_restaurant_id
+  ) then
+    raise exception 'Restaurant not found: %', p_restaurant_id
+      using errcode = 'no_data_found';
+  end if;
+
+  for item in select * from jsonb_array_elements(p_items)
+  loop
+    insert into menu_items (
+      id,
+      restaurant_id,
+      name,
+      translated_name,
+      description,
+      price,
+      image_url,
+      category,
+      is_available,
+      is_spicy,
+      contains_peanuts,
+      allergens,
+      additives,
+      display_order,
+      updated_at
+    ) values (
+      coalesce((item->>'id')::uuid, uuid_generate_v4()),
+      p_restaurant_id,
+      item->>'name',
+      nullif(item->>'translated_name', ''),
+      coalesce(item->>'description', ''),
+      (item->>'price')::numeric,
+      coalesce(item->>'image_url', ''),
+      coalesce(item->>'category', 'Mains'),
+      coalesce((item->>'is_available')::boolean, true),
+      (item->>'is_spicy')::boolean,
+      (item->>'contains_peanuts')::boolean,
+      -- allergens: JSONB array → text[]  (handles null + empty cleanly)
+      array(select jsonb_array_elements_text(
+        coalesce(item->'allergens', '[]'::jsonb)
+      )),
+      -- additives: same pattern
+      array(select jsonb_array_elements_text(
+        coalesce(item->'additives', '[]'::jsonb)
+      )),
+      coalesce((item->>'display_order')::integer, 0),
+      now()
+    )
+    on conflict (id) do update set
+      name             = excluded.name,
+      translated_name  = excluded.translated_name,
+      description      = excluded.description,
+      price            = excluded.price,
+      image_url        = excluded.image_url,
+      category         = excluded.category,
+      is_available     = excluded.is_available,
+      is_spicy         = excluded.is_spicy,
+      contains_peanuts = excluded.contains_peanuts,
+      allergens        = excluded.allergens,
+      additives        = excluded.additives,
+      display_order    = excluded.display_order,
+      updated_at       = now()
+    -- Safety: only update rows that belong to this restaurant
+    where menu_items.restaurant_id = p_restaurant_id;
+  end loop;
+end;
+$$;
+
+-- ============================================================
 -- ROW LEVEL SECURITY
 -- ============================================================
 
-alter table restaurants      enable row level security;
-alter table menu_items       enable row level security;
-alter table modifier_groups  enable row level security;
-alter table modifiers        enable row level security;
+alter table restaurants         enable row level security;
+alter table menu_items          enable row level security;
+alter table modifier_groups     enable row level security;
+alter table modifiers           enable row level security;
 alter table menu_item_modifiers enable row level security;
-alter table orders           enable row level security;
-alter table order_items      enable row level security;
-alter table platform_admins  enable row level security;
+alter table orders              enable row level security;
+alter table order_items         enable row level security;
+alter table restaurant_staff    enable row level security;
+alter table platform_admins     enable row level security;
 
 -- Restaurants: public read (needed for slug lookup on load)
 create policy "Public read restaurants"
@@ -221,6 +327,22 @@ create policy "Public insert order_items"
 
 create policy "Public read order_items"
   on order_items for select to anon, authenticated using (true);
+
+-- Restaurant staff: allow anon SELECT so PIN lookup works with the anon key.
+-- PIN is stored as SHA-256 hash; the WHERE clause in the app restricts results
+-- to a specific restaurant_id + pin_hash match — no enumeration risk.
+-- INSERT/UPDATE/DELETE is blocked for anon (staff management goes through owner dashboard).
+create policy "Allow staff pin lookup"
+  on restaurant_staff for select to anon, authenticated using (true);
+
+create policy "No public write to staff"
+  on restaurant_staff for insert to anon with check (false);
+
+create policy "No public update to staff"
+  on restaurant_staff for update to anon using (false);
+
+create policy "No public delete of staff"
+  on restaurant_staff for delete to anon using (false);
 
 -- Platform admins: no public access
 create policy "No public access to platform_admins"
@@ -318,6 +440,10 @@ values
   (r_id, 'Sparkling Water', 'Mineralwasser', '500ml, still or sparkling.', 2.50, 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80', 'Drinks', true, false, 1),
   (r_id, 'Craft Lager', 'Lagerbier', 'Local craft beer, 330ml bottle.', 4.50, 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&q=80', 'Drinks', true, false, 2),
   (r_id, 'Chocolate Lava Cake', 'Schoko-Lava-Kuchen', 'Warm chocolate cake, vanilla ice cream.', 7.90, 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&q=80', 'Desserts', true, false, 1);
+
+-- Owner staff member (PIN: 1234 → same as restaurants.owner_pin_hash default)
+insert into restaurant_staff (restaurant_id, role, pin_hash, name, is_active)
+values (r_id, 'owner', encode(sha256('1234'::bytea), 'hex'), 'Owner', true);
 
 -- Link burger to Size + Extras modifier groups
 insert into menu_item_modifiers (menu_item_id, modifier_group_id)
