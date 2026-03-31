@@ -5,9 +5,11 @@ interface DashboardViewProps {
   onNavigate: (view: string) => void;
   onBack: () => void;
   pendingCount: number;
+  readyCount?: number;
+  restaurantName?: string;
 }
 
-const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onBack, pendingCount }) => {
+const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onBack, pendingCount, restaurantName = 'Dashboard' }) => {
   return (
     <div className="flex flex-col h-full bg-[#170e10] text-white animate-fade-in relative overflow-hidden">
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -15,7 +17,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onBack, pendi
       <header className="sticky top-0 z-40 bg-[#170e10]/80 backdrop-blur-xl px-6 py-4 pt-12 flex items-center justify-between border-b border-white/5">
         <div className="flex flex-col">
           <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Manager Portal</span>
-          <h1 className="text-xl font-extrabold tracking-tight">The Burger Lab</h1>
+          <h1 className="text-xl font-extrabold tracking-tight">{restaurantName}</h1>
         </div>
         <div className="flex items-center gap-3">
           <button onClick={onBack} className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white active:scale-95 transition-all">

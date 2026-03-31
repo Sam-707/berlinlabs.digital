@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Assets — BerlinLabs Digital (Product Studio)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: #1a1a1a;
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+    }
+
+    .asset-section {
+      background: #2a2a2a;
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 60px;
+    }
+
+    .asset-label {
+      color: #d4af37;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    /* ========== COVER IMAGE (1128 x 191px) ========== */
+    .cover-image {
+      width: 1128px;
+      height: 191px;
+      background: linear-gradient(135deg, #2a1a1a 0%, #1a0f0f 100%);
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .cover-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 35px,
+          rgba(212, 175, 55, 0.03) 35px,
+          rgba(212, 175, 55, 0.03) 36px
+        );
+      pointer-events: none;
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 0 50px;
+    }
+
+    .cover-left {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .company-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: #fff;
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+
+    .company-name span {
+      color: #d4af37;
+    }
+
+    .tagline {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .cover-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 60px;
+      border-left: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tech-item {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      line-height: 1.5;
+    }
+
+    .tech-item.accent {
+      color: rgba(212, 175, 55, 0.8);
+      margin-top: 16px;
+    }
+
+    .cover-accent {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #d4af37 0%, transparent 100%);
+    }
+
+    /* ========== LOGO (300 x 300px) ========== */
+    .logo-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #2a1a1a 0%, #1a0f0f 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .logo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 25px,
+          rgba(212, 175, 55, 0.04) 25px,
+          rgba(212, 175, 55, 0.04) 26px
+        );
+      pointer-events: none;
+    }
+
+    .logo-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .logo-acronym {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 110px;
+      color: #fff;
+      letter-spacing: 8px;
+      line-height: 1;
+    }
+
+    .logo-acronym span {
+      color: #d4af37;
+    }
+
+    .logo-subtitle {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .logo-border {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      border: 2px solid rgba(212, 175, 55, 0.2);
+      pointer-events: none;
+    }
+
+    .logo-corner {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #d4af37;
+    }
+
+    .logo-corner.tl {
+      top: 20px;
+      left: 20px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .logo-corner.br {
+      bottom: 20px;
+      right: 20px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .logo-name {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    /* ========== INSTRUCTIONS ========== */
+    .instructions {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 8px;
+      padding: 24px;
+      margin-top: 60px;
+    }
+
+    .instructions h3 {
+      color: #d4af37;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .instructions ol {
+      color: rgba(255,255,255,0.8);
+      line-height: 1.8;
+      padding-left: 24px;
+    }
+
+    .instructions li {
+      margin-bottom: 8px;
+    }
+
+    .instructions code {
+      background: rgba(0,0,0,0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Monaco', monospace;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1200px) {
+      .cover-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1128 / 191;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BERLINLABS DIGITAL — PRODUCT STUDIO LINKEDIN ASSETS</h1>
+
+    <!-- ========== COVER IMAGE ========== -->
+    <div class="asset-section">
+      <div class="asset-label">01 — Cover Image (1128 × 191px)</div>
+      <div class="cover-image" id="cover">
+        <div class="cover-content">
+          <div class="cover-left">
+            <div class="company-name">BERLIN<span>LABS</span></div>
+            <div class="tagline">Small product studio in Berlin.</div>
+            <div class="tagline" style="font-size: 13px; margin-top: 4px;">Currently building MenuFlows</div>
+          </div>
+          <div class="cover-right">
+            <div class="tech-stack">
+              <div class="tech-item">MenuFlows — digital menus</div>
+              <div class="tech-item">Selective client work</div>
+              <div class="tech-item">twimnc — experiment</div>
+              <div class="tech-item accent">Demo in Featured</div>
+            </div>
+          </div>
+        </div>
+        <div class="cover-accent"></div>
+      </div>
+    </div>
+
+    <!-- ========== LOGO OPTIONS ========== -->
+    <div class="asset-section">
+      <div class="asset-label">02 — Logo Options (300 × 300px)</div>
+      <div class="logo-section">
+        <!-- Logo Option 1: BL -->
+        <div class="logo-container">
+          <div class="logo" id="logo-bl">
+            <div class="logo-border"></div>
+            <div class="logo-corner tl"></div>
+            <div class="logo-corner br"></div>
+            <div class="logo-content">
+              <div class="logo-acronym">BL<span>L</span></div>
+              <div class="logo-subtitle">Product Studio</div>
+            </div>
+          </div>
+          <div class="logo-name">Option 1: BL</div>
+        </div>
+
+        <!-- Logo Option 2: BERLINLABS -->
+        <div class="logo-container">
+          <div class="logo" id="logo-bridge">
+            <div class="logo-border"></div>
+            <div class="logo-corner tl"></div>
+            <div class="logo-corner br"></div>
+            <div class="logo-content">
+              <div class="logo-acronym" style="font-size: 64px; letter-spacing: 3px;">BERL<span>IN</span></div>
+              <div class="logo-subtitle">Product Studio</div>
+            </div>
+          </div>
+          <div class="logo-name">Option 2: BERLINLABS</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== INSTRUCTIONS ========== -->
+    <div class="instructions">
+      <h3>📸 HOW TO EXPORT</h3>
+      <ol>
+        <li>Open this HTML file in your browser (Chrome/Safari recommended)</li>
+        <li>Take a screenshot of each asset at 2x resolution (Retina displays work best)</li>
+        <li>Use macOS built-in screenshot: <code>Cmd + Shift + 4</code> then select the asset</li>
+        <li>Or use browser DevTools → Right-click asset → "Capture node screenshot"</li>
+        <li>Name files: <code>linkedin-cover.png</code> and <code>linkedin-logo.png</code></li>
+        <li>Upload to LinkedIn Company Page setup</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

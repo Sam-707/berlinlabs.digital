@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BERLINLABS | Operational Product Studio</title>
+    <title>BERLINLABS — Operational Product Studio</title>
+    <meta name="description" content="Berlin-based operational product studio building multilingual digital products (German/English/Arabic) that solve real problems for underserved communities. Home of MenuFlows and 3rbst.">
+    <meta name="keywords" content="Berlin product studio, multilingual solutions, MenuFlows, 3rbst, WhatsApp translation, Arabic German translation, restaurant software, Berlin startups">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://berlinlabs.digital/">
+    <meta property="og:title" content="BERLINLABS | Operational Product Studio">
+    <meta property="og:description" content="Building digital products that bridge communities and solve real problems. Berlin-based, multilingual (German/English/Arabic).">
+    <meta property="og:image" content="https://berlinlabs.digital/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://berlinlabs.digital/">
+    <meta property="twitter:title" content="BERLINLABS | Operational Product Studio">
+    <meta property="twitter:description" content="Building digital products that bridge communities and solve real problems.">
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet">
@@ -37,14 +53,18 @@
                         '3xl': '2.5rem',
                     },
                     letterSpacing: {
-                        'overline': '0.4em',
+                        'overline': '0.32em',
                         'tightest': '-0.05em',
                     },
                     lineHeight: {
-                        'editorial': '1.8',
+                        'editorial': '1.7',
                     },
                     boxShadow: {
                         'gold-glow': '0 0 25px -5px rgba(197, 160, 89, 0.15)',
+                    },
+                    maxWidth: {
+                        'layout': '80rem',
+                        'layout-narrow': '72rem',
                     }
                 },
             },
@@ -52,17 +72,26 @@
     </script>
     <style type="text/tailwindcss">
         @layer components {
+            /* ==================== GRADIENT TEXT ==================== */
             .gold-gradient-text {
                 background: linear-gradient(135deg, #EAD098 0%, #C5A059 50%, #8E6E34 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
+
+            /* ==================== GLASS CARD SYSTEM ==================== */
             .glass-card {
-                @apply bg-white/[0.02] border border-white/5 backdrop-blur-3xl transition-all duration-500;
+                @apply bg-white/[0.02] border border-white/5 backdrop-blur-xl transition-all duration-500;
             }
             .glass-card-hover {
                 @apply hover:border-primary/20 hover:shadow-gold-glow hover:-translate-y-1;
             }
+            /* Unified Card System - Single geometry for all cards */
+            .unified-card {
+                @apply p-8 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-xl transition-all duration-500 hover:border-primary/20 hover:-translate-y-1;
+            }
+
+            /* ==================== ATMOSPHERIC EFFECTS ==================== */
             .orbital-glow {
                 background: radial-gradient(circle at center, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
                 pointer-events: none;
@@ -72,37 +101,166 @@
                 opacity: 0.012;
                 pointer-events: none;
             }
+
+            /* ==================== BUTTON SYSTEM ==================== */
             .btn-primary {
-                @apply bg-primary text-black font-bold rounded-full py-5 px-10 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 hover:shadow-primary/20 text-[11px] uppercase tracking-overline;
+                @apply inline-flex items-center justify-center bg-primary text-black font-bold rounded-full py-4 px-8 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 hover:shadow-primary/20 text-[12px] uppercase tracking-[0.28em] min-h-[44px] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4;
             }
             .btn-secondary {
-                @apply bg-white/[0.03] text-white border border-white/5 font-bold rounded-full py-5 px-10 transition-all hover:bg-white/[0.08] hover:border-white/10 active:scale-[0.98] text-[11px] uppercase tracking-overline;
+                @apply inline-flex items-center justify-center bg-white/[0.03] text-white border border-white/5 font-bold rounded-full py-4 px-8 transition-all hover:bg-white/[0.08] hover:border-white/10 active:scale-[0.98] text-[12px] uppercase tracking-[0.28em] min-h-[44px] focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4;
             }
+
+            /* ==================== FOCUS STATES ==================== */
+            button:focus-visible,
+            a:focus-visible,
+            input:focus-visible,
+            textarea:focus-visible,
+            select:focus-visible {
+                @apply outline-2 outline-primary outline-offset-2;
+            }
+            button:focus:not(:focus-visible),
+            a:focus:not(:focus-visible) {
+                @apply outline-none;
+            }
+
+            /* ==================== TYPOGRAPHY SCALE ==================== */
+            /* Hero Headings - Main page titles */
             .h1-hero {
-                @apply text-5xl md:text-8xl font-display font-extrabold leading-[0.95] tracking-tightest;
+                @apply text-5xl md:text-7xl lg:text-[6.25rem] font-display font-extrabold leading-[0.9] tracking-tightest;
             }
+            /* Section Headings - Page titles */
+            .h1-section {
+                @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight tracking-tightest;
+            }
+            /* Section Headings - Section titles */
             .h2-section {
-                @apply text-3xl md:text-5xl font-display font-bold leading-tight tracking-tightest;
+                @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-[1.05] tracking-tightest;
             }
+            /* Card Headings */
+            .h3-card {
+                @apply text-2xl md:text-[1.75rem] font-display font-bold leading-tight tracking-tight;
+            }
+
+            .text-lead {
+                @apply text-base md:text-lg text-slate-300 font-light leading-editorial;
+            }
+
+            .text-measure {
+                @apply max-w-[65ch];
+            }
+
+            /* ==================== OVERLINE LABELS ==================== */
             .overline-label {
                 @apply text-[10px] font-display font-bold tracking-overline uppercase text-primary mb-6 block;
+            }
+
+            /* ==================== SPACING SYSTEM ==================== */
+            /* Section padding variants */
+            .section-compact {
+                @apply py-12 lg:py-16;
+            }
+            .section-standard {
+                @apply py-16 lg:py-24;
+            }
+            .section-spacious {
+                @apply py-20 lg:py-32;
+            }
+            /* Hero section padding - mobile-first responsive */
+            .section-hero {
+                @apply px-6 py-12 md:py-16 lg:py-20;
+            }
+            .section-hero-sm {
+                @apply px-6 pt-12 md:pt-16 lg:pt-24 pb-16 md:pb-20 lg:pb-24;
+            }
+
+            /* Layout primitives */
+            .layout-shell {
+                @apply w-full max-w-layout mx-auto px-6 lg:px-12;
+            }
+            .layout-shell-narrow {
+                @apply w-full max-w-layout-narrow mx-auto px-6 lg:px-12;
+            }
+            .hero-shell {
+                @apply min-h-[90vh] lg:min-h-[100vh] flex items-center;
+            }
+            .stack-hero {
+                @apply pt-20 pb-14 lg:pt-28 lg:pb-20;
+            }
+            .stack-section {
+                @apply py-16 lg:py-24;
+            }
+            .stack-tight {
+                @apply py-10 lg:py-14;
+            }
+
+            /* Card padding variants */
+            .card-compact {
+                @apply p-6;
+            }
+            .card-standard {
+                @apply p-8;
+            }
+            .card-spacious {
+                @apply p-10;
+            }
+            .card-generous {
+                @apply p-10 md:p-12;
+            }
+
+            /* Gap sizes */
+            .gap-tight {
+                @apply gap-4;
+            }
+            .gap-standard {
+                @apply gap-6;
+            }
+            .gap-wide {
+                @apply gap-8;
+            }
+
+            /* ==================== COLOR VARIANTS ==================== */
+            /* Gold accent with consistent opacity levels */
+            .text-gold-dim {
+                @apply text-primary/40;
+            }
+            .text-gold-muted {
+                @apply text-primary/20;
+            }
+            .bg-gold-dim {
+                @apply bg-primary/10;
+            }
+            .bg-gold-muted {
+                @apply bg-primary/5;
+            }
+            .border-gold-dim {
+                @apply border-primary/20;
+            }
+
+            /* Text colors */
+            .text-heading {
+                @apply text-white;
+            }
+            .text-body {
+                @apply text-slate-400;
+            }
+            .text-muted {
+                @apply text-slate-500;
+            }
+
+            /* ==================== TRANSITIONS ==================== */
+            .transition-standard {
+                @apply duration-500 ease-in-out;
+            }
+            .transition-slow {
+                @apply duration-1000 ease-in-out;
             }
         }
         body {
             @apply bg-surface-bg text-slate-100 antialiased min-h-screen relative font-sans overflow-x-hidden;
         }
-        p { @apply leading-editorial font-light text-slate-400; }
+        p { @apply leading-editorial font-light text-slate-400 max-w-[65ch]; }
         ::selection { @apply bg-primary text-black; }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
-  }
-}
-</script>
 <link rel="stylesheet" href="/index.css">
 </head>
 <body>

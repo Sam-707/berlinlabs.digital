@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useBranding } from '../../contexts';
 
 interface AdminLoginViewProps {
   onLogin: (email: string, password: string) => Promise<boolean>;
@@ -6,6 +7,7 @@ interface AdminLoginViewProps {
 }
 
 const AdminLoginView: React.FC<AdminLoginViewProps> = ({ onLogin, onBack }) => {
+  const branding = useBranding();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -112,7 +114,7 @@ const AdminLoginView: React.FC<AdminLoginViewProps> = ({ onLogin, onBack }) => {
       </main>
 
       <footer className="p-10 text-center opacity-20">
-        <p className="text-[9px] font-black uppercase tracking-[0.5em]">MenuFlows Platform</p>
+        <p className="text-[9px] font-black uppercase tracking-[0.5em]">{branding.company.name} Platform</p>
       </footer>
     </div>
   );

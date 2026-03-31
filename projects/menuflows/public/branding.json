@@ -1,0 +1,32 @@
+{
+  "company": {
+    "name": "MenuFlows",
+    "tagline": "Digital Restaurant Ordering",
+    "supportEmail": "hello@menuflows.app",
+    "domain": "menuflows.app",
+    "logoText": "menuflows",
+    "logoUrl": ""
+  },
+  "colors": {
+    "primary": "#c21e3a",
+    "background": "#0d0d0d",
+    "surface": "#141414",
+    "surfaceElevated": "#1a1a1a",
+    "border": "#262626",
+    "textSecondary": "#a3a3a3",
+    "textMuted": "#737373",
+    "darkBg": "#170e10",
+    "cardBg": "#241619"
+  },
+
+  "_readme": "Edit this file to white-label MenuFlows. Run 'npm run build' then deploy. No other files need changing.",
+  "_fields": {
+    "company.name": "Shown in header and legal pages. Use your agency or client name.",
+    "company.supportEmail": "Shown in Privacy Policy and Terms footer.",
+    "company.domain": "Your deployment domain. Used in legal pages and QR generator.",
+    "company.logoUrl": "Path to logo under /public. Example: /logos/acme.png",
+    "colors.primary": "Hex color for buttons, accents, and active nav states.",
+    "colors.darkBg": "Main dark background for owner/staff views. #170e10 = wine dark.",
+    "colors.cardBg": "Card surface color in owner views."
+  }
+}
