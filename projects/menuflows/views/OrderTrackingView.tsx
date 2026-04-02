@@ -89,7 +89,7 @@ const OrderTrackingView: React.FC<OrderTrackingViewProps> = ({ order, allOrders,
   return (
     <div className="flex flex-col h-full bg-wine-dark text-white animate-fade-in overflow-hidden relative">
       {/* Background Ambience */}
-      <div className="absolute top-0 left-0 right-0 h-full bg-[radial-gradient(circle_at_50%_0%,rgba(194,30,58,0.15),transparent)] pointer-events-none z-0"></div>
+      <div className="absolute top-0 left-0 right-0 h-full pointer-events-none z-0" style={{ background: 'radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 15%, transparent), transparent)' }}></div>
 
       <header className="px-6 pt-12 pb-6 flex items-center justify-between relative z-10">
         <button onClick={onBack} className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center active:scale-90 transition-all">

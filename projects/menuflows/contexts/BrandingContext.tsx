@@ -71,6 +71,10 @@ export const BrandingProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       .then((data: Branding) => {
         setBranding(data);
         applyCssVars(data.colors);
+        // Update document title and meta description from branding
+        document.title = data.company.name;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', data.company.tagline);
       })
       .catch(() => {
         // branding.json missing or malformed — use defaults

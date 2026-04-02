@@ -2,6 +2,7 @@
 import React, { useRef } from 'react';
 import { RestaurantConfig } from '../../types';
 import { multiTenantApi as api } from '../../api.multitenant';
+import { useBranding } from '../../contexts';
 
 interface BrandingViewProps {
   config: RestaurantConfig;
@@ -10,6 +11,7 @@ interface BrandingViewProps {
 }
 
 const BrandingView: React.FC<BrandingViewProps> = ({ config, setConfig, onBack }) => {
+  const branding = useBranding();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -127,7 +129,7 @@ const BrandingView: React.FC<BrandingViewProps> = ({ config, setConfig, onBack }
           <span className="text-[10px] font-semibold uppercase tracking-widest">Powered by</span>
           <div className="flex items-center gap-1.5 pl-2 border-l border-white/20">
             <span className="material-symbols-outlined text-[14px]">bolt</span>
-            <span className="text-xs font-bold tracking-tight">Menuflows.app</span>
+            <span className="text-xs font-bold tracking-tight">{branding.company.name}</span>
           </div>
         </div>
       </footer>

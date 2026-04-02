@@ -1,20 +1,40 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { MenuItem } from '../types';
-import { CATEGORIES } from '../constants';
+import { MenuItem, MenuCategory } from '../types';
+import { useBranding } from '../contexts';
 
 interface MenuViewProps {
   menu: MenuItem[];
+  categories: MenuCategory[];
   cartCount: number;
   onItemClick: (item: MenuItem) => void;
   onOpenCart: () => void;
   onQuickAdd: (item: MenuItem) => void;
   selectedTableNumber?: number | null;
+  restaurantName?: string;
 }
 
-const MenuView: React.FC<MenuViewProps> = ({ menu, cartCount, onItemClick, onOpenCart, onQuickAdd, selectedTableNumber }) => {
-  const [activeCategory, setActiveCategory] = useState('Burgers');
-  const [lastActiveCategory, setLastActiveCategory] = useState('Burgers');
+const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItemClick, onOpenCart, onQuickAdd, selectedTableNumber, restaurantName }) => {
+  const branding = useBranding();
+  const isDemo = typeof window !== 'undefined' && window.location.pathname.replace(/\/$/, '') === '/demo';
+
+  // Derive category list: prefer DB categories, fall back to unique item.category values
+  const effectiveCategories = useMemo(() => {
+    if (categories.length > 0) return categories.map(c => c.name);
+    return Array.from(new Set(menu.map(item => item.category))).filter(Boolean);
+  }, [categories, menu]);
+
+  const initialCategory = effectiveCategories[0] ?? '';
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
+  const [lastActiveCategory, setLastActiveCategory] = useState(initialCategory);
+
+  // Keep activeCategory in sync when effectiveCategories first loads
+  useEffect(() => {
+    if (activeCategory === '' && effectiveCategories.length > 0) {
+      setActiveCategory(effectiveCategories[0]);
+      setLastActiveCategory(effectiveCategories[0]);
+    }
+  }, [effectiveCategories, activeCategory]);
   const [searchQuery, setSearchQuery] = useState('');
   const [isBouncing, setIsBouncing] = useState(false);
 
@@ -61,10 +81,10 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, cartCount, onItemClick, onOpe
 
   // Get unique categories that have matching items
   const categoriesWithMatches = useMemo(() => {
-    if (!isSearching) return CATEGORIES; // Show all when not searching
+    if (!isSearching) return effectiveCategories;
     const uniqueCategories = new Set(filteredItems.map(item => item.category));
-    return CATEGORIES.filter(cat => uniqueCategories.has(cat));
-  }, [filteredItems, isSearching]);
+    return effectiveCategories.filter(cat => uniqueCategories.has(cat));
+  }, [filteredItems, isSearching, effectiveCategories]);
 
   // Handle search input change
   const handleSearchChange = (value: string) => {
@@ -89,15 +109,36 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, cartCount, onItemClick, onOpe
 
   return (
     <div className="flex flex-col h-full bg-background-dark view-transition relative overflow-hidden">
+
+      {/* Agency Preview Banner */}
+      {isDemo && (
+        <div className="shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 border-b border-white/10 z-50" style={{ background: '#0a0f1e' }}>
+          <p className="text-[9px] text-slate-400 leading-tight truncate min-w-0">
+            <span className="text-white font-black">Preview — </span>
+            This is how your restaurant clients' menus look under the{' '}
+            <span className="font-black" style={{ color: 'var(--color-accent)' }}>{branding.company.name}</span> brand.
+          </p>
+          <a
+            href="/#pricing"
+            className="shrink-0 text-[9px] font-black text-white hover:opacity-75 transition-opacity whitespace-nowrap"
+          >
+            Get Source Code →
+          </a>
+        </div>
+      )}
+
       {/* Subtle Background Glow */}
-      <div className="absolute top-0 left-0 right-0 h-96 bg-[radial-gradient(circle_at_50%_0%,rgba(194,30,58,0.1),transparent)] pointer-events-none z-0"></div>
-      
+      <div
+        className="absolute top-0 left-0 right-0 h-96 pointer-events-none z-0"
+        style={{ background: 'radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent)' }}
+      />
+
       <header className="pt-12 pb-6 px-6 flex items-center justify-between sticky top-0 bg-background-dark/90 backdrop-blur-xl z-30 border-b border-white/5">
         <div>
-          <h1 className="text-2xl font-black tracking-tighter text-white">The Burger Lab</h1>
+          <h1 className="text-2xl font-black tracking-tighter text-white">{restaurantName || 'Restaurant'}</h1>
           <div className="flex items-center gap-2 mt-0.5">
             <span className="size-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <p className="text-[10px] text-text-secondary font-black uppercase tracking-[0.2em]">Live in Mitte</p>
+            <p className="text-[10px] text-text-secondary font-black uppercase tracking-[0.2em]">Now Open</p>
             {selectedTableNumber && (
               <div className="ml-2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 border border-white/20">
                 <span className="material-symbols-outlined text-[12px] text-white">table_restaurant</span>
@@ -227,7 +268,7 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, cartCount, onItemClick, onOpe
             <div className="relative">
               <span className="material-symbols-outlined text-[28px]">table_restaurant</span>
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-2 flex size-5 items-center justify-center rounded-full bg-primary text-[10px] font-black text-white shadow-lg ring-2 ring-[#1c1113]">
+                <span className="absolute -top-1 -right-2 flex size-5 items-center justify-center rounded-full bg-primary text-[10px] font-black text-white shadow-lg ring-2 ring-background-dark">
                   {cartCount}
                 </span>
               )}

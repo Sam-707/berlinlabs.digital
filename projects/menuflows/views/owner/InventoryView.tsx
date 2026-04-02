@@ -1,7 +1,6 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { MenuItem } from '../../types';
-import { CATEGORIES } from '../../constants';
 import { multiTenantApi as api } from '../../api.multitenant';
 
 interface InventoryViewProps {
@@ -12,7 +11,15 @@ interface InventoryViewProps {
 }
 
 const InventoryView: React.FC<InventoryViewProps> = ({ menu, setMenu, onBack, onImport }) => {
-  const [activeCategory, setActiveCategory] = useState('Burgers');
+  const categories = useMemo(() => {
+    const unique = Array.from(new Set(menu.map(item => item.category))).filter(Boolean);
+    return unique.length > 0 ? unique : ['Mains'];
+  }, [menu]);
+
+  const [activeCategory, setActiveCategory] = useState(() => {
+    const unique = Array.from(new Set(menu.map(item => item.category))).filter(Boolean);
+    return unique[0] ?? 'Mains';
+  });
   const [editingItem, setEditingItem] = useState<Partial<MenuItem> | null>(null);
   const [showSyncToast, setShowSyncToast] = useState(false);
   const [showErrorToast, setShowErrorToast] = useState(false);
@@ -180,7 +187,7 @@ const InventoryView: React.FC<InventoryViewProps> = ({ menu, setMenu, onBack, on
         </div>
         
         <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
-          {CATEGORIES.map(cat => (
+          {categories.map(cat => (
             <button 
               key={cat}
               onClick={() => setActiveCategory(cat)}

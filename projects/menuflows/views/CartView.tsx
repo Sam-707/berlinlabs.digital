@@ -93,15 +93,15 @@ const CartView: React.FC<CartViewProps> = ({ cart, menu, onClose, onRemove, onUp
                       <p className="text-gray-400 text-xs truncate max-w-[100px]">{item.category}</p>
                       <div className="flex items-center bg-[#1a0f10] rounded-full p-1 gap-3 border border-white/5">
                         <button
+                          aria-label={cartItem.quantity > 1 ? 'Decrease quantity' : 'Remove item'}
                           onClick={() => cartItem.quantity > 1 ? onUpdateQuantity(cartItem.id, -1) : onRemove(cartItem.id)}
                           className="w-7 h-7 rounded-full bg-white/10 text-gray-300 flex items-center justify-center hover:bg-white/20 active:scale-90"
                         >
-                          <span className="material-symbols-outlined text-[16px]">
-                            {cartItem.quantity > 1 ? 'remove' : 'delete'}
-                          </span>
+                          <span className="material-symbols-outlined text-[16px]">remove</span>
                         </button>
                         <span className="text-white text-sm font-semibold w-2 text-center">{cartItem.quantity}</span>
                         <button
+                          aria-label="Increase quantity"
                           onClick={() => onUpdateQuantity(cartItem.id, 1)}
                           className="w-7 h-7 rounded-full bg-accent text-white flex items-center justify-center hover:bg-accent-hover active:bg-accent-pressed active:scale-90 shadow-lg shadow-accent/20"
                         >

@@ -44,6 +44,15 @@ create table if not exists restaurants (
   updated_at          timestamptz not null default now()
 );
 
+-- Menu categories (DB-driven — replaces hardcoded frontend constant)
+create table if not exists menu_categories (
+  id            uuid primary key default uuid_generate_v4(),
+  restaurant_id uuid not null references restaurants(id) on delete cascade,
+  name          text not null,
+  sort_order    integer not null default 0,
+  created_at    timestamptz not null default now()
+);
+
 -- Menu items
 create table if not exists menu_items (
   id              uuid primary key default uuid_generate_v4(),
@@ -54,6 +63,7 @@ create table if not exists menu_items (
   price           numeric(10,2) not null default 0,
   image_url       text not null default '',
   category        text not null default 'Mains',
+  category_id     uuid references menu_categories(id) on delete set null,
   is_available    boolean not null default true,
   is_spicy        boolean default false,
   contains_peanuts boolean default false,
@@ -157,8 +167,10 @@ create table if not exists platform_admins (
 
 create index if not exists idx_restaurant_staff_restaurant on restaurant_staff(restaurant_id);
 create index if not exists idx_restaurant_staff_pin on restaurant_staff(restaurant_id, pin_hash) where is_active = true;
+create index if not exists idx_menu_categories_restaurant on menu_categories(restaurant_id, sort_order);
 create index if not exists idx_menu_items_restaurant on menu_items(restaurant_id);
 create index if not exists idx_menu_items_category on menu_items(restaurant_id, category);
+create index if not exists idx_menu_items_category_id on menu_items(restaurant_id, category_id);
 create index if not exists idx_orders_restaurant on orders(restaurant_id);
 create index if not exists idx_orders_status on orders(restaurant_id, status);
 create index if not exists idx_order_items_order on order_items(order_id);
@@ -284,6 +296,7 @@ $$;
 -- ============================================================
 
 alter table restaurants         enable row level security;
+alter table menu_categories     enable row level security;
 alter table menu_items          enable row level security;
 alter table modifier_groups     enable row level security;
 alter table modifiers           enable row level security;
@@ -296,6 +309,10 @@ alter table platform_admins     enable row level security;
 -- Restaurants: public read (needed for slug lookup on load)
 create policy "Public read restaurants"
   on restaurants for select to anon, authenticated using (true);
+
+-- Menu categories: public read
+create policy "Public read menu_categories"
+  on menu_categories for select to anon, authenticated using (true);
 
 -- Menu items: public read, no public write (owner ops go through Edge Function)
 create policy "Public read menu_items"
@@ -355,6 +372,7 @@ create policy "No public access to platform_admins"
 -- Enable realtime on orders so kitchen view updates live
 alter publication supabase_realtime add table orders;
 alter publication supabase_realtime add table menu_items;
+alter publication supabase_realtime add table menu_categories;
 
 -- ============================================================
 -- DEMO DATA — Single restaurant "demo"
@@ -367,6 +385,11 @@ declare
   g_extras uuid;
   item_burger uuid;
   item_pizza uuid;
+  cat_starters uuid;
+  cat_mains uuid;
+  cat_sides uuid;
+  cat_drinks uuid;
+  cat_desserts uuid;
 begin
 
 -- Restaurant
@@ -388,6 +411,27 @@ returning id into r_id;
 if r_id is null then
   select id into r_id from restaurants where slug = 'demo';
 end if;
+
+-- Menu categories (dynamic, DB-driven)
+insert into menu_categories (id, restaurant_id, name, sort_order)
+values (uuid_generate_v4(), r_id, 'Starters', 1)
+returning id into cat_starters;
+
+insert into menu_categories (id, restaurant_id, name, sort_order)
+values (uuid_generate_v4(), r_id, 'Signature Mains', 2)
+returning id into cat_mains;
+
+insert into menu_categories (id, restaurant_id, name, sort_order)
+values (uuid_generate_v4(), r_id, 'Sides', 3)
+returning id into cat_sides;
+
+insert into menu_categories (id, restaurant_id, name, sort_order)
+values (uuid_generate_v4(), r_id, 'Craft Drinks', 4)
+returning id into cat_drinks;
+
+insert into menu_categories (id, restaurant_id, name, sort_order)
+values (uuid_generate_v4(), r_id, 'Desserts', 5)
+returning id into cat_desserts;
 
 -- Modifier group: Size
 insert into modifier_groups (id, restaurant_id, name, min_selections, max_selections, is_required, display_order)
@@ -411,35 +455,35 @@ values
   (g_extras, 'Jalapeños',      0.50, false, 3);
 
 -- Menu items
-insert into menu_items (id, restaurant_id, name, translated_name, description, price, image_url, category, is_available, is_spicy, display_order)
+insert into menu_items (id, restaurant_id, name, translated_name, description, price, image_url, category, category_id, is_available, is_spicy, display_order)
 values (
   uuid_generate_v4(), r_id,
   'Classic Burger', 'Klassischer Burger',
   'Beef patty, lettuce, tomato, house sauce, brioche bun.',
   12.90,
   'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80',
-  'Burgers', true, false, 1
+  'Signature Mains', cat_mains, true, false, 1
 )
 returning id into item_burger;
 
-insert into menu_items (id, restaurant_id, name, translated_name, description, price, image_url, category, is_available, is_spicy, display_order)
+insert into menu_items (id, restaurant_id, name, translated_name, description, price, image_url, category, category_id, is_available, is_spicy, display_order)
 values (
   uuid_generate_v4(), r_id,
   'Margherita Pizza', 'Margherita Pizza',
   'San Marzano tomato, buffalo mozzarella, fresh basil.',
   14.50,
   'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80',
-  'Pizza', true, false, 1
+  'Signature Mains', cat_mains, true, false, 2
 )
 returning id into item_pizza;
 
-insert into menu_items (restaurant_id, name, translated_name, description, price, image_url, category, is_available, is_spicy, display_order)
+insert into menu_items (restaurant_id, name, translated_name, description, price, image_url, category, category_id, is_available, is_spicy, display_order)
 values
-  (r_id, 'Caesar Salad', 'Caesar Salat', 'Romaine, parmesan, croutons, house Caesar dressing.', 9.90, 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=400&q=80', 'Salads', true, false, 1),
-  (r_id, 'Truffle Fries', 'Trüffelchips', 'Crispy fries, truffle oil, parmesan, fresh herbs.', 6.50, 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80', 'Sides', true, false, 1),
-  (r_id, 'Sparkling Water', 'Mineralwasser', '500ml, still or sparkling.', 2.50, 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80', 'Drinks', true, false, 1),
-  (r_id, 'Craft Lager', 'Lagerbier', 'Local craft beer, 330ml bottle.', 4.50, 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&q=80', 'Drinks', true, false, 2),
-  (r_id, 'Chocolate Lava Cake', 'Schoko-Lava-Kuchen', 'Warm chocolate cake, vanilla ice cream.', 7.90, 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&q=80', 'Desserts', true, false, 1);
+  (r_id, 'Caesar Salad', 'Caesar Salat', 'Romaine, parmesan, croutons, house Caesar dressing.', 9.90, 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=400&q=80', 'Starters', cat_starters, true, false, 1),
+  (r_id, 'Truffle Fries', 'Trüffelchips', 'Crispy fries, truffle oil, parmesan, fresh herbs.', 6.50, 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80', 'Sides', cat_sides, true, false, 1),
+  (r_id, 'Sparkling Water', 'Mineralwasser', '500ml, still or sparkling.', 2.50, 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80', 'Craft Drinks', cat_drinks, true, false, 1),
+  (r_id, 'Craft Lager', 'Lagerbier', 'Local craft beer, 330ml bottle.', 4.50, 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&q=80', 'Craft Drinks', cat_drinks, true, false, 2),
+  (r_id, 'Chocolate Lava Cake', 'Schoko-Lava-Kuchen', 'Warm chocolate cake, vanilla ice cream.', 7.90, 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&q=80', 'Desserts', cat_desserts, true, false, 1);
 
 -- Owner staff member (PIN: 1234 → same as restaurants.owner_pin_hash default)
 insert into restaurant_staff (restaurant_id, role, pin_hash, name, is_active)
@@ -467,8 +511,11 @@ end $$;
 -- select slug, name, is_open from restaurants;
 -- → should show: demo | Sample Bistro | true
 --
+-- select name, sort_order from menu_categories order by sort_order;
+-- → should show 5 categories: Starters, Signature Mains, Sides, Craft Drinks, Desserts
+--
 -- select name, category, price from menu_items order by category, display_order;
--- → should show 7 items across Burgers, Pizza, Salads, Sides, Drinks, Desserts
+-- → should show 7 items across Starters, Signature Mains, Sides, Craft Drinks, Desserts
 --
 -- Then open: your-deployment.vercel.app/demo
 -- Owner PIN: 1234

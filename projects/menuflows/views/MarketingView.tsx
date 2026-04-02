@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useBranding } from '../contexts';
 
 interface MarketingViewProps {
   onTryDemo: () => void;
@@ -7,6 +8,7 @@ interface MarketingViewProps {
 }
 
 const MarketingView: React.FC<MarketingViewProps> = ({ onTryDemo, onOwnerPortal }) => {
+  const branding = useBranding();
   const [showForm, setShowForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -21,7 +23,7 @@ const MarketingView: React.FC<MarketingViewProps> = ({ onTryDemo, onOwnerPortal 
 
   return (
     <div className="flex flex-col h-full bg-[#170e10] text-white animate-fade-in overflow-y-auto no-scrollbar relative">
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(194,30,58,0.2),transparent)] pointer-events-none z-0"></div>
+      <div className="fixed inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 20%, transparent), transparent)' }}></div>
       <div className="fixed -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
 
       <nav className="relative z-10 px-6 pt-10 pb-6 flex items-center justify-between">
@@ -29,7 +31,7 @@ const MarketingView: React.FC<MarketingViewProps> = ({ onTryDemo, onOwnerPortal 
           <div className="size-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
             <span className="material-symbols-outlined text-[20px]">bolt</span>
           </div>
-          <span className="text-xl font-black tracking-tighter">menuflows<span className="text-primary">.app</span></span>
+          <span className="text-xl font-black tracking-tighter">{branding.company.name}</span>
         </div>
         <button 
           onClick={onOwnerPortal}
@@ -53,7 +55,8 @@ const MarketingView: React.FC<MarketingViewProps> = ({ onTryDemo, onOwnerPortal 
           <div className="pt-6 flex flex-col gap-4">
             <button 
               onClick={() => setShowForm(true)}
-              className="w-full h-16 rounded-full bg-primary text-white font-black text-lg shadow-[0_15px_40px_rgba(194,30,58,0.4)] active:scale-95 transition-all flex items-center justify-center gap-3"
+              className="w-full h-16 rounded-full bg-primary text-white font-black text-lg active:scale-95 transition-all flex items-center justify-center gap-3"
+              style={{ boxShadow: '0 15px 40px color-mix(in srgb, var(--color-accent) 40%, transparent)' }}
             >
               Start Stress Test
               <span className="material-symbols-outlined">arrow_forward</span>

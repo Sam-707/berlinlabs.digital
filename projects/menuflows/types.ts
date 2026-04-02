@@ -64,6 +64,13 @@ export interface SelectedModifier {
   priceAdjustment: number;
 }
 
+export interface MenuCategory {
+  id: string;
+  restaurantId: string;
+  name: string;
+  sortOrder: number;
+}
+
 export interface MenuItem {
   id: string;
   name: string;
@@ -72,6 +79,7 @@ export interface MenuItem {
   price: number;
   image: string;
   category: string;
+  categoryId?: string;
   isAvailable: boolean;
   isSpicy?: boolean;
   containsPeanuts?: boolean;

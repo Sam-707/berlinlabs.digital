@@ -65,7 +65,7 @@ const TableMapView: React.FC<TableMapViewProps> = ({ orders, onClearTable, onBac
              <span className="text-[8px] font-black uppercase tracking-widest text-text-secondary">Available</span>
            </div>
            <div className="flex items-center gap-1.5">
-             <div className="size-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(194,30,58,0.5)]"></div>
+             <div className="size-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_color-mix(in_srgb,var(--color-accent)_50%,transparent)]"></div>
              <span className="text-[8px] font-black uppercase tracking-widest text-text-secondary">Eating</span>
            </div>
            <div className="flex items-center gap-1.5">

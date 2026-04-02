@@ -67,7 +67,7 @@ const LoginView: React.FC<LoginViewProps> = ({ onLogin, onBack }) => {
               key={i} 
               className={`size-4 rounded-full border-2 transition-all duration-300 ${
                 pin.length > i 
-                  ? 'bg-primary border-primary scale-110 shadow-[0_0_15px_rgba(194,30,58,0.5)]' 
+                  ? 'bg-primary border-primary scale-110 shadow-[0_0_15px_color-mix(in_srgb,var(--color-accent)_50%,transparent)]'
                   : 'bg-transparent border-white/20'
               } ${error ? 'border-primary bg-primary/20' : ''}`}
             ></div>

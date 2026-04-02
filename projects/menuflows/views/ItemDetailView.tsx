@@ -167,12 +167,13 @@ const ItemDetailView: React.FC<ItemDetailViewProps> = ({ item, onClose, onAddToC
             onClick={handleAddToCart}
             disabled={!isValid}
             className={`
-              w-full rounded-full h-16 text-white font-black text-xl shadow-[0_12px_40px_rgba(194,30,58,0.4)] transition-all flex items-center justify-center gap-3
+              w-full rounded-full h-16 text-white font-black text-xl transition-all flex items-center justify-center gap-3
               ${isValid
                 ? 'bg-primary active:scale-[0.98]'
                 : 'bg-gray-600 cursor-not-allowed opacity-60'
               }
             `}
+            style={isValid ? { boxShadow: '0 12px 40px color-mix(in srgb, var(--color-accent) 40%, transparent)' } : undefined}
           >
             {isValid ? (
               <>

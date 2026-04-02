@@ -1,6 +1,6 @@
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { AppView, MenuItem, CartItem, RestaurantConfig, TableOrder, OwnerNotification } from './types';
+import { AppView, MenuItem, MenuCategory, CartItem, RestaurantConfig, TableOrder, OwnerNotification } from './types';
 import { multiTenantApi as api } from './api.multitenant';
 import { adminApi } from './api.admin';
 import { getRestaurantSlug } from './lib/supabase';
@@ -50,6 +50,7 @@ const AppContent: React.FC = () => {
 
   // Persistence States
   const [menu, setMenu] = useState<MenuItem[]>([]);
+  const [categories, setCategories] = useState<MenuCategory[]>([]);
   const [allOrders, setAllOrders] = useState<TableOrder[]>([]);
   const [config, setConfig] = useState<RestaurantConfig | null>(null);
 
@@ -117,8 +118,9 @@ const AppContent: React.FC = () => {
             setView('splash'); // Start at splash for valid restaurant
 
             // Load restaurant data
-            const [m, c, o] = await Promise.all([api.getMenu(), api.getConfig(), api.getOrders()]);
+            const [m, cats, c, o] = await Promise.all([api.getMenu(), api.getCategories(), api.getConfig(), api.getOrders()]);
             setMenu(m);
+            setCategories(cats);
             setConfig(c);
             setAllOrders(o);
 
@@ -425,7 +427,7 @@ const AppContent: React.FC = () => {
       <div className="min-h-screen bg-wine-dark flex items-center justify-center text-white font-sans">
         <div className="text-center">
           <div className="text-primary font-black uppercase tracking-widest animate-pulse text-2xl mb-4">
-            Initializing MenuFlows...
+            Loading...
           </div>
           <div className="text-text-secondary text-sm">
             Loading restaurant data and configuration
@@ -480,11 +482,13 @@ const AppContent: React.FC = () => {
         return (
           <MenuView
             menu={menu}
+            categories={categories}
             cartCount={cart.reduce((a, b) => a + b.quantity, 0)}
             onItemClick={(item) => { setSelectedMenuItem(item); setView('item-detail'); }}
             onOpenCart={() => setView('cart')}
             onQuickAdd={addToCart}
             selectedTableNumber={selectedTableNumber}
+            restaurantName={config?.name}
           />
         );
       case 'item-detail':

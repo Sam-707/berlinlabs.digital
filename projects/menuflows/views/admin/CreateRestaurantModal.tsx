@@ -126,7 +126,7 @@ const CreateRestaurantModal: React.FC<CreateRestaurantModalProps> = ({ onClose, 
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g., Burger Lab"
+              placeholder="e.g., Sample Bistro"
               className="w-full h-12 px-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-primary/50 transition-all"
               disabled={loading}
             />

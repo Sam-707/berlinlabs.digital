@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { RestaurantConfig } from '../types';
+import { useBranding } from '../contexts';
 
 interface SplashViewProps {
   config: RestaurantConfig;
@@ -9,10 +10,34 @@ interface SplashViewProps {
 }
 
 const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwner }) => {
+  const branding = useBranding();
+  const isDemo = typeof window !== 'undefined' && window.location.pathname.replace(/\/$/, '') === '/demo';
+
   return (
     <div className="flex flex-col h-full bg-[#170e10] text-white relative view-transition overflow-hidden">
+
+      {/* Agency Preview Banner */}
+      {isDemo && (
+        <div className="shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 border-b border-white/10 relative z-50" style={{ background: '#0a0f1e' }}>
+          <p className="text-[9px] text-slate-400 leading-tight truncate min-w-0">
+            <span className="text-white font-black">Preview — </span>
+            This is how your restaurant clients' menus look under the{' '}
+            <span className="font-black" style={{ color: 'var(--color-accent)' }}>{branding.company.name}</span> brand.
+          </p>
+          <a
+            href="/#pricing"
+            className="shrink-0 text-[9px] font-black text-white hover:opacity-75 transition-opacity whitespace-nowrap"
+          >
+            Get Source Code →
+          </a>
+        </div>
+      )}
+
       {/* Background Ambience */}
-      <div className="absolute top-0 left-0 right-0 h-1/2 bg-[radial-gradient(circle_at_50%_0%,rgba(194,30,58,0.15),transparent)] pointer-events-none z-0"></div>
+      <div
+        className="absolute top-0 left-0 right-0 h-1/2 pointer-events-none z-0"
+        style={{ background: 'radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 15%, transparent), transparent)' }}
+      />
       <div className="absolute -top-24 -right-24 w-80 h-80 bg-primary/10 rounded-full blur-[100px]"></div>
 
       {/* Phone-like centered shell for desktop */}
@@ -28,7 +53,7 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
         </h1>
         
         <p className="text-text-secondary text-lg font-medium leading-relaxed max-w-[240px] opacity-70">
-          Hand-crafted burgers and cold brews in the heart of Berlin.
+          {branding.company.tagline}
         </p>
 
         <div className="mt-16 relative w-full aspect-[4/3] max-h-[280px] group">
@@ -42,9 +67,9 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
             <div className="absolute bottom-8 left-0 right-0 px-6">
               <span className="inline-block px-3 py-1 bg-primary text-[9px] font-black rounded-full uppercase tracking-widest border border-white/10 mb-2">
-                Today's Special
+                Featured
               </span>
-              <h2 className="text-white font-black text-2xl tracking-tight">Double Trouble</h2>
+              <h2 className="text-white font-black text-2xl tracking-tight">{config.name}</h2>
             </div>
           </div>
         </div>
@@ -53,9 +78,10 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
       <div className="relative z-20 w-full px-8 pb-16">
         <button 
           onClick={onContinue}
-          className="group relative flex w-full items-center justify-center gap-4 rounded-full bg-primary h-18 py-5 px-6 text-white shadow-[0_15px_40px_rgba(194,30,58,0.4)] transition-all active:scale-[0.97]"
+          className="group relative flex w-full items-center justify-center gap-4 rounded-full bg-primary h-18 py-5 px-6 text-white transition-all active:scale-[0.97]"
+            style={{ boxShadow: '0 15px 40px color-mix(in srgb, var(--color-accent) 40%, transparent)' }}
         >
-          <span className="text-xl font-black tracking-tight">Enter The Lab</span>
+          <span className="text-xl font-black tracking-tight">View Menu</span>
           <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
         </button>
 
@@ -71,7 +97,7 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
           <div className="flex items-center gap-2 opacity-30">
             <span className="text-[9px] font-black uppercase tracking-[0.2em] text-text-secondary">Powered by</span>
             <div className="flex items-center gap-1.5 pl-2 border-l border-white/10">
-              <span className="text-[11px] font-black tracking-tighter text-white uppercase">Menuflows<span className="text-primary">.app</span></span>
+              <span className="text-[11px] font-black tracking-tighter text-white uppercase">{branding.company.name}</span>
             </div>
           </div>
         </div>

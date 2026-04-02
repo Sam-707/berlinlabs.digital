@@ -3,6 +3,9 @@ import { MenuItem } from './types';
 
 export const BURGER_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDay4jloIdCfIwm0UHBBuXkSIN9ObE474ZOE9dD2Ka_9AgfW8ao239QKCUHueWO9STHXoz-95i17-5XwTp-s3bsT00Nhtz8wqt29H9Cgs8OHHNYKmIW-kiiBVBnIAcxGdCRMCxUb-BOShUXh7-M92NWJTmdhcGG1KE2FW-ET2REDtcnPj0JUOZwGs3G0Y1YJF-vfKRFPqrsSYorbsMzbV2zAaMUSBlARus5DvrZo44UzX9AEJonivsf0llp3vXK9T4fEdB_Dnj-Nf_d';
 
+// Note: Menu categories are now DB-driven via the menu_categories table.
+// The old CATEGORIES constant has been removed. Fetch via api.getCategories().
+
 export const MOCK_MENU: MenuItem[] = [
   {
     id: '1',
@@ -59,4 +62,3 @@ export const MOCK_MENU: MenuItem[] = [
   }
 ];
 
-export const CATEGORIES = ['Burgers', 'Sides', 'Drinks', 'Desserts'];

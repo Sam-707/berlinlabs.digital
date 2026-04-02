@@ -1,4 +1,4 @@
-import { MenuItem, TableOrder, RestaurantConfig, CartItem } from './types';
+import { MenuItem, MenuCategory, TableOrder, RestaurantConfig, CartItem } from './types';
 import {
   supabase,
   hashPin,
@@ -8,6 +8,7 @@ import {
   setCurrentRestaurant,
   getCurrentRestaurant,
   DbRestaurant,
+  DbMenuCategory,
   DbMenuItem,
   DbOrder,
   DbOrderItem
@@ -109,6 +110,7 @@ const mapDbMenuItemToMenuItem = (db: DbMenuItem): MenuItem => ({
   price: db.price,
   image: db.image_url,
   category: db.category,
+  categoryId: db.category_id ?? undefined,
   isAvailable: db.is_available,
   isSpicy: db.is_spicy ?? undefined,
   containsPeanuts: db.contains_peanuts ?? undefined,
@@ -321,6 +323,26 @@ export const multiTenantApi = {
   },
 
   // --- Menu ---
+
+  getCategories: async (): Promise<MenuCategory[]> => {
+    const restaurantId = multiTenantApi.getCurrentRestaurantId();
+    if (!restaurantId) return [];
+
+    const { data, error } = await supabase
+      .from('menu_categories')
+      .select('*')
+      .eq('restaurant_id', restaurantId)
+      .order('sort_order', { ascending: true });
+
+    if (error || !data) return [];
+
+    return (data as DbMenuCategory[]).map(row => ({
+      id: row.id,
+      restaurantId: row.restaurant_id,
+      name: row.name,
+      sortOrder: row.sort_order,
+    }));
+  },
 
   getMenu: async (): Promise<MenuItem[]> => {
     const restaurantId = multiTenantApi.getCurrentRestaurantId();

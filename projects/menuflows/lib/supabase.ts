@@ -120,6 +120,14 @@ export interface DbRestaurantConfig {
   updated_at: string;
 }
 
+export interface DbMenuCategory {
+  id: string;
+  restaurant_id: string;
+  name: string;
+  sort_order: number;
+  created_at: string;
+}
+
 export interface DbMenuItem {
   id: string;
   name: string;
@@ -128,6 +136,7 @@ export interface DbMenuItem {
   price: number;
   image_url: string;
   category: string;
+  category_id: string | null;
   is_available: boolean;
   is_spicy: boolean | null;
   contains_peanuts: boolean | null;

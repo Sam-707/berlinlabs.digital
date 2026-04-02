@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import Papa from 'papaparse';
 import { MenuItem } from '../../types';
-import { CATEGORIES } from '../../constants';
 import { multiTenantApi as api } from '../../api.multitenant';
 
 interface CsvRow {
@@ -105,9 +104,9 @@ const MenuImportModal: React.FC<MenuImportModalProps> = ({ onClose, onImportSucc
       };
     }
 
-    // Validate category
+    // Validate category — accept any non-empty string (categories are DB-driven)
     const normalizedCategory = row.category.trim();
-    if (!CATEGORIES.includes(normalizedCategory)) {
+    if (!normalizedCategory) {
       return {
         category: row.category,
         name: row.name,
@@ -116,7 +115,7 @@ const MenuImportModal: React.FC<MenuImportModalProps> = ({ onClose, onImportSucc
         image_url: row.image_url || '',
         available: true,
         isValid: false,
-        error: `Invalid category: "${row.category}". Must be one of: ${CATEGORIES.join(', ')}`
+        error: 'Category cannot be empty'
       };
     }
 
