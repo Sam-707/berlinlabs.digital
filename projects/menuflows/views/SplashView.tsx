@@ -69,7 +69,7 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
               <span className="inline-block px-3 py-1 bg-primary text-[9px] font-black rounded-full uppercase tracking-widest border border-white/10 mb-2">
                 Featured
               </span>
-              <h2 className="text-white font-black text-2xl tracking-tight">{config.name}</h2>
+              <h2 className="text-white font-black text-2xl tracking-tight">Today's Special</h2>
             </div>
           </div>
         </div>

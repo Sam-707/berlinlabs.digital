@@ -393,18 +393,21 @@ declare
 begin
 
 -- Restaurant
-insert into restaurants (id, slug, name, accent_color, is_open, currency, country, owner_pin_hash)
+insert into restaurants (id, slug, name, accent_color, logo_url, is_open, currency, country, owner_pin_hash)
 values (
   uuid_generate_v4(),
   'demo',
   'Sample Bistro',
   '#c21e3a',
+  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',
   true,
   'EUR',
   'DE',
   encode(sha256('1234'::bytea), 'hex')
 )
-on conflict (slug) do nothing
+on conflict (slug) do update set
+  name      = excluded.name,
+  logo_url  = excluded.logo_url
 returning id into r_id;
 
 -- If the restaurant already existed, get its id

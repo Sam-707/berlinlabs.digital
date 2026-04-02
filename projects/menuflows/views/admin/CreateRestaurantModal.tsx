@@ -143,7 +143,7 @@ const CreateRestaurantModal: React.FC<CreateRestaurantModalProps> = ({ onClose, 
                 type="text"
                 value={slug}
                 onChange={(e) => handleSlugChange(e.target.value)}
-                placeholder="burger-lab"
+                placeholder="sample-bistro"
                 className="flex-1 h-full px-0 bg-transparent text-white placeholder:text-white/30 focus:outline-none"
                 disabled={loading}
               />

@@ -284,11 +284,11 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
             <a href="#features" className="hover:text-slate-900 transition-colors">What's Included</a>
             <a href="#how-it-works" className="hover:text-slate-900 transition-colors">How It Works</a>
             <a href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</a>
-            <a href="https://menuflows-dun.vercel.app/demo" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">Live Demo</a>
+            <a href="https://www.menuflows.app/demo" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">Live Demo</a>
           </nav>
 
           {/* CTA */}
-          <AccentButton href="https://menuflows-dun.vercel.app/demo" className="hidden sm:inline-flex">
+          <AccentButton href="https://www.menuflows.app/demo" className="hidden sm:inline-flex">
             See Live Demo <ArrowRight className="w-4 h-4" />
           </AccentButton>
         </div>
@@ -319,7 +319,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
           <AccentButton href="#pricing" className="text-base px-8 py-4">
             Get the Source Code <ArrowRight className="w-4 h-4" />
           </AccentButton>
-          <GhostButton href="https://menuflows-dun.vercel.app/demo" className="text-base px-8 py-4">
+          <GhostButton href="https://www.menuflows.app/demo" className="text-base px-8 py-4">
             View Live Demo <ChevronRight className="w-4 h-4" />
           </GhostButton>
         </div>
@@ -459,7 +459,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
                 </li>
               ))}
             </ul>
-            <GhostButton href="https://menuflows-dun.vercel.app/demo">
+            <GhostButton href="https://www.menuflows.app/demo">
               Try the live demo <ArrowRight className="w-4 h-4" />
             </GhostButton>
           </div>
