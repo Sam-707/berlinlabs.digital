@@ -281,10 +281,10 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
 
           {/* Nav */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-500">
-            <a href="#features" className="hover:text-slate-900 transition-colors">What's Included</a>
-            <a href="#how-it-works" className="hover:text-slate-900 transition-colors">How It Works</a>
-            <a href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</a>
-            <a href="https://www.menuflows.app/demo" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">Live Demo</a>
+            <a href="#features" className="hover:text-accent transition-colors">What's Included</a>
+            <a href="#how-it-works" className="hover:text-accent transition-colors">How It Works</a>
+            <a href="#pricing" className="hover:text-accent transition-colors">Pricing</a>
+            <a href="https://www.menuflows.app/demo" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Live Demo</a>
           </nav>
 
           {/* CTA */}
