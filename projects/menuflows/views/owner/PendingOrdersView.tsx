@@ -11,8 +11,8 @@ interface PendingOrdersViewProps {
 
 const PendingOrdersView: React.FC<PendingOrdersViewProps> = ({ orders, menu, onSelectOrder, onBack }) => {
   return (
-    <div className="flex flex-col h-full bg-[#170e10] text-white animate-fade-in overflow-hidden relative">
-      <header className="px-6 pt-12 pb-6 flex items-center justify-between border-b border-white/5 bg-[#170e10]/90 backdrop-blur-xl z-20">
+    <div className="flex flex-col h-full bg-[#0d0d0d] text-white animate-fade-in overflow-hidden relative">
+      <header className="px-6 pt-12 pb-6 flex items-center justify-between border-b border-white/5 bg-[#0d0d0d]/90 backdrop-blur-xl z-20">
         <button onClick={onBack} className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center active:scale-90 transition-all">
           <span className="material-symbols-outlined">chevron_left</span>
         </button>
@@ -37,7 +37,7 @@ const PendingOrdersView: React.FC<PendingOrdersViewProps> = ({ orders, menu, onS
               <button
                 key={order.id}
                 onClick={() => onSelectOrder(order)}
-                className="w-full bg-[#241619] rounded-[2rem] p-6 border border-white/5 flex items-center justify-between shadow-xl active:scale-95 transition-all group"
+                className="w-full bg-[#1a1a1a] rounded-[2rem] p-6 border border-white/5 flex items-center justify-between shadow-xl active:scale-95 transition-all group"
               >
                 <div className="flex flex-col items-start">
                   <span className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-1">Incoming Code</span>

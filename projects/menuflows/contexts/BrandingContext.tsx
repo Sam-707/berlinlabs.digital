@@ -44,8 +44,8 @@ const DEFAULT_BRANDING: Branding = {
     border: '#262626',
     textSecondary: '#a3a3a3',
     textMuted: '#737373',
-    darkBg: '#170e10',
-    cardBg: '#241619',
+    darkBg: '#0d0d0d',
+    cardBg: '#1a1a1a',
   },
 };
 

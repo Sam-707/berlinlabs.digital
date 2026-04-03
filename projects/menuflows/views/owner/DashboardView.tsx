@@ -11,10 +11,10 @@ interface DashboardViewProps {
 
 const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onBack, pendingCount, restaurantName = 'Dashboard' }) => {
   return (
-    <div className="flex flex-col h-full bg-[#170e10] text-white animate-fade-in relative overflow-hidden">
+    <div className="flex flex-col h-full bg-[#0d0d0d] text-white animate-fade-in relative overflow-hidden">
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
 
-      <header className="sticky top-0 z-40 bg-[#170e10]/80 backdrop-blur-xl px-6 py-4 pt-12 flex items-center justify-between border-b border-white/5">
+      <header className="sticky top-0 z-40 bg-[#0d0d0d]/80 backdrop-blur-xl px-6 py-4 pt-12 flex items-center justify-between border-b border-white/5">
         <div className="flex flex-col">
           <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Manager Portal</span>
           <h1 className="text-xl font-extrabold tracking-tight">{restaurantName}</h1>
@@ -50,7 +50,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onBack, pendi
           <button 
             onClick={() => onNavigate('owner-pending-orders')}
             className={`w-full rounded-[2rem] p-6 flex items-center gap-5 border shadow-xl transition-all active:scale-[0.98] group relative overflow-hidden ${
-              pendingCount > 0 ? 'bg-primary border-primary/20' : 'bg-[#241619] border-white/5 opacity-80'
+              pendingCount > 0 ? 'bg-primary border-primary/20' : 'bg-[#1a1a1a] border-white/5 opacity-80'
             }`}
           >
             <div className="size-14 rounded-2xl bg-white/20 flex items-center justify-center text-white">
@@ -77,7 +77,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onBack, pendi
           <div className="grid grid-cols-2 gap-4">
             <button 
               onClick={() => onNavigate('owner-kitchen')}
-              className="bg-[#241619] p-6 rounded-[1.5rem] border border-white/5 flex flex-col items-center gap-3 active:scale-95 transition-all shadow-xl group"
+              className="bg-[#1a1a1a] p-6 rounded-[1.5rem] border border-white/5 flex flex-col items-center gap-3 active:scale-95 transition-all shadow-xl group"
             >
               <div className="size-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-[28px]">restaurant</span>
@@ -86,7 +86,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onBack, pendi
             </button>
             <button 
               onClick={() => onNavigate('owner-table-map')}
-              className="bg-[#241619] p-6 rounded-[1.5rem] border border-white/5 flex flex-col items-center gap-3 active:scale-95 transition-all shadow-xl group"
+              className="bg-[#1a1a1a] p-6 rounded-[1.5rem] border border-white/5 flex flex-col items-center gap-3 active:scale-95 transition-all shadow-xl group"
             >
               <div className="size-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-[28px]">grid_view</span>
@@ -95,7 +95,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onBack, pendi
             </button>
             <button 
               onClick={() => onNavigate('owner-inventory')}
-              className="bg-[#241619] p-6 rounded-[1.5rem] border border-white/5 flex flex-col items-center gap-3 active:scale-95 transition-all shadow-xl group"
+              className="bg-[#1a1a1a] p-6 rounded-[1.5rem] border border-white/5 flex flex-col items-center gap-3 active:scale-95 transition-all shadow-xl group"
             >
               <div className="size-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-[28px]">restaurant_menu</span>
@@ -104,7 +104,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onBack, pendi
             </button>
             <button 
               onClick={() => onNavigate('owner-branding')}
-              className="bg-[#241619] p-6 rounded-[1.5rem] border border-white/5 flex flex-col items-center gap-3 active:scale-95 transition-all shadow-xl group"
+              className="bg-[#1a1a1a] p-6 rounded-[1.5rem] border border-white/5 flex flex-col items-center gap-3 active:scale-95 transition-all shadow-xl group"
             >
               <div className="size-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-500 group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-[28px]">palette</span>

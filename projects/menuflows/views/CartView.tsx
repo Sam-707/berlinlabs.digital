@@ -41,7 +41,7 @@ const CartView: React.FC<CartViewProps> = ({ cart, menu, onClose, onRemove, onUp
             <div className="flex flex-col items-center justify-center h-full text-center py-12">
                <div className="relative mb-6">
                 <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full transform scale-110"></div>
-                <div className="relative flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-br from-[#2a1a1d] to-[#170e10] border border-white/5 shadow-inner">
+                <div className="relative flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-br from-[#1e1e1e] to-[#0d0d0d] border border-white/5 shadow-inner">
                   <span className="material-symbols-outlined text-primary/80 text-[64px]" style={{ fontVariationSettings: "'FILL' 0, 'wght' 200" }}>
                     restaurant
                   </span>
@@ -91,7 +91,7 @@ const CartView: React.FC<CartViewProps> = ({ cart, menu, onClose, onRemove, onUp
                     </div>
                     <div className="flex justify-between items-end mt-2">
                       <p className="text-gray-400 text-xs truncate max-w-[100px]">{item.category}</p>
-                      <div className="flex items-center bg-[#1a0f10] rounded-full p-1 gap-3 border border-white/5">
+                      <div className="flex items-center bg-[#1a1a1a] rounded-full p-1 gap-3 border border-white/5">
                         <button
                           aria-label={cartItem.quantity > 1 ? 'Decrease quantity' : 'Remove item'}
                           onClick={() => cartItem.quantity > 1 ? onUpdateQuantity(cartItem.id, -1) : onRemove(cartItem.id)}

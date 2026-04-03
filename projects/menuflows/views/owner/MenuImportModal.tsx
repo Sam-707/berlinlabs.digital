@@ -271,7 +271,7 @@ const MenuImportModal: React.FC<MenuImportModalProps> = ({ onClose, onImportSucc
 
   return (
     <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-end justify-center animate-fade-in">
-      <div className="w-full max-w-2xl bg-[#1a0f11] rounded-t-[3rem] p-8 pb-12 animate-slide-up border-t border-white/10 shadow-[0_-20px_100px_rgba(0,0,0,0.8)] max-h-[90vh] overflow-y-auto">
+      <div className="w-full max-w-2xl bg-[#141414] rounded-t-[3rem] p-8 pb-12 animate-slide-up border-t border-white/10 shadow-[0_-20px_100px_rgba(0,0,0,0.8)] max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-black">Import Menu</h2>
           <button onClick={onClose} className="size-10 rounded-full bg-white/5 flex items-center justify-center">

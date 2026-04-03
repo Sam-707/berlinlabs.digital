@@ -22,7 +22,7 @@ const MarketingView: React.FC<MarketingViewProps> = ({ onTryDemo, onOwnerPortal 
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#170e10] text-white animate-fade-in overflow-y-auto no-scrollbar relative">
+    <div className="flex flex-col h-full bg-[#0d0d0d] text-white animate-fade-in overflow-y-auto no-scrollbar relative">
       <div className="fixed inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 20%, transparent), transparent)' }}></div>
       <div className="fixed -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -82,7 +82,7 @@ const MarketingView: React.FC<MarketingViewProps> = ({ onTryDemo, onOwnerPortal 
            <div className="space-y-4">
               <h2 className="text-xs font-black text-primary uppercase tracking-[0.3em]">Value Protocol</h2>
               <div className="space-y-6">
-                 <div className="bg-[#241619] p-8 rounded-[2.5rem] border border-white/5 shadow-2xl relative overflow-hidden group">
+                 <div className="bg-[#1a1a1a] p-8 rounded-[2.5rem] border border-white/5 shadow-2xl relative overflow-hidden group">
                     <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
                        <span className="material-symbols-outlined text-[32px]">sync_alt</span>
                     </div>
@@ -117,7 +117,7 @@ const MarketingView: React.FC<MarketingViewProps> = ({ onTryDemo, onOwnerPortal 
 
       {showForm && (
         <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-end justify-center animate-fade-in p-4">
-          <div className="w-full max-w-[340px] bg-[#1a0f11] rounded-[3rem] p-8 pb-12 animate-slide-up border border-white/10 shadow-3xl">
+          <div className="w-full max-w-[340px] bg-[#141414] rounded-[3rem] p-8 pb-12 animate-slide-up border border-white/10 shadow-3xl">
             {submitted ? (
               <div className="text-center space-y-6 animate-fade-in py-10">
                 <div className="size-20 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-500 mx-auto">

@@ -162,7 +162,7 @@ const ItemDetailView: React.FC<ItemDetailViewProps> = ({ item, onClose, onAddToC
         </div>
 
         {/* Floating Action Button */}
-        <div className="absolute bottom-0 inset-x-0 p-8 bg-gradient-to-t from-[#170e10] via-[#170e10] to-transparent pt-16 z-20">
+        <div className="absolute bottom-0 inset-x-0 p-8 bg-gradient-to-t from-background-dark via-background-dark to-transparent pt-16 z-20">
           <button
             onClick={handleAddToCart}
             disabled={!isValid}

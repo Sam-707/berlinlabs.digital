@@ -155,7 +155,7 @@ const TableQRGeneratorView: React.FC<TableQRGeneratorViewProps> = ({ onBack, res
   );
 
   return (
-    <div className="flex flex-col h-full bg-[#170e10] text-white">
+    <div className="flex flex-col h-full bg-[#0d0d0d] text-white">
       <header className="pt-12 pb-6 px-6 flex items-center justify-between border-b border-white/5">
         <button onClick={onBack} className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center active:scale-90 transition-all">
           <span className="material-symbols-outlined">arrow_back</span>
@@ -167,7 +167,7 @@ const TableQRGeneratorView: React.FC<TableQRGeneratorViewProps> = ({ onBack, res
       <main className="flex-1 overflow-y-auto p-6">
         <div className="max-w-4xl mx-auto">
           {/* Settings */}
-          <div className="mb-8 bg-[#241619] rounded-[2rem] p-6 border border-white/5">
+          <div className="mb-8 bg-[#1a1a1a] rounded-[2rem] p-6 border border-white/5">
             <h2 className="text-xl font-black mb-6">QR Code Settings</h2>
 
             <div className="grid grid-cols-2 gap-6">
@@ -233,7 +233,7 @@ const TableQRGeneratorView: React.FC<TableQRGeneratorViewProps> = ({ onBack, res
             ) : (
               <div className="grid grid-cols-4 md:grid-cols-6 gap-4">
                 {qrCodes.map((qrData) => (
-                  <div key={qrData.tableNumber} className="bg-[#241619] rounded-xl p-4 border border-white/5 flex flex-col items-center">
+                  <div key={qrData.tableNumber} className="bg-[#1a1a1a] rounded-xl p-4 border border-white/5 flex flex-col items-center">
                     <div className="size-20 mb-2">
                       <img
                         src={qrData.dataUrl}
@@ -251,7 +251,7 @@ const TableQRGeneratorView: React.FC<TableQRGeneratorViewProps> = ({ onBack, res
           </div>
 
           {/* Instructions */}
-          <div className="bg-[#241619] rounded-[2rem] p-6 border border-white/5">
+          <div className="bg-[#1a1a1a] rounded-[2rem] p-6 border border-white/5">
             <h2 className="text-lg font-black mb-4">Instructions</h2>
             <ol className="text-sm text-text-secondary space-y-2 list-decimal list-inside">
               <li>Set the table range (e.g., 1-30 for 30 tables)</li>

@@ -272,7 +272,7 @@ const InventoryView: React.FC<InventoryViewProps> = ({ menu, setMenu, onBack, on
       {/* Item Editor Modal */}
       {editingItem && (
         <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-end justify-center animate-fade-in">
-          <div className="w-full max-w-md bg-[#1a0f11] rounded-t-[3rem] p-8 pb-12 animate-slide-up border-t border-white/10 shadow-[0_-20px_100px_rgba(0,0,0,0.8)]">
+          <div className="w-full max-w-md bg-[#141414] rounded-t-[3rem] p-8 pb-12 animate-slide-up border-t border-white/10 shadow-[0_-20px_100px_rgba(0,0,0,0.8)]">
             <div className="flex items-center justify-between mb-8">
                <h2 className="text-2xl font-black">{editingItem.name ? 'Edit Item' : 'New Dish'}</h2>
                <button onClick={() => setEditingItem(null)} className="size-10 rounded-full bg-white/5 flex items-center justify-center">
@@ -288,7 +288,7 @@ const InventoryView: React.FC<InventoryViewProps> = ({ menu, setMenu, onBack, on
                     </div>
                     <button 
                       onClick={() => fileInputRef.current?.click()}
-                      className="absolute -bottom-2 -right-2 size-10 rounded-full bg-primary text-white border-4 border-[#1a0f11] flex items-center justify-center shadow-lg active:scale-90"
+                      className="absolute -bottom-2 -right-2 size-10 rounded-full bg-primary text-white border-4 border-[#141414] flex items-center justify-center shadow-lg active:scale-90"
                     >
                       <span className="material-symbols-outlined text-[20px]">photo_camera</span>
                     </button>

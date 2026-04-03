@@ -79,7 +79,7 @@ const ModifierSelector: React.FC<ModifierSelectorProps> = ({
                       flex items-center justify-between p-4 rounded-2xl border transition-all
                       ${isSelected
                         ? 'bg-primary/10 border-primary/30 shadow-lg shadow-primary/10'
-                        : 'bg-[#241619] border-white/5 hover:border-white/10'
+                        : 'bg-[#1a1a1a] border-white/5 hover:border-white/10'
                       }
                       ${isDisabled && !isSelected ? 'opacity-40 cursor-not-allowed' : 'active:scale-[0.98]'}
                       ${!modifier.isAvailable ? 'grayscale' : ''}

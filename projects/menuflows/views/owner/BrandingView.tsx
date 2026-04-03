@@ -28,8 +28,8 @@ const BrandingView: React.FC<BrandingViewProps> = ({ config, setConfig, onBack }
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#1a0f11] text-white animate-fade-in overflow-hidden">
-      <header className="sticky top-0 z-50 bg-[#1a0f11]/80 backdrop-blur-xl border-b border-white/5 px-4 pt-12 pb-4">
+    <div className="flex flex-col h-full bg-[#141414] text-white animate-fade-in overflow-hidden">
+      <header className="sticky top-0 z-50 bg-[#141414]/80 backdrop-blur-xl border-b border-white/5 px-4 pt-12 pb-4">
         <div className="flex items-center justify-between">
           <button onClick={onBack} className="flex items-center text-primary font-medium">
             <span className="material-symbols-outlined text-[28px]">chevron_left</span>
@@ -48,7 +48,7 @@ const BrandingView: React.FC<BrandingViewProps> = ({ config, setConfig, onBack }
             </div>
             <button 
               onClick={() => fileInputRef.current?.click()}
-              className="absolute bottom-0 right-0 bg-primary size-9 rounded-full flex items-center justify-center shadow-lg border-2 border-[#1a0f11] active:scale-90 transition-transform"
+              className="absolute bottom-0 right-0 bg-primary size-9 rounded-full flex items-center justify-center shadow-lg border-2 border-[#141414] active:scale-90 transition-transform"
             >
               <span className="material-symbols-outlined text-white text-[20px]">photo_camera</span>
             </button>
@@ -118,7 +118,7 @@ const BrandingView: React.FC<BrandingViewProps> = ({ config, setConfig, onBack }
         </div>
       </main>
 
-      <footer className="p-6 bg-gradient-to-t from-[#1a0f11] to-transparent">
+      <footer className="p-6 bg-gradient-to-t from-[#141414] to-transparent">
         <button 
           onClick={onBack}
           className="w-full bg-primary py-4 rounded-full font-bold text-lg shadow-lg active:scale-95 transition-transform"

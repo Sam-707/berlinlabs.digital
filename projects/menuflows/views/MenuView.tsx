@@ -112,7 +112,7 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItem
 
       {/* Agency Preview Banner */}
       {isDemo && (
-        <div className="shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 border-b border-white/10 z-50" style={{ background: '#0a0f1e' }}>
+        <div className="shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 border-b border-white/10 z-50" style={{ background: '#0a0a12' }}>
           <p className="text-[9px] text-slate-400 leading-tight truncate min-w-0">
             <span className="text-white font-black">Preview — </span>
             This is how your restaurant clients' menus look under the{' '}

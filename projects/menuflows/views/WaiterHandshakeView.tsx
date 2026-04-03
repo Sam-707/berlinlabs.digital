@@ -105,7 +105,7 @@ const WaiterHandshakeView: React.FC<WaiterHandshakeViewProps> = ({ order, onBack
               {/* Outer Pulse */}
               <div className="absolute -inset-12 bg-primary/10 blur-[80px] rounded-full animate-pulse"></div>
               
-              <div className="bg-gradient-to-br from-[#2a1a1d] to-[#170e10] p-10 px-14 rounded-[4rem] border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.6)] relative z-10 flex flex-col items-center border-b-primary/30">
+              <div className="bg-gradient-to-br from-[#1e1e1e] to-[#0d0d0d] p-10 px-14 rounded-[4rem] border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.6)] relative z-10 flex flex-col items-center border-b-primary/30">
                 <div className="flex items-center gap-1.5 mb-4 opacity-40">
                   <span className="material-symbols-outlined text-[16px]">verified_user</span>
                   <span className="text-[9px] font-black uppercase tracking-[0.3em]">Table Secure</span>

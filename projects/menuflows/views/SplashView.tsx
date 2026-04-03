@@ -14,11 +14,11 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
   const isDemo = typeof window !== 'undefined' && window.location.pathname.replace(/\/$/, '') === '/demo';
 
   return (
-    <div className="flex flex-col h-full bg-[#170e10] text-white relative view-transition overflow-hidden">
+    <div className="flex flex-col h-full bg-background-dark text-white relative view-transition overflow-hidden">
 
       {/* Agency Preview Banner */}
       {isDemo && (
-        <div className="shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 border-b border-white/10 relative z-50" style={{ background: '#0a0f1e' }}>
+        <div className="shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 border-b border-white/10 relative z-50" style={{ background: '#0a0a12' }}>
           <p className="text-[9px] text-slate-400 leading-tight truncate min-w-0">
             <span className="text-white font-black">Preview — </span>
             This is how your restaurant clients' menus look under the{' '}
@@ -44,7 +44,7 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
       <div className="relative z-10 flex-1 flex flex-col w-full max-w-[520px] mx-auto">
       <main className="flex-1 flex flex-col items-center justify-center p-8 text-center pt-20">
         <div className="size-20 mb-8 rounded-[2rem] bg-surface-dark border border-white/10 flex items-center justify-center text-primary shadow-2xl animate-pulse-soft">
-          <span className="material-symbols-outlined text-[40px]">lunch_dining</span>
+          <span className="material-symbols-outlined text-[40px]">restaurant</span>
         </div>
         
         <h1 className="text-5xl font-black tracking-tighter leading-[0.85] text-white mb-4">

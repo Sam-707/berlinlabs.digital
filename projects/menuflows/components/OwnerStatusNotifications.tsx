@@ -40,7 +40,7 @@ const OwnerStatusNotifications: React.FC<OwnerStatusNotificationsProps> = ({
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-[#170e10] border-b border-white/10 shadow-lg">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-[#0d0d0d] border-b border-white/10 shadow-lg">
       <div className="max-w-screen-xl mx-auto px-4 py-3">
         <div className="flex items-center justify-between mb-2">
           <span className="text-[10px] font-black uppercase tracking-widest text-text-secondary/60">

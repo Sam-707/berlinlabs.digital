@@ -40,13 +40,13 @@ const TableMapView: React.FC<TableMapViewProps> = ({ orders, onClearTable, onBac
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#170e10] text-white animate-fade-in overflow-hidden relative">
+    <div className="flex flex-col h-full bg-[#0d0d0d] text-white animate-fade-in overflow-hidden relative">
       <OwnerStatusNotifications
         notifications={notifications}
         onDismiss={onDismissNotification}
         onClearAll={onClearAllNotifications}
       />
-      <header className="px-6 pt-12 pb-6 flex items-center justify-between border-b border-white/5 bg-[#170e10]/90 backdrop-blur-xl z-20">
+      <header className="px-6 pt-12 pb-6 flex items-center justify-between border-b border-white/5 bg-[#0d0d0d]/90 backdrop-blur-xl z-20">
         <button onClick={onBack} className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center active:scale-90 transition-all">
           <span className="material-symbols-outlined">chevron_left</span>
         </button>
@@ -86,7 +86,7 @@ const TableMapView: React.FC<TableMapViewProps> = ({ orders, onClearTable, onBac
                 onClick={() => isActive && onClearTable(num)}
                 className={`aspect-[4/5] rounded-[2rem] border transition-all relative flex flex-col items-center justify-center gap-2 shadow-xl ${
                   status === 'available' 
-                    ? 'bg-[#241619]/50 border-white/5 opacity-40' 
+                    ? 'bg-[#1a1a1a]/50 border-white/5 opacity-40' 
                     : status === 'active'
                       ? 'bg-primary/10 border-primary/30'
                       : 'bg-amber-500/10 border-amber-500/30'
@@ -119,7 +119,7 @@ const TableMapView: React.FC<TableMapViewProps> = ({ orders, onClearTable, onBac
         </div>
       </main>
 
-      <footer className="p-8 text-center bg-gradient-to-t from-[#170e10] to-transparent pointer-events-none">
+      <footer className="p-8 text-center bg-gradient-to-t from-[#0d0d0d] to-transparent pointer-events-none">
         <p className="text-[9px] font-black text-text-secondary/20 uppercase tracking-[0.4em]">Grid Engine v2.4</p>
       </footer>
     </div>
