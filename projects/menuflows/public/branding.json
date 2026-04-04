@@ -15,8 +15,8 @@
     "border": "#262626",
     "textSecondary": "#a3a3a3",
     "textMuted": "#737373",
-    "darkBg": "#170e10",
-    "cardBg": "#241619"
+    "darkBg": "#0d0d0d",
+    "cardBg": "#1a1a1a"
   },
 
   "_readme": "Edit this file to white-label MenuFlows. Run 'npm run build' then deploy. No other files need changing.",
@@ -26,7 +26,7 @@
     "company.domain": "Your deployment domain. Used in legal pages and QR generator.",
     "company.logoUrl": "Path to logo under /public. Example: /logos/acme.png",
     "colors.primary": "Hex color for buttons, accents, and active nav states.",
-    "colors.darkBg": "Main dark background for owner/staff views. #170e10 = wine dark.",
-    "colors.cardBg": "Card surface color in owner views."
+    "colors.darkBg": "Main dark background (dark neutral). Example: #0d0d0d",
+    "colors.cardBg": "Card surface color. Example: #1a1a1a"
   }
 }

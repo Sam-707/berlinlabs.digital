@@ -424,7 +424,7 @@ const AppContent: React.FC = () => {
   // Wait for restaurant initialization
   if (!restaurantLoaded) {
     return (
-      <div className="min-h-screen bg-wine-dark flex items-center justify-center text-white font-sans">
+      <div className="min-h-screen bg-background-dark flex items-center justify-center text-white font-sans">
         <div className="text-center">
           <div className="text-primary font-black uppercase tracking-widest animate-pulse text-2xl mb-4">
             Loading...
@@ -445,7 +445,7 @@ const AppContent: React.FC = () => {
   // For restaurant views, wait for config to load
   if (hasRestaurant && !isAdminRoute && !config) {
     return (
-      <div className="min-h-screen bg-wine-dark flex items-center justify-center text-white font-sans">
+      <div className="min-h-screen bg-background-dark flex items-center justify-center text-white font-sans">
         <div className="text-center">
           <div className="text-primary font-black uppercase tracking-widest animate-pulse text-2xl mb-4">
             Loading Restaurant...
@@ -467,7 +467,7 @@ const AppContent: React.FC = () => {
   // Navigate to demo restaurant (changes URL to include slug)
   const navigateToDemo = () => {
     // Use a demo restaurant slug - navigate to it
-    const demoSlug = 'demo'; // or 'burgerlab' - configure as needed
+    const demoSlug = 'demo';
     window.location.href = `/${demoSlug}`;
   };
 
@@ -677,7 +677,7 @@ const AppContent: React.FC = () => {
     <div className="min-h-screen w-full bg-background-dark font-sans">
       <ToastContainer toasts={toasts} onDismiss={removeToast} />
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-10 py-4 sm:py-6 lg:py-10">
-        <div className="max-w-md mx-auto lg:max-w-none bg-wine-dark min-h-[calc(100vh-2rem)] lg:min-h-[calc(100vh-5rem)] overflow-hidden relative shadow-2xl lg:rounded-3xl">
+        <div className="max-w-md mx-auto lg:max-w-none bg-background-dark min-h-[calc(100vh-2rem)] lg:min-h-[calc(100vh-5rem)] overflow-hidden relative shadow-2xl lg:rounded-3xl">
           {renderView()}
         </div>
       </div>

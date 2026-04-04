@@ -176,10 +176,10 @@ export const api = {
 
       if (error || !data) {
         return {
-          name: 'The Burger Lab',
+          name: 'Sample Bistro',
           logo: BURGER_IMAGE,
           accentColor: '#c21e3a',
-          reviewUrl: 'google.com/maps/review/gbk-berlin',
+          reviewUrl: '',
           isOpen: true,
         };
       }
@@ -187,10 +187,10 @@ export const api = {
       return mapDbConfigToRestaurantConfig(data as DbRestaurantConfig);
     } catch (err) {
       return {
-        name: 'The Burger Lab',
+        name: 'Sample Bistro',
         logo: BURGER_IMAGE,
         accentColor: '#c21e3a',
-        reviewUrl: 'google.com/maps/review/gbk-berlin',
+        reviewUrl: '',
         isOpen: true,
       };
     }

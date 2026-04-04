@@ -45,10 +45,10 @@ export const api = {
   // --- Restaurant Config ---
   getConfig: async (): Promise<RestaurantConfig> => {
     return getStorage(STORAGE_KEYS.CONFIG, {
-      name: 'The Burger Lab',
+      name: 'Sample Bistro',
       logo: BURGER_IMAGE,
       accentColor: '#c21e3a',
-      reviewUrl: 'google.com/maps/review/gbk-berlin',
+      reviewUrl: '',
       isOpen: true,
     });
   },
