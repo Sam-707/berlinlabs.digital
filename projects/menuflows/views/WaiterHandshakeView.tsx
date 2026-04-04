@@ -80,7 +80,7 @@ const WaiterHandshakeView: React.FC<WaiterHandshakeViewProps> = ({ order, onBack
   const currentStepIndex = getStatusStepIndex(order.status);
   const statusConfig = getStatusConfig(order.status);
   return (
-    <div className="flex flex-col h-full bg-wine-dark text-white animate-fade-in overflow-hidden relative">
+    <div className="flex flex-col h-full bg-background-dark text-white animate-fade-in overflow-hidden relative">
       {/* Background Ambience */}
       <div className="absolute top-0 left-0 right-0 h-full pointer-events-none z-0" style={{ background: 'radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 15%, transparent), transparent)' }}></div>
       

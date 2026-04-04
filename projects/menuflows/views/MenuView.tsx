@@ -133,21 +133,23 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItem
         style={{ background: 'radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent)' }}
       />
 
-      <header className="pt-12 pb-6 px-6 flex items-center justify-between sticky top-0 bg-background-dark/90 backdrop-blur-xl z-30 border-b border-white/5">
-        <div>
-          <h1 className="text-2xl font-black tracking-tighter text-white">{restaurantName || 'Restaurant'}</h1>
-          <div className="flex items-center gap-2 mt-0.5">
-            <span className="size-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <p className="text-[10px] text-text-secondary font-black uppercase tracking-[0.2em]">Now Open</p>
-            {selectedTableNumber && (
-              <div className="ml-2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 border border-white/20">
-                <span className="material-symbols-outlined text-[12px] text-white">table_restaurant</span>
-                <span className="text-[10px] font-black text-white uppercase tracking-wider">Table {selectedTableNumber}</span>
-              </div>
-            )}
+      <header className="pt-12 pb-4 px-6 sticky top-0 bg-background-dark/90 backdrop-blur-xl z-30 border-b border-white/5">
+        <div className="flex items-start justify-between mb-3">
+          <div>
+            <h1 className="text-2xl font-black tracking-tighter text-white">{restaurantName || 'Restaurant'}</h1>
+            <div className="flex items-center gap-2 mt-0.5">
+              <span className="size-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <p className="text-[10px] text-text-secondary font-black uppercase tracking-[0.2em]">Now Open</p>
+              {selectedTableNumber && (
+                <div className="ml-2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 border border-white/20">
+                  <span className="material-symbols-outlined text-[12px] text-white">table_restaurant</span>
+                  <span className="text-[10px] font-black text-white uppercase tracking-wider">Table {selectedTableNumber}</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-        <div className="relative w-48">
+        <div className="relative">
           <input
             type="text"
             value={searchQuery}
@@ -170,7 +172,7 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItem
       </header>
 
       {/* Categories Scroller */}
-      <div className="px-6 py-4 sticky top-[88px] z-20 bg-background-dark/90 backdrop-blur-xl">
+      <div className="px-6 py-4 sticky top-[132px] z-20 bg-background-dark/90 backdrop-blur-xl">
         <div className="flex gap-3 overflow-x-auto no-scrollbar py-1">
           {categoriesWithMatches.map(cat => (
             <button

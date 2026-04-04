@@ -85,22 +85,14 @@ const ItemDetailView: React.FC<ItemDetailViewProps> = ({ item, onClose, onAddToC
           </div>
 
           {/* Quick Badges */}
-          <div className="flex flex-wrap gap-2.5 mb-10">
-            {item.isSpicy && (
+          {item.isSpicy && (
+            <div className="flex flex-wrap gap-2.5 mb-10">
               <div className="flex items-center gap-2 px-4 py-2 bg-accent-soft border border-accent/20 rounded-xl text-accent text-[11px] font-black uppercase tracking-widest">
                 <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>local_fire_department</span>
                 Spicy
               </div>
-            )}
-            <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-xl text-blue-500 text-[11px] font-black uppercase tracking-widest">
-                <span className="material-symbols-outlined text-[16px]">eco</span>
-                Sustainable
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-xl text-purple-500 text-[11px] font-black uppercase tracking-widest">
-                <span className="material-symbols-outlined text-[16px]">stars</span>
-                Signature
-            </div>
-          </div>
+          )}
 
           <div className="mb-12">
             <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-text-secondary/30 mb-4">Description</h4>

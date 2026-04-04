@@ -87,7 +87,7 @@ const OrderTrackingView: React.FC<OrderTrackingViewProps> = ({ order, allOrders,
   const totalItems = currentOrder.items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="flex flex-col h-full bg-wine-dark text-white animate-fade-in overflow-hidden relative">
+    <div className="flex flex-col h-full bg-background-dark text-white animate-fade-in overflow-hidden relative">
       {/* Background Ambience */}
       <div className="absolute top-0 left-0 right-0 h-full pointer-events-none z-0" style={{ background: 'radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 15%, transparent), transparent)' }}></div>
 
