@@ -294,6 +294,8 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
         </div>
       </header>
 
+      <main id="main-content">
+
       {/* ── 2. HERO ───────────────────────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-6 pt-14 pb-12 md:pt-24 md:pb-20 text-center">
         {/* Badge */}
@@ -669,6 +671,8 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
           </div>
         </div>
       </section>
+
+      </main>
 
       {/* ── TECH SPECS ────────────────────────────────────────────────────── */}
       <section className="bg-slate-950 border-t border-white/5 py-10">

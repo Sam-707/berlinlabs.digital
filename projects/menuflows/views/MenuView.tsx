@@ -112,7 +112,7 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItem
 
       {/* Agency Preview Banner */}
       {isDemo && (
-        <div className="shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 border-b border-white/10 z-50" style={{ background: '#0a0a12' }}>
+        <header className="shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 border-b border-white/10 z-50" style={{ background: '#0a0a12' }}>
           <p className="text-[9px] text-slate-400 leading-tight truncate min-w-0">
             <span className="text-white font-black">Preview — </span>
             This is how your restaurant clients' menus look under the{' '}
@@ -124,7 +124,7 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItem
           >
             Get Source Code →
           </a>
-        </div>
+        </header>
       )}
 
       {/* Subtle Background Glow */}
@@ -172,13 +172,13 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItem
       </header>
 
       {/* Categories Scroller */}
-      <div className="px-6 py-4 sticky top-[116px] sm:top-[132px] z-20 bg-background-dark/90 backdrop-blur-xl">
+      <nav aria-label="Menu categories" className="px-6 py-4 sticky top-[116px] sm:top-[132px] z-20 bg-background-dark/90 backdrop-blur-xl">
         <div className="flex gap-3 overflow-x-auto no-scrollbar py-1">
           {categoriesWithMatches.map(cat => (
             <button
               key={cat}
               onClick={() => handleCategoryClick(cat)}
-              className={`flex-none px-6 py-3 rounded-full text-[11px] font-black uppercase tracking-widest transition-all active:scale-95 ${
+              className={`flex-none px-6 py-3 min-h-[44px] rounded-full text-[11px] font-black uppercase tracking-widest transition-all active:scale-95 ${
                 activeCategory === cat && !isSearching
                   ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-105'
                   : 'bg-white/5 text-text-secondary border border-white/5'
@@ -188,9 +188,12 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItem
             </button>
           ))}
         </div>
-      </div>
+      </nav>
 
       <main className="flex-1 overflow-y-auto no-scrollbar pb-32 px-6 pt-2">
+        {!isSearching && activeCategory && (
+          <h2 className="sr-only">{activeCategory}</h2>
+        )}
         {filteredItems.length === 0 && isSearching ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <span className="material-symbols-outlined text-[48px] text-text-secondary/20 mb-4">search_off</span>

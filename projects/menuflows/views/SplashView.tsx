@@ -18,7 +18,7 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
 
       {/* Agency Preview Banner */}
       {isDemo && (
-        <div className="shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 border-b border-white/10 relative z-50" style={{ background: '#0a0a12' }}>
+        <header className="shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 border-b border-white/10 relative z-50" style={{ background: '#0a0a12' }}>
           <p className="text-[9px] text-slate-400 leading-tight truncate min-w-0">
             <span className="text-white font-black">Preview — </span>
             This is how your restaurant clients' menus look under the{' '}
@@ -30,19 +30,21 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
           >
             Get Source Code →
           </a>
-        </div>
+        </header>
       )}
 
       {/* Background Ambience */}
       <div
+        aria-hidden="true"
         className="absolute top-0 left-0 right-0 h-1/2 pointer-events-none z-0"
         style={{ background: 'radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 15%, transparent), transparent)' }}
       />
-      <div className="absolute -top-24 -right-24 w-80 h-80 bg-primary/10 rounded-full blur-[100px]"></div>
+      <div aria-hidden="true" className="absolute -top-24 -right-24 w-80 h-80 bg-primary/10 rounded-full blur-[100px]"></div>
 
       {/* Phone-like centered shell for desktop */}
       <div className="relative z-10 flex-1 flex flex-col w-full max-w-[520px] mx-auto">
-      <main className="flex-1 flex flex-col items-center justify-center p-6 text-center pt-10 sm:pt-16">
+      <main className="flex-1 flex flex-col p-6 pt-10 sm:pt-16">
+        <div className="flex-1 flex flex-col items-center justify-center text-center">
         <div className="size-20 mb-8 rounded-[2rem] bg-surface-dark border border-white/10 flex items-center justify-center text-primary shadow-2xl animate-pulse-soft">
           <span className="material-symbols-outlined text-[40px]">restaurant</span>
         </div>
@@ -73,35 +75,36 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
             </div>
           </div>
         </div>
-      </main>
+        </div>
 
-      <div className="relative z-20 w-full px-6 pb-10 sm:pb-14">
-        <button 
-          onClick={onContinue}
-          className="group relative flex w-full items-center justify-center gap-4 rounded-full bg-primary h-18 py-5 px-6 text-white transition-all active:scale-[0.97]"
+        <div className="relative z-20 w-full pb-10 sm:pb-14">
+          <button
+            onClick={onContinue}
+            className="group relative flex w-full items-center justify-center gap-4 rounded-full bg-primary h-18 py-5 px-6 text-white transition-all active:scale-[0.97]"
             style={{ boxShadow: '0 15px 40px color-mix(in srgb, var(--color-accent) 40%, transparent)' }}
-        >
-          <span className="text-xl font-black tracking-tight">View Menu</span>
-          <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-        </button>
-
-        <div className="mt-6 sm:mt-10 flex flex-col items-center gap-4 sm:gap-6">
-          <button 
-            onClick={onEnterOwner}
-            className="min-h-[44px] text-[10px] font-black text-text-secondary/40 hover:text-white transition-colors uppercase tracking-[0.3em] flex items-center gap-2"
           >
-            <span className="material-symbols-outlined text-[16px]">admin_panel_settings</span>
-            Staff Access
+            <span className="text-xl font-black tracking-tight">View Menu</span>
+            <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
           </button>
-          
-          <div className="flex items-center gap-2 opacity-30">
-            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-text-secondary">Powered by</span>
-            <div className="flex items-center gap-1.5 pl-2 border-l border-white/10">
-              <span className="text-[11px] font-black tracking-tighter text-white uppercase">{branding.company.name}</span>
+
+          <div className="mt-6 sm:mt-10 flex flex-col items-center gap-4 sm:gap-6">
+            <button
+              onClick={onEnterOwner}
+              className="min-h-[44px] text-[10px] font-black text-text-secondary/40 hover:text-white transition-colors uppercase tracking-[0.3em] flex items-center gap-2"
+            >
+              <span className="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+              Staff Access
+            </button>
+
+            <div className="flex items-center gap-2 opacity-30">
+              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-text-secondary">Powered by</span>
+              <div className="flex items-center gap-1.5 pl-2 border-l border-white/10">
+                <span className="text-[11px] font-black tracking-tighter text-white uppercase">{branding.company.name}</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </main>
       </div> {/* Close phone-like centered shell */}
     </div>
   );
