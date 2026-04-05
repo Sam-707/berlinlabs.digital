@@ -200,6 +200,13 @@ const AppContent: React.FC = () => {
     }
   }, [allOrders, currentOrderCode]);
 
+  // Apply restaurant accent color to CSS variable for per-tenant theming
+  useEffect(() => {
+    if (config?.accentColor) {
+      document.documentElement.style.setProperty('--color-accent', config.accentColor);
+    }
+  }, [config?.accentColor]);
+
   // Real-time Order Sync - only subscribe when restaurant is loaded
   useEffect(() => {
     if (!hasRestaurant) return;
@@ -432,9 +439,6 @@ const AppContent: React.FC = () => {
           <div className="text-text-secondary text-sm">
             Loading restaurant data and configuration
           </div>
-          <div className="mt-4 text-xs text-text-secondary/50">
-            Debug: {window.location.pathname} | {new Date().toLocaleTimeString()}
-          </div>
         </div>
       </div>
     );
@@ -452,9 +456,6 @@ const AppContent: React.FC = () => {
           </div>
           <div className="text-text-secondary text-sm">
             Fetching menu and configuration
-          </div>
-          <div className="mt-4 text-xs text-text-secondary/50">
-            Debug: Restaurant found, loading config...
           </div>
         </div>
       </div>

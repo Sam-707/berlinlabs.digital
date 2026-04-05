@@ -398,7 +398,7 @@ values (
   uuid_generate_v4(),
   'demo',
   'Sample Bistro',
-  '#c21e3a',
+  '#d97706',
   'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',
   true,
   'EUR',
@@ -406,8 +406,9 @@ values (
   encode(sha256('1234'::bytea), 'hex')
 )
 on conflict (slug) do update set
-  name      = excluded.name,
-  logo_url  = excluded.logo_url
+  name         = excluded.name,
+  logo_url     = excluded.logo_url,
+  accent_color = excluded.accent_color
 returning id into r_id;
 
 -- If the restaurant already existed, get its id
