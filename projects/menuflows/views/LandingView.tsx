@@ -672,8 +672,6 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
         </div>
       </section>
 
-      </main>
-
       {/* ── TECH SPECS ────────────────────────────────────────────────────── */}
       <section className="bg-slate-950 border-t border-white/5 py-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -690,6 +688,8 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
           </div>
         </div>
       </section>
+
+      </main>
 
       {/* Footer */}
       <footer className="bg-slate-900 border-t border-white/5 py-10">
