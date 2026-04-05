@@ -295,7 +295,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
       </header>
 
       {/* ── 2. HERO ───────────────────────────────────────────────────────── */}
-      <section className="max-w-5xl mx-auto px-6 pt-24 pb-20 text-center">
+      <section className="max-w-5xl mx-auto px-6 pt-14 pb-12 md:pt-24 md:pb-20 text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-xs font-bold text-slate-600 uppercase tracking-widest mb-8">
           <span
@@ -305,7 +305,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
           Production-Ready SaaS Template
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-6 text-slate-900">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-6 text-slate-900">
           Own Your Own<br />
           <span style={{ color: 'var(--color-accent)' }}>Restaurant Ordering SaaS</span>
         </h1>
@@ -327,7 +327,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
 
       {/* ── 3. STATS BAR ──────────────────────────────────────────────────── */}
       <section className="bg-slate-50 border-y border-slate-100">
-        <div className="max-w-4xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+        <div className="max-w-4xl mx-auto px-6 py-10 md:py-14 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 text-center">
           {[
             { num: '200+', label: 'hours of engineering work — forked in one click' },
             { num: '100%', label: 'source code ownership — no licensing restrictions' },
@@ -344,7 +344,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
       </section>
 
       {/* ── 4. FEATURES GRID ──────────────────────────────────────────────── */}
-      <section id="features" className="max-w-6xl mx-auto px-6 py-24">
+      <section id="features" className="max-w-6xl mx-auto px-6 py-16 md:py-24">
         <div className="text-center mb-14">
           <p className="text-xs font-black uppercase tracking-[0.25em] mb-3" style={{ color: 'var(--color-accent)' }}>
             What's In the Repo
@@ -358,9 +358,9 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
         </div>
 
         {/* Bento grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Dark feature card (spans 2 cols on md) */}
-          <div className="col-span-2 md:col-span-2 bg-slate-900 rounded-3xl p-8 flex flex-col justify-between min-h-[220px]">
+          <div className="col-span-1 md:col-span-2 bg-slate-900 rounded-3xl p-6 md:p-8 flex flex-col justify-between min-h-[220px]">
             <div
               className="size-11 rounded-2xl flex items-center justify-center text-white mb-6"
               style={{ background: 'var(--color-accent)' }}
@@ -416,7 +416,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
           </div>
 
           {/* Payment-Ready */}
-          <div className="col-span-2 md:col-span-1 bg-slate-50 border border-slate-100 rounded-3xl p-6 flex flex-col justify-between min-h-[180px] hover:border-slate-200 hover:shadow-md transition-all">
+          <div className="col-span-1 bg-slate-50 border border-slate-100 rounded-3xl p-6 flex flex-col justify-between min-h-[180px] hover:border-slate-200 hover:shadow-md transition-all">
             <div
               className="size-10 rounded-xl flex items-center justify-center mb-4"
               style={{ background: 'color-mix(in srgb, var(--color-accent) 12%, transparent)', color: 'var(--color-accent)' }}
@@ -432,8 +432,8 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
       </section>
 
       {/* ── 5. MOBILE DEMO SECTION ────────────────────────────────────────── */}
-      <section className="bg-slate-50 border-y border-slate-100 py-24 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <section className="bg-slate-50 border-y border-slate-100 py-16 md:py-24 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Left: copy */}
           <div>
             <p className="text-xs font-black uppercase tracking-[0.25em] mb-4" style={{ color: 'var(--color-accent)' }}>
@@ -472,14 +472,14 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
       </section>
 
       {/* ── 6. HOW IT WORKS ───────────────────────────────────────────────── */}
-      <section id="how-it-works" className="max-w-6xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
+      <section id="how-it-works" className="max-w-6xl mx-auto px-6 py-16 md:py-24">
+        <div className="text-center mb-10 md:mb-16">
           <p className="text-xs font-black uppercase tracking-[0.25em] mb-3" style={{ color: 'var(--color-accent)' }}>
             Setup Process
           </p>
           <h2 className="text-4xl font-black tracking-tight text-slate-900">Live in 3 steps</h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {steps.map(({ n, title, desc }) => (
             <div key={n} className="relative flex flex-col items-center text-center">
               <div
@@ -496,7 +496,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
       </section>
 
       {/* ── 7. PRICING ────────────────────────────────────────────────────── */}
-      <section id="pricing" className="bg-slate-50 border-y border-slate-100 py-24">
+      <section id="pricing" className="bg-slate-50 border-y border-slate-100 py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="text-xs font-black uppercase tracking-[0.25em] mb-3" style={{ color: 'var(--color-accent)' }}>
@@ -513,7 +513,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto items-stretch">
 
             {/* Card 1: The Source Code */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 flex flex-col">
+            <div className="bg-white rounded-3xl p-5 md:p-8 border border-slate-200 flex flex-col">
               <div className="mb-6">
                 <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Standard</p>
                 <h3 className="text-2xl font-black text-slate-900">The Source Code</h3>
@@ -553,7 +553,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
             </div>
 
             {/* Card 2: White-Glove Setup */}
-            <div className="bg-slate-900 rounded-3xl p-8 flex flex-col relative overflow-hidden">
+            <div className="bg-slate-900 rounded-3xl p-5 md:p-8 flex flex-col relative overflow-hidden">
               {/* Subtle accent glow at top-right */}
               <div
                 className="absolute inset-0 pointer-events-none"
@@ -613,7 +613,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
       </section>
 
       {/* ── 8. TECHNICAL ADVANTAGE ────────────────────────────────────────── */}
-      <section className="bg-white py-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="text-xs font-black uppercase tracking-[0.25em] mb-3" style={{ color: 'var(--color-accent)' }}>
@@ -627,7 +627,7 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
             {advantages.map(({ icon, title, desc }) => (
               <div
                 key={title}
-                className="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-slate-200 hover:shadow-md transition-all"
+                className="bg-slate-50 border border-slate-100 rounded-3xl p-5 md:p-8 hover:border-slate-200 hover:shadow-md transition-all"
               >
                 <div
                   className="size-11 rounded-2xl flex items-center justify-center mb-5"
@@ -647,12 +647,12 @@ const LandingView: React.FC<LandingViewProps> = ({ onDemo, onPrivacy, onTerms })
       </section>
 
       {/* ── 9. BOTTOM CTA ─────────────────────────────────────────────────── */}
-      <section className="bg-slate-900 py-24">
+      <section className="bg-slate-900 py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-5 leading-tight">
             Deploy your first client today
           </h2>
-          <p className="text-lg text-slate-400 mb-10 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-400 mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed">
             Full source code. Your database. Your infrastructure. One file to white-label.
             Get it, deploy it, sell it.
           </p>

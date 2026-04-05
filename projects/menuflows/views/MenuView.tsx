@@ -133,7 +133,7 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItem
         style={{ background: 'radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent)' }}
       />
 
-      <header className="pt-12 pb-4 px-6 sticky top-0 bg-background-dark/90 backdrop-blur-xl z-30 border-b border-white/5">
+      <header className="pt-8 sm:pt-12 pb-4 px-6 sticky top-0 bg-background-dark/90 backdrop-blur-xl z-30 border-b border-white/5">
         <div className="flex items-start justify-between mb-3">
           <div>
             <h1 className="text-2xl font-black tracking-tighter text-white">{restaurantName || 'Restaurant'}</h1>
@@ -163,7 +163,7 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItem
           {searchQuery && (
             <button
               onClick={handleClearSearch}
-              className="absolute right-2 top-1/2 -translate-y-1/2 size-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+              className="absolute right-2 top-1/2 -translate-y-1/2 size-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
             >
               <span className="material-symbols-outlined text-[14px] text-text-secondary">close</span>
             </button>
@@ -172,13 +172,13 @@ const MenuView: React.FC<MenuViewProps> = ({ menu, categories, cartCount, onItem
       </header>
 
       {/* Categories Scroller */}
-      <div className="px-6 py-4 sticky top-[132px] z-20 bg-background-dark/90 backdrop-blur-xl">
+      <div className="px-6 py-4 sticky top-[116px] sm:top-[132px] z-20 bg-background-dark/90 backdrop-blur-xl">
         <div className="flex gap-3 overflow-x-auto no-scrollbar py-1">
           {categoriesWithMatches.map(cat => (
             <button
               key={cat}
               onClick={() => handleCategoryClick(cat)}
-              className={`flex-none px-6 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest transition-all active:scale-95 ${
+              className={`flex-none px-6 py-3 rounded-full text-[11px] font-black uppercase tracking-widest transition-all active:scale-95 ${
                 activeCategory === cat && !isSearching
                   ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-105'
                   : 'bg-white/5 text-text-secondary border border-white/5'

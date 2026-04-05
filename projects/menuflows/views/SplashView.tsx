@@ -42,12 +42,12 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
 
       {/* Phone-like centered shell for desktop */}
       <div className="relative z-10 flex-1 flex flex-col w-full max-w-[520px] mx-auto">
-      <main className="flex-1 flex flex-col items-center justify-center p-8 text-center pt-20">
+      <main className="flex-1 flex flex-col items-center justify-center p-6 text-center pt-10 sm:pt-16">
         <div className="size-20 mb-8 rounded-[2rem] bg-surface-dark border border-white/10 flex items-center justify-center text-primary shadow-2xl animate-pulse-soft">
           <span className="material-symbols-outlined text-[40px]">restaurant</span>
         </div>
         
-        <h1 className="text-5xl font-black tracking-tighter leading-[0.85] text-white mb-4">
+        <h1 className="text-4xl sm:text-5xl font-black tracking-tighter leading-[0.85] text-white mb-4">
           {config.name.split(' ').slice(0, 1)}<br/>
           <span className="text-primary">{config.name.split(' ').slice(1).join(' ')}</span>
         </h1>
@@ -56,7 +56,7 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
           {branding.company.tagline}
         </p>
 
-        <div className="mt-16 relative w-full aspect-[4/3] max-h-[280px] group">
+        <div className="mt-8 sm:mt-14 relative w-full aspect-[4/3] max-h-[240px] sm:max-h-[280px] group">
           <div className="absolute inset-10 rounded-full bg-primary/20 blur-3xl group-hover:bg-primary/30 transition-all duration-1000"></div>
           <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-3xl border-[8px] border-white/5 transform transition-transform duration-1000 hover:scale-[1.02]">
             <img
@@ -75,7 +75,7 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
         </div>
       </main>
 
-      <div className="relative z-20 w-full px-8 pb-16">
+      <div className="relative z-20 w-full px-6 pb-10 sm:pb-14">
         <button 
           onClick={onContinue}
           className="group relative flex w-full items-center justify-center gap-4 rounded-full bg-primary h-18 py-5 px-6 text-white transition-all active:scale-[0.97]"
@@ -85,10 +85,10 @@ const SplashView: React.FC<SplashViewProps> = ({ config, onContinue, onEnterOwne
           <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
         </button>
 
-        <div className="mt-10 flex flex-col items-center gap-6">
+        <div className="mt-6 sm:mt-10 flex flex-col items-center gap-4 sm:gap-6">
           <button 
             onClick={onEnterOwner}
-            className="text-[10px] font-black text-text-secondary/40 hover:text-white transition-colors uppercase tracking-[0.3em] flex items-center gap-2"
+            className="min-h-[44px] text-[10px] font-black text-text-secondary/40 hover:text-white transition-colors uppercase tracking-[0.3em] flex items-center gap-2"
           >
             <span className="material-symbols-outlined text-[16px]">admin_panel_settings</span>
             Staff Access
