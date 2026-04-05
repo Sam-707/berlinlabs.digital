@@ -36,7 +36,8 @@ export default defineConfig({
   },
 
   // Visual snapshot comparison settings
-  snapshotPathTemplate: '{testDir}/{testFilePath}/{arg}{ext}',
+  // Snapshots land in: apps/<app>/tests/snapshots/<snapshot-name>-chromium.png
+  snapshotPathTemplate: '{testDir}/{testFileDir}/snapshots/{arg}-{projectName}{ext}',
   expect: {
     toHaveScreenshot: {
       // Allow small pixel drift between CI and local renders
