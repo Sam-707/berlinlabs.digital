@@ -39,6 +39,9 @@ test.describe('MenuFlows accessibility', () => {
   });
 
   test('demo menu has no a11y violations @a11y', async ({ page }) => {
+    // axe scanning a large menu DOM can be slow — give it more headroom
+    test.setTimeout(90_000);
+
     await page.goto('/demo');
 
     const viewMenuBtn = page.locator('button:has-text("View Menu")');

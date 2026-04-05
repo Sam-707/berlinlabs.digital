@@ -2,5 +2,7 @@ node_modules/
 dist/
 playwright-report/
 test-results/
+# Local browser install (use `npm run install:browsers` to populate)
+.playwright-browsers/
 # Snapshot files are committed intentionally — do not ignore them
 # *.png
