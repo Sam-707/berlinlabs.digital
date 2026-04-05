@@ -1,0 +1,65 @@
+name: Quality — Main Branch
+
+# Runs on every push to main (post-merge validation).
+# Broader coverage than PR checks: includes responsive visual comparison
+# against committed baselines.
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  # ── Full quality suite ────────────────────────────────────────────────────
+  quality-full:
+    name: Full Quality Suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: berlinlabs-workframe/package-lock.json
+
+      - name: Install workframe dependencies
+        working-directory: berlinlabs-workframe
+        run: npm ci
+
+      - name: Install Playwright browsers
+        working-directory: berlinlabs-workframe
+        run: npx playwright install --with-deps chromium
+
+      - name: Run all tests
+        working-directory: berlinlabs-workframe
+        env:
+          WORKFRAME_BASE_URL: https://www.menuflows.app
+        run: npx playwright test --reporter=list,html
+
+      - name: Upload Playwright HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-main-${{ github.run_number }}
+          path: berlinlabs-workframe/playwright-report/
+          retention-days: 30
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-main-${{ github.run_number }}
+          path: berlinlabs-workframe/test-results/
+          retention-days: 14
+
+      - name: Upload visual snapshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-snapshots-main-${{ github.run_number }}
+          path: berlinlabs-workframe/apps/**/*.png
+          retention-days: 30

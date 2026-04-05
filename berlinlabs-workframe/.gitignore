@@ -1,0 +1,6 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+# Snapshot files are committed intentionally — do not ignore them
+# *.png

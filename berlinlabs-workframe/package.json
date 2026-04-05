@@ -1,0 +1,24 @@
+{
+  "name": "@berlinlabs/workframe",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BerlinLabs automated quality framework — reusable CI/CD quality pipeline",
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:a11y": "playwright test --grep @a11y",
+    "test:responsive": "playwright test --grep @responsive",
+    "test:brand": "playwright test --grep @brand",
+    "test:menuflows": "playwright test apps/menuflows",
+    "report": "playwright show-report playwright-report",
+    "update-snapshots": "playwright test apps/menuflows/tests/responsive.spec.ts --update-snapshots",
+    "security:audit": "cd ../projects/menuflows && npm audit --audit-level=high",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^25.5.2",
+    "typescript": "^5.8.3"
+  }
+}

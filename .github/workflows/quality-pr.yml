@@ -1,0 +1,118 @@
+name: Quality — PR Check
+
+# Runs on every pull request targeting main.
+# Blocking checks: smoke, a11y, brand consistency.
+# Advisory checks: responsive screenshots (artifacts uploaded, not blocking).
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: quality-pr-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── Blocking: smoke + a11y + brand ───────────────────────────────────────
+  quality-blocking:
+    name: Smoke / A11y / Brand
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: berlinlabs-workframe/package-lock.json
+
+      - name: Install workframe dependencies
+        working-directory: berlinlabs-workframe
+        run: npm ci
+
+      - name: Install Playwright browsers
+        working-directory: berlinlabs-workframe
+        run: npx playwright install --with-deps chromium
+
+      - name: Run smoke tests
+        working-directory: berlinlabs-workframe
+        env:
+          WORKFRAME_BASE_URL: https://www.menuflows.app
+        run: npx playwright test --grep @smoke --reporter=list,html
+
+      - name: Run accessibility tests
+        working-directory: berlinlabs-workframe
+        env:
+          WORKFRAME_BASE_URL: https://www.menuflows.app
+        run: npx playwright test --grep @a11y --reporter=list,html
+
+      - name: Run brand consistency tests
+        working-directory: berlinlabs-workframe
+        env:
+          WORKFRAME_BASE_URL: https://www.menuflows.app
+        run: npx playwright test --grep @brand --reporter=list,html
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-pr-${{ github.run_number }}
+          path: berlinlabs-workframe/playwright-report/
+          retention-days: 14
+
+      - name: Upload test results (traces / screenshots on failure)
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results-pr-${{ github.run_number }}
+          path: berlinlabs-workframe/test-results/
+          retention-days: 7
+
+  # ── Advisory: responsive visual snapshots ────────────────────────────────
+  # Non-blocking — uploads screenshots as artifacts for manual review.
+  # Promote to blocking once snapshot baselines are committed and stable.
+  quality-responsive:
+    name: Responsive Screenshots (advisory)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    continue-on-error: true  # Non-blocking
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: berlinlabs-workframe/package-lock.json
+
+      - name: Install workframe dependencies
+        working-directory: berlinlabs-workframe
+        run: npm ci
+
+      - name: Install Playwright browsers
+        working-directory: berlinlabs-workframe
+        run: npx playwright install --with-deps chromium
+
+      - name: Capture responsive screenshots
+        working-directory: berlinlabs-workframe
+        env:
+          WORKFRAME_BASE_URL: https://www.menuflows.app
+        run: npx playwright test --grep @responsive --update-snapshots --reporter=list,html
+        continue-on-error: true
+
+      - name: Upload responsive screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: responsive-screenshots-pr-${{ github.run_number }}
+          path: |
+            berlinlabs-workframe/apps/menuflows/tests/**/*.png
+            berlinlabs-workframe/playwright-report/
+          retention-days: 30

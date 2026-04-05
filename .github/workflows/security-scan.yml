@@ -1,0 +1,85 @@
+name: Security Scan
+
+# Runs weekly and on every push to main.
+# ADVISORY — failures surface as warnings in the Actions tab but do not block merges.
+# Promote individual checks to blocking as findings are resolved.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Every Monday at 06:00 UTC
+  push:
+    branches: [main]
+  workflow_dispatch:      # Allow manual trigger
+
+jobs:
+  # ── Dependency vulnerability audit ───────────────────────────────────────
+  npm-audit:
+    name: npm audit (MenuFlows)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true  # Advisory
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run npm audit
+        working-directory: projects/menuflows
+        # --audit-level=high means critical and high severity block (exit 1)
+        # We use continue-on-error at the job level so CI stays advisory
+        run: npm audit --audit-level=high
+
+      - name: Run npm audit (workframe deps)
+        working-directory: berlinlabs-workframe
+        run: npm audit --audit-level=high
+
+  # ── Static analysis with Semgrep ─────────────────────────────────────────
+  semgrep:
+    name: Semgrep static analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    continue-on-error: true  # Advisory
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Semgrep
+        uses: semgrep/semgrep-action@v1
+        with:
+          # 'auto' selects rules based on languages detected in the repo.
+          # Add specific rulesets as needed, e.g.: "p/react p/typescript p/secrets"
+          config: >-
+            auto
+            p/react
+            p/typescript
+            p/security-audit
+        env:
+          # Optional: set SEMGREP_APP_TOKEN to push findings to semgrep.dev dashboard
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+
+  # ── Secrets detection with Gitleaks ──────────────────────────────────────
+  gitleaks:
+    name: Gitleaks secrets detection
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Blocking for secrets — committing secrets to the repo is a hard failure.
+    # If this trips a false positive, add the pattern to .gitleaksignore.
+    continue-on-error: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history required for Gitleaks
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Set GITLEAKS_LICENSE if using Gitleaks Pro features
