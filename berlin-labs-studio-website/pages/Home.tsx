@@ -70,7 +70,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 <span className="text-[9px] font-mono text-white/10">·</span>
                 <div className="flex items-center gap-1.5">
                   <span className="w-1 h-1 rounded-full bg-primary/60"></span>
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Systems Active</span>
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-slate-600">{SYSTEMS.length} Systems · First Ship Q1 2026</span>
                 </div>
               </div>
             </div>
@@ -98,15 +98,15 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 <dl className="space-y-0">
                   <div className="flex items-center justify-between py-4 border-b border-white/[0.06]">
                     <dt className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Systems</dt>
-                    <dd className="text-sm font-display font-bold text-white">02</dd>
+                    <dd className="text-sm font-display font-bold text-white">0{SYSTEMS.length}</dd>
                   </div>
                   <div className="flex items-center justify-between py-4 border-b border-white/[0.06]">
-                    <dt className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Live</dt>
-                    <dd className="text-[9px] font-mono uppercase tracking-widest text-primary/80">Active</dd>
+                    <dt className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Pilot</dt>
+                    <dd className="text-[9px] font-mono uppercase tracking-widest text-primary/80">MenuFlows</dd>
                   </div>
                   <div className="flex items-center justify-between py-4 border-b border-white/[0.06]">
-                    <dt className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Region</dt>
-                    <dd className="text-[9px] font-mono text-slate-500">EU-Central</dd>
+                    <dt className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Launched</dt>
+                    <dd className="text-[9px] font-mono text-slate-500">Q1 2026</dd>
                   </div>
                   <div className="flex items-center justify-between pt-4">
                     <dt className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Intake</dt>
@@ -126,7 +126,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       {/* Dynamic Feature Showcase: Current Build Deep Dive */}
       {currentFeatures.length > 0 && (
-        <section className="stack-section relative">
+        <section className="stack-section relative border-t border-white/[0.04] bg-white/[0.01]">
           <div className="layout-shell">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-14 lg:gap-20">
               <div className="text-center lg:text-left">
@@ -138,9 +138,18 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
                   <span className="text-[9px] font-mono uppercase tracking-widest text-primary/70">Pilot Active · Berlin</span>
                 </div>
-                <p className="max-w-xs mx-auto lg:mx-0 text-slate-500">
+                <p className="max-w-xs mx-auto lg:mx-0 text-slate-500 mb-6">
                   {featuredSystem?.oneLiner}
                 </p>
+                <a
+                  href="https://www.menuflows.app/demo"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[9px] font-mono text-primary/40 hover:text-primary/80 transition-colors uppercase tracking-widest group"
+                >
+                  <span>menuflows.app</span>
+                  <span className="material-symbols-outlined text-[11px] group-hover:translate-x-0.5 transition-transform">open_in_new</span>
+                </a>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
@@ -199,6 +208,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <p className="text-slate-500 max-w-xs font-light">
                 Ship working software. Refine from real usage.
               </p>
+              <div className="mt-8 pt-6 border-t border-white/[0.06] w-full max-w-xs">
+                <p className="text-[9px] font-mono uppercase tracking-widest text-slate-700 mb-1">Applied</p>
+                <p className="text-sm text-slate-500 font-light">MenuFlows · Shipped Q1 2026</p>
+              </div>
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-10">
@@ -238,8 +251,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               </p>
             </div>
 
-            {/* Right: CTA + live indicator */}
-            <div className="flex flex-col items-start lg:items-end gap-6">
+            {/* Right: CTA + live indicators */}
+            <div className="flex flex-col items-start lg:items-end gap-5">
               <button
                 onClick={() => onNavigate('contact')}
                 className="btn-primary"
@@ -248,9 +261,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 Initiate Connection
                 <span className="material-symbols-outlined text-lg ml-2 align-middle">arrow_forward</span>
               </button>
-              <div className="flex items-center gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse"></span>
-                <span className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Q2–Q3 2026 · Intake Open</span>
+              <div className="flex flex-col items-start lg:items-end gap-2.5">
+                <div className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse"></span>
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Q2–Q3 2026 · Intake Open</span>
+                </div>
+                <span className="text-[9px] font-mono uppercase tracking-widest text-slate-700">Next available slot: Q2 2026</span>
               </div>
             </div>
 
