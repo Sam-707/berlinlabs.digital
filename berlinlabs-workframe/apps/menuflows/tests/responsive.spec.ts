@@ -53,12 +53,16 @@ test.describe('MenuFlows responsive screenshots', () => {
       // Wait for splash content — the restaurant name h1 or View Menu button
       await waitForRoute(page, 'button:has-text("View Menu"), h1');
 
-      // Mask the "Powered by" text and any animated elements that vary
+      // Wait for CDN images to finish loading
+      await page.waitForLoadState('networkidle', { timeout: 15_000 }).catch(() => {});
+
+      // Mask the restaurant logo image — CDN cache state causes pixel variance
       await expect(page).toHaveScreenshot(
         `${snapshotName(config.appName, 'demo-splash', viewport.name)}.png`,
         {
           fullPage: true,
           animations: 'disabled',
+          mask: [page.locator('img')],
         }
       );
     });
@@ -78,11 +82,13 @@ test.describe('MenuFlows responsive screenshots', () => {
       // Wait for at least one menu item
       await page.locator('article').first().waitFor({ state: 'visible', timeout: 15_000 });
 
+      // Mask menu item images — CDN cache state causes pixel variance
       await expect(page).toHaveScreenshot(
         `${snapshotName(config.appName, 'demo-menu', viewport.name)}.png`,
         {
           fullPage: true,
           animations: 'disabled',
+          mask: [page.locator('article .bg-cover, article [style*="backgroundImage"]')],
         }
       );
     });
