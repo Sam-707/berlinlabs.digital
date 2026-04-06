@@ -16,7 +16,7 @@ export const HOME_CONTENT = {
     overline: 'Est. 2024 // Berlin',
     titleMain: 'Building digital',
     titleSecondary: 'Infrastructure',
-    body: 'Berlin-based. Multilingual systems for underserved communities.',
+    body: 'Operational software for independent businesses. Durable digital systems — starting in Berlin.',
   },
   featured: {
     label: 'Systems',

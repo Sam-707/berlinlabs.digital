@@ -21,7 +21,7 @@ const App: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     let title = 'BERLINLABS | Operational Product Studio';
-    let description = 'A Berlin-based studio building durable digital foundations for independent businesses.';
+    let description = 'Berlin-based product studio. Operational software for independent businesses. Durable digital systems, selective intake. One project monthly.';
 
     if (currentPage === 'systems') {
       title = 'Systems | BERLINLABS';

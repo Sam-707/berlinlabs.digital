@@ -36,7 +36,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <span className="overline-label !mb-2">{HOME_CONTENT.hero.overline}</span>
                 <p className="text-[10px] font-mono text-slate-600 tracking-wider">
-                  Building durable digital foundations.
+                  Berlin-first product studio.
                 </p>
               </div>
 
@@ -128,7 +128,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                   {featuredSystem?.name} <span className="text-primary/40 font-light">v2.0</span>
                 </h2>
                 <p className="max-w-xs mx-auto lg:mx-0 text-slate-500">
-                  Current operational focus.
+                  Berlin pilot live. Limited studio capacity.
                 </p>
               </div>
 
@@ -183,7 +183,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <h2 className="h2-section mb-6 text-white">{HOME_CONTENT.studioWork.label}</h2>
               <div className="w-12 h-1.5 bg-primary rounded-full mb-8"></div>
               <p className="text-slate-500 max-w-xs font-light">
-                Discipline. Structure.
+                Ship working software. Refine from real usage.
               </p>
             </header>
 
@@ -217,7 +217,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               Operational <br className="hidden md:block" /> <span className="text-white">Stability.</span>
             </h2>
             <p className="text-lead mb-12 max-w-md mx-auto group-hover:text-slate-300 transition-colors">
-              We review for fit. Venues seeking friction reduction only.
+              Studio capacity: one project monthly.
             </p>
             <button
               onClick={() => onNavigate('contact')}
