@@ -81,14 +81,21 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 {/* Ambient top glow — gold, very subtle */}
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
-                {/* Card header */}
-                <div className="flex items-center justify-between mb-7">
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Operational Status</span>
+                {/* Card header — terminal chrome */}
+                <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/[0.06]">
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex gap-1">
+                      <span className="w-2 h-2 rounded-full bg-white/10"></span>
+                      <span className="w-2 h-2 rounded-full bg-white/10"></span>
+                      <span className="w-2 h-2 rounded-full bg-primary/30"></span>
+                    </div>
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Status</span>
+                  </div>
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
                 </div>
 
                 {/* Vitals rows */}
-                <dl className="space-y-0 border-t border-white/[0.06]">
+                <dl className="space-y-0">
                   <div className="flex items-center justify-between py-4 border-b border-white/[0.06]">
                     <dt className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Systems</dt>
                     <dd className="text-sm font-display font-bold text-white">02</dd>
@@ -123,12 +130,16 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           <div className="layout-shell">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-14 lg:gap-20">
               <div className="text-center lg:text-left">
-                <span className="overline-label">Capabilities</span>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
-                  {featuredSystem?.name} <span className="text-primary/40 font-light">v2.0</span>
+                <span className="overline-label">Current Build</span>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+                  {featuredSystem?.name}
                 </h2>
+                <div className="flex items-center justify-center lg:justify-start gap-2 mb-5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-primary/70">Pilot Active · Berlin</span>
+                </div>
                 <p className="max-w-xs mx-auto lg:mx-0 text-slate-500">
-                  Berlin pilot live. Limited studio capacity.
+                  {featuredSystem?.oneLiner}
                 </p>
               </div>
 
@@ -136,7 +147,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 {currentFeatures.slice(0, 4).map((feature, idx) => (
                   <div key={idx} className="group p-8 rounded-2xl glass-card glass-card-hover">
                     <div className="flex items-center gap-4 mb-6">
-                       <span className="text-[10px] font-mono text-primary/40 font-bold tracking-widest group-hover:text-primary transition-colors">PART 0{idx + 1}</span>
+                       <span className="text-[10px] font-mono text-primary/30 font-bold tracking-widest group-hover:text-primary/60 transition-colors">0{idx + 1}</span>
                        <div className="flex-grow h-px bg-white/5 group-hover:bg-primary/10 transition-colors"></div>
                     </div>
                     <h3 className="text-lg font-display font-bold text-white group-hover:text-primary transition-colors mb-4 uppercase tracking-tight">
@@ -156,9 +167,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* Systems Section - Unified Directory */}
       <section className="stack-section border-y border-white/10 bg-black/40 relative">
         <div className="layout-shell">
-          <div className="mb-12 flex flex-col items-start">
-            <span className="overline-label mb-4">Systems</span>
-            <div className="w-12 h-1 bg-primary/30 rounded-full"></div>
+          <div className="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+            <div>
+              <span className="overline-label mb-1">Systems</span>
+              <p className="text-[10px] font-mono text-slate-600 uppercase tracking-widest">{SYSTEMS.length} systems · multiple stages</p>
+            </div>
+            <span className="text-[9px] font-mono uppercase tracking-widest text-slate-700 hidden sm:block">Berlin · EU-Central</span>
           </div>
 
           {/* Unified systems grid - all states in one layout using SystemCard */}
@@ -180,8 +194,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="layout-shell">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-14 lg:gap-20">
             <header className="text-center lg:text-left flex flex-col items-center lg:items-start">
-              <h2 className="h2-section mb-6 text-white">{HOME_CONTENT.studioWork.label}</h2>
-              <div className="w-12 h-1.5 bg-primary rounded-full mb-8"></div>
+              <span className="overline-label">{HOME_CONTENT.studioWork.label}</span>
+              <h2 className="h2-section mb-6 text-white">How we<br /><span className="gold-gradient-text">build.</span></h2>
               <p className="text-slate-500 max-w-xs font-light">
                 Ship working software. Refine from real usage.
               </p>
@@ -191,8 +205,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               {STUDIO_CONTENT.constitution.items.map((item, idx) => (
                 <div key={idx} className="relative p-8 rounded-2xl glass-card glass-card-hover group overflow-hidden">
                   {/* Decorative phase number - restored for visual hierarchy */}
-                  <div className="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.04] transition-opacity pointer-events-none">
-                     <span className="text-7xl font-display font-bold text-primary">0{idx + 1}</span>
+                  <div className="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-[0.09] transition-opacity pointer-events-none select-none">
+                     <span className="text-8xl font-display font-bold text-primary">0{idx + 1}</span>
                   </div>
                   <span className="overline-label mb-6">PHASE 0{idx + 1}</span>
                   <h3 className="text-2xl font-display font-bold mb-6 text-white group-hover:text-primary transition-colors">
@@ -208,24 +222,38 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* CTA Rhythm Section */}
-      <section className="stack-section">
+      {/* CTA Section — editorial split layout */}
+      <section className="stack-section border-t border-white/[0.06]">
         <div className="layout-shell">
-          <div className="max-w-3xl mx-auto p-12 md:p-24 rounded-[3rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 text-center relative overflow-hidden shadow-2xl transition-all hover:border-primary/20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-            <h2 className="h2-section mb-8 text-white">
-              Operational <br className="hidden md:block" /> <span className="text-white">Stability.</span>
-            </h2>
-            <p className="text-lead mb-12 max-w-md mx-auto group-hover:text-slate-300 transition-colors">
-              Studio capacity: one project monthly.
-            </p>
-            <button
-              onClick={() => onNavigate('contact')}
-              className="w-full md:w-auto btn-secondary"
-              aria-label="Initiate Inquiry"
-            >
-              Initiate Connection
-            </button>
+            {/* Left: editorial headline */}
+            <div>
+              <span className="overline-label">Intake</span>
+              <h2 className="h2-section mb-6 text-white">
+                Operational<br /><span className="gold-gradient-text">Stability.</span>
+              </h2>
+              <p className="text-lead max-w-sm">
+                Studio capacity: one project monthly.
+              </p>
+            </div>
+
+            {/* Right: CTA + live indicator */}
+            <div className="flex flex-col items-start lg:items-end gap-6">
+              <button
+                onClick={() => onNavigate('contact')}
+                className="btn-primary"
+                aria-label="Initiate Connection"
+              >
+                Initiate Connection
+                <span className="material-symbols-outlined text-lg ml-2 align-middle">arrow_forward</span>
+              </button>
+              <div className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse"></span>
+                <span className="text-[9px] font-mono uppercase tracking-widest text-slate-600">Q2–Q3 2026 · Intake Open</span>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

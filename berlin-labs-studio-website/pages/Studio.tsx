@@ -43,29 +43,23 @@ export const Studio: React.FC = () => {
         </div>
       </section>
 
-      {/* The Architect Protocol - New Section */}
-      <section className="mb-24 lg:mb-32 p-8 rounded-2xl glass-card glass-card-hover border-white/10">
-        <span className="overline-label mb-14 text-center">The Architect Protocol</span>
-        <div className="max-w-3xl mx-auto text-center space-y-9">
-          <p className="text-xl md:text-2xl font-display font-light text-slate-300 leading-editorial">
-            An <span className="text-primary font-semibold">Operational Product Studio</span> is not an agency. We build and ship systems that address friction.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
-            <div className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5">
-              <div className="text-4xl mb-4">🏛️</div>
-              <h4 className="text-sm font-display font-bold uppercase tracking-overline text-white mb-2">Berlin-Based</h4>
+      {/* Studio Constraints */}
+      <section className="mb-24 lg:mb-32">
+        <span className="overline-label mb-12 block">Studio Constraints</span>
+        <dl className="border-t border-white/[0.06]">
+          {([
+            { label: 'Type', value: 'Operational Product Studio — not an agency' },
+            { label: 'Location', value: 'Berlin, Germany' },
+            { label: 'Languages', value: 'German · English · Arabic' },
+            { label: 'Model', value: 'Build, ship, operate — not advise' },
+            { label: 'Intake', value: 'One new project per month. Selective.' },
+          ] as { label: string; value: string }[]).map((item) => (
+            <div key={item.label} className="flex items-baseline justify-between py-5 border-b border-white/[0.06] hover:bg-white/[0.01] transition-colors px-1 -mx-1">
+              <dt className="text-[9px] font-mono uppercase tracking-overline text-slate-600 shrink-0 mr-8">{item.label}</dt>
+              <dd className="text-sm font-light text-slate-300 text-right">{item.value}</dd>
             </div>
-            <div className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5">
-              <div className="text-4xl mb-4">🌍</div>
-              <h4 className="text-sm font-display font-bold uppercase tracking-overline text-white mb-2">Multilingual</h4>
-              <p className="text-xs text-slate-500 font-light">German, English, Arabic</p>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5">
-              <div className="text-4xl mb-4">🎯</div>
-              <h4 className="text-sm font-display font-bold uppercase tracking-overline text-white mb-2">Community-First</h4>
-            </div>
-          </div>
-        </div>
+          ))}
+        </dl>
       </section>
 
       <section className="mb-24 lg:mb-32">
